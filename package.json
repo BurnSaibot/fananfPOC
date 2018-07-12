@@ -1,0 +1,32 @@
+{
+  "name": "fananfpoc",
+  "version": "0.0.1",
+  "description": "fananfPOC",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BurnSaibot/fananfPOC.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/BurnSaibot/fananfPOC/issues"
+  },
+  "homepage": "https://github.com/BurnSaibot/fananfPOC#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.2.3",
+    "underscore": "^1.9.1"
+  }
+}
