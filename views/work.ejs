@@ -1,0 +1,28 @@
+<!DOCTYPE hyml>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> Vos Listes </title>
+    </head>
+    <body>  
+        <h1> Bonjour <%=prenom%> <%=nom%> !</h1>
+        <h2>Voici les taches ajoutées dans la liste <%=list[0].nomListe%>: </h2>
+        
+        <p> <%
+            if (list.length>0) {
+                for(var i=0; i<list.length;i++) {
+                    %>  <p> <a class="tache"><%=list[i].nomTache%></a> <a href=/todo/removeWork/<%=list[i].idTache%>>  Supprimer </a> </p></br>
+        
+                    <% } 
+            } else { %>
+                <p>Aucune liste trouvée</p> <%
+            } %>
+            
+        </p>
+        <h2>Ajouter une tache</h2>
+        <form method="POST" action="/todo/addList">
+            <input type="text" name="tacheAAjouter" required=""/>
+            <input type="submit" value="valider"/>
+        </form>
+    </body>
+</html>
