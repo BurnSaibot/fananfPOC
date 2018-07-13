@@ -1,7 +1,7 @@
 var crypto = require('crypto');
 var _ = require('./Utils');
 var User = require('./User');
-var mUser = require ('../models/User')
+var mUser = require ('../models/User');
 exports.helper = {};
 var KEYLEN = 128;
 var ITERATIONS = 12000;
@@ -11,9 +11,9 @@ var getHash = function (password, salt, callback) {
     // password: user password
     // salt: user salt
     // callback: function (error, hash)
-  
+    
     try {
-      crypto.pbkdf2(password, salt, ITERATIONS, KEYLEN, function (error, buffer) {
+      crypto.pbkdf2(password, salt, ITERATIONS, KEYLEN,'sha256', function (error, buffer) {
         var hash = buffer.toString('base64');
         callback(error, hash);
       });
@@ -24,15 +24,16 @@ var getHash = function (password, salt, callback) {
   };
   
   // Get password hash using random salt
-  var generateSaltAndHash = exports.helper.generateSaltAndHash = function (password, callback) {
+  exports.helper.generateSaltAndHash = function (password, callback) {
     // password: user password
     // callback: function (error, salt, hash)
-  
+    
     crypto.randomBytes(KEYLEN, function (error, buffer) {
       if (error) {
         callback(error);
       } else {
         var salt = buffer.toString('base64');
+        
         getHash(password, salt, function (error, hash) {
           callback(error, salt, hash);
         });
@@ -49,10 +50,10 @@ var getHash = function (password, salt, callback) {
 
     //res.end('WIP');
 
-
+    console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
     if (req.body.username === undefined || req.body.password === undefined 
         || req.body.surname === undefined || req.body.name === undefined) {
-            console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name)
+            console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
             _.response.sendError(res,failed,400);
     }
 

@@ -1,5 +1,7 @@
 var _ = require('./Utils');
 var authentication = require('./Authentication');
+var User = require('../models/User');
+
 exports.create = function (req,res) {
     console.log("on commence à créer l'user");
     //Check username validity
@@ -13,16 +15,17 @@ exports.create = function (req,res) {
         return;
     }
 
-    _.helper.generateSaltAndHash(req.body.password,function(error, salt, hash) {
+    authentication.helper.generateSaltAndHash(req.body.password,function(error, salt, hash) {
         //throw error if exists
         if (error) {
-            _.response.sendError(res,error,500);
+            //console.log("Error : " + error);
+            _.response.sendError(res,'xd2',500);
             return;
         }
 
         //creating a new user
-        console.log("Creating user : "+ req.body.username + " " + req.body.password + " " + req.body.name + " " + req.body.surname );
-        var user = new user({
+        //console.log("Creating user : "+ req.body.username + " " + req.body.password + " " + req.body.name + " " + req.body.surname );
+        var user = new User({
             login: req.body.username,
             nom: req.body.surname,
             prenom: req.body.name,
@@ -31,10 +34,13 @@ exports.create = function (req,res) {
         })
 
         user.save(function(error,user){
+            //console.log("\n\n\n\n" + error);
+            console.log(user);
             if (error && error.code === 11000) {
-                error = 'Invalid login (duplicate)'
+                error = 'Invalid login (duplicate)';
+                _.response.sendError(res,error,500);
             } else if (error) {
-                _.response.sendError(res,'undefined',error);
+                _.response.sendError(res,'xd',500);
             }
 
             res.redirect('/');
