@@ -22,12 +22,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(bodyParser.json({
-    limit: '50mb'
+    // limit: '50mb'
 }));
 app.use(bodyParser.urlencoded({
-    limit: '50mb',
+    // limit: '50mb',
     extended: true
 }));
+
 
 //===== DB connection =====
 mongoose.connect('mongodb://localhost/fananfdb', function(err){
@@ -35,7 +36,7 @@ mongoose.connect('mongodb://localhost/fananfdb', function(err){
 });
 
 // à utiliser si on se connecte à une base pas en local
-//mongoose.connect('mongodb://' + mongodb_host + ':' + mongodb_port + '/' + mongodb_name);
+mongoose.connect('mongodb://KiwiLeOazo:Kiwi123.@ds117156.mlab.com:17156/fananfdb');//'mongodb://' + mongodb_host + ':' + mongodb_port + '/' + mongodb_name);
 
 mongoose.set('debug', false);
 

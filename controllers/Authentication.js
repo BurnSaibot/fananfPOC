@@ -1,5 +1,7 @@
 var crypto = require('crypto');
-var _ = require('./Utils')
+var _ = require('./Utils');
+var User = require('./User');
+var mUser = require ('../models/User')
 exports.helper = {};
 var KEYLEN = 128;
 var ITERATIONS = 12000;
@@ -22,7 +24,7 @@ var getHash = function (password, salt, callback) {
   };
   
   // Get password hash using random salt
-  exports.helper.generateSaltAndHash = function (password, callback) {
+  var generateSaltAndHash = exports.helper.generateSaltAndHash = function (password, callback) {
     // password: user password
     // callback: function (error, salt, hash)
   
@@ -42,7 +44,21 @@ var getHash = function (password, salt, callback) {
   //Routes
 
   exports.register = function(req,res) {
-    res.end('WIP');
+    console.log("on commence l'enregistrement");
+    var failed = "Votre enregistrement à échouer, vérifiez que tous les champs ont bien été remplis"
+
+    //res.end('WIP');
+
+
+    if (req.body.username === undefined || req.body.password === undefined 
+        || req.body.surname === undefined || req.body.name === undefined) {
+            console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name)
+            _.response.sendError(res,failed,400);
+    }
+
+    User.create(req,res);
+
+
   }
   exports.viewRegister = function(req,res,next) {
     res.render('register.ejs');
