@@ -3,7 +3,7 @@ var authentication = require('./controllers/Authentication')
 exports.initialize = function (app) {
     
 app.get('/', function(req,res,next) {
-    res.render('home.ejs')
+    res.render('index.ejs')
 })
 
 .get ('/register', authentication.viewRegister)

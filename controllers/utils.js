@@ -8,3 +8,7 @@ var sendError = exports.response.sendError = function (res, errorText, code) {
 
     res.status(code).json({error: errorText});
 }
+
+var sendSucces = exports.response.sendSucces = function(res, succesText) {
+    res.status(200).json({succes: succesText});
+}

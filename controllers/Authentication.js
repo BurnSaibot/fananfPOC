@@ -60,15 +60,48 @@ var getHash = function (password, salt, callback) {
     User.create(req,res);
 
 
-  }
+  };
+
   exports.viewRegister = function(req,res,next) {
     res.render('register.ejs');
-  }
+  };
 
+  //login
   exports.login = function(req,res) {
       var failed = "Votre connexion a échoué, vérifier vos login et password !"
 
       if (req.body.username === undefined || req.body.password === undefined) {
           _.response.sendError(res,failed,401);
       }
-  }
+
+      user.findOne({
+        username: req.body.username
+      },function(error,user) {
+
+        //if error or no user, authentification faileure
+        if( error || !user ) {
+          _.response.sendError(res,failed,401);
+          return;
+        }
+
+        getHash(req.body.password,user.salt, function(error,hash) {
+          if (error || user.hash !== hash ) {
+            _.response.sendError(res,failed,401);
+            return;
+          }
+
+          req.session.regenerate(function(){
+            req.session.user = user;
+            _.response.sendSucces(res,'Authentication succeeded.');
+            return;
+          });
+        });
+      });
+
+  };
+
+  // logout
+  exports.logout = function (req, res) {
+    req.session.destroy(
+      _.response.fSendSuccess(res, 'Logout succeeded.'));
+  };
