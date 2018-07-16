@@ -53,7 +53,7 @@ var getHash = function (password, salt, callback) {
     console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
     if (req.body.username === undefined || req.body.password === undefined 
         || req.body.surname === undefined || req.body.name === undefined) {
-            console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
+            console.log(failed + " " + req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
             _.response.sendError(res,failed,400);
     }
 

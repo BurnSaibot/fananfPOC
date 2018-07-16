@@ -31,9 +31,9 @@ app.use(bodyParser.urlencoded({
 
 
 //===== DB connection =====
-mongoose.connect('mongodb://localhost/fananfdb', function(err){
+/*mongoose.connect('mongodb://localhost/fananfdb', function(err){
     if (err) throw err;
-});
+});*/
 
 // à utiliser si on se connecte à une base pas en local
 mongoose.connect('mongodb://KiwiLeOazo:Kiwi123.@ds117156.mlab.com:17156/fananfdb');//'mongodb://' + mongodb_host + ':' + mongodb_port + '/' + mongodb_name);

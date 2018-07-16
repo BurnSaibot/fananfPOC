@@ -19,10 +19,10 @@ exports.create = function (req,res) {
         //throw error if exists
         if (error) {
             //console.log("Error : " + error);
-            _.response.sendError(res,'xd2',500);
+            _.response.sendError(res,'error in salt Generation',500);
             return;
         }
-
+        
         //creating a new user
         //console.log("Creating user : "+ req.body.username + " " + req.body.password + " " + req.body.name + " " + req.body.surname );
         var user = new User({
@@ -40,9 +40,8 @@ exports.create = function (req,res) {
                 error = 'Invalid login (duplicate)';
                 _.response.sendError(res,error,500);
             } else if (error) {
-                _.response.sendError(res,'xd',500);
+                _.response.sendError(res,'error while saving the user',500);
             }
-
             res.redirect('/');
         })
     })
