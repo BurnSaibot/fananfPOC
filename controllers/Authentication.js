@@ -1,10 +1,11 @@
 var crypto = require('crypto');
 var _ = require('./Utils');
+var mUser = require('../models/User');
 var User = require('./User');
-var mUser = require ('../models/User');
+const KEYLEN = 128;
+const ITERATIONS = 12000;
+
 exports.helper = {};
-var KEYLEN = 128;
-var ITERATIONS = 12000;
 
 // Get password hash using provided salt
 var getHash = function (password, salt, callback) {
@@ -48,18 +49,14 @@ var getHash = function (password, salt, callback) {
     console.log("on commence l'enregistrement");
     var failed = "Votre enregistrement à échouer, vérifiez que tous les champs ont bien été remplis"
 
-    //res.end('WIP');
-
-    console.log(req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
     if (req.body.username === undefined || req.body.password === undefined 
         || req.body.surname === undefined || req.body.name === undefined) {
             console.log(failed + " " + req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
             _.response.sendError(res,failed,400);
     }
-
+    
     User.create(req,res);
-
-
+    
   };
 
   exports.viewRegister = function(req,res,next) {
@@ -68,14 +65,14 @@ var getHash = function (password, salt, callback) {
 
   //login
   exports.login = function(req,res) {
-      var failed = "Votre connexion a échoué, vérifier vos login et password !"
+      var missingInfo = "infos manquantes : veuillez remplir tous les champs correctement";
+      var failed = "Votre connexion a échoué, vérifier vos login et password !";
 
       if (req.body.username === undefined || req.body.password === undefined) {
-          _.response.sendError(res,failed,401);
+          _.response.sendError(res,missingInfo,401);
       }
-
-      user.findOne({
-        username: req.body.username
+      mUser.findOne({
+        login: req.body.username
       },function(error,user) {
 
         //if error or no user, authentification faileure
@@ -85,19 +82,23 @@ var getHash = function (password, salt, callback) {
         }
 
         getHash(req.body.password,user.salt, function(error,hash) {
+          //console.log(hash);
           if (error || user.hash !== hash ) {
             _.response.sendError(res,failed,401);
             return;
           }
-
-          req.session.regenerate(function(){
+          req.session.regenerate(function(req,res){
             req.session.user = user;
             _.response.sendSucces(res,'Authentication succeeded.');
-            return;
+            res.redirect('/home');
           });
         });
       });
 
+  };
+
+  exports.viewLogin = function(req,res,next) {
+    res.render('connection.ejs');
   };
 
   // logout

@@ -2,15 +2,36 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title> TodoList- Se connecter </title>
+        <title> fananf - Se connecter </title>
     </head>
     <body>
-        <h1>Connexion</h1>
+        <header role="banner"> 
+            <nav role="navigation" ara-label="Menu principal">
+                <ul class="menu">
+                    <div class="dropdown">
+                        <li>
+                            <a class="droplist" href="/" aria-current="page">Acceuil</a>
+                        </li>
+                    </div>
+                    <div class="dropdown">
+                        <li>
+                            <a class="droplist" href="/connect"> Se connecter </a>
+                        </li>
+                    </div>
+                    <div class="dropdown">
+                        <li>
+                            <a class="droplist" href="/register"> S'enregistrer</a>
+                        </li>
+                    </div>
+                </ul>		
+            </nav>
+        </header>
+        <h1>Connexion : </h1>
         <form method="POST" action="/login-in">
-            <label for="login">Login : </label>
-            <input type="text" name="login" required=""/> </br>
-            <label for="mdp">Mot de Passe: </label>
-            <input type="text" name="mdp" required=""/> </br>
+            <label for="username">Login : </label>
+            <input type="text" name="username" required=""/> </br>
+            <label for="password">Mot de Passe: </label>
+            <input type="password" name="password" required=""/> </br>
             <input type="submit" value="Se connecter"/>
         </form>
     </body>

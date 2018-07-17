@@ -6,21 +6,26 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 var mongoose = require('mongoose');
-//var mongoStore = require('connect-mongo')(session);
+var mongoStore = require('connect-mongo')(session);
 
 var routes = require('./routes');
-var User = require('./models/User');
-//var Authentication = require('./controllers/Authentication');
 
 var app = express();
 
 const port = 3000;
 
+var sessionStore = new mongoStore({
+    mongooseConnection: mongoose.connection,
+    db: mongoose.connections[0].db,
+    clear_interval: 60
+  });
+
 //app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(session({secret: 'fananftopsecretsessioncookie',saveUninitialized: false, resave: false, cookie: { secure: false },store: sessionStore}
+));
 app.use(bodyParser.json({
     // limit: '50mb'
 }));

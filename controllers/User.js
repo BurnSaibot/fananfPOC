@@ -42,6 +42,8 @@ exports.create = function (req,res) {
             } else if (error) {
                 _.response.sendError(res,'error while saving the user',500);
             }
+            //_.response.sendSucces(res,"Registration was done");
+            //req.session.lastAction = {status: "succes",msg: "Registration succeded, you now have to log-in"};
             res.redirect('/');
         })
     })

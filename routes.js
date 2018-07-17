@@ -1,5 +1,5 @@
-var authentication = require('./controllers/Authentication')
-
+var authentication = require('./controllers/Authentication');
+//
 exports.initialize = function (app) {
     
 app.get('/', function(req,res,next) {
@@ -9,12 +9,10 @@ app.get('/', function(req,res,next) {
 .get ('/register', authentication.viewRegister)
 
 
-.get ('/connect',function(req,res,next){
-    res.end("WIP");
-})
+.get ('/connect',authentication.viewLogin)
+
+.get('/home',function(){res.end("wip")})
 .post('/registering',authentication.register)
 
-.post('/login-in', function(req,res,next){
-    res.end("WIP");
-})
+.post('/login-in',authentication.login);
 };

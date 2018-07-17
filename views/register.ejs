@@ -5,13 +5,35 @@
         <title> fananf - s'enregistrer </title>
     </head>
     <body>
-        <h1>Connexion</h1>
+        <header role="banner"> 
+            <nav role="navigation" ara-label="Menu principal">
+                <ul class="menu">
+                    <div class="dropdown">
+                        <li>
+                            <a class="droplist" href="/" aria-current="page">Acceuil</a>
+                        </li>
+                    </div>
+                    <div class="dropdown">
+                        <li>
+                            <a class="droplist" href="/connect"> Se connecter </a>
+                        </li>
+                    </div>
+                    <div class="dropdown">
+                        <li>
+                            <a class="droplist" href="/register"> S'enregistrer</a>
+                        </li>
+                    </div>
+                </ul>		
+            </nav>
+        </header>
+        <h1>Se créer un compte utilisateur : </h1>
         <p>Tous les champs marqués d'un * sont obligatoires</p>
         <form method="POST" action="/registering">
             <label for="username">Login* : </label>
             <input type="text" name="username" required=""/> </br>
-            <label for="password">Mot de Passe*: </label>
+            <label for="password">Mot de Passe *: </label>
             <input type="password" name="password" required=""/> </br>
+            <label for="password" >(8 caractères au moins)</label> </br>
             <label for="surname">Nom* :</label>
             <input type="text" name ="surname" required=""/> </br>
             <label for="name">Prenom* :</label>
