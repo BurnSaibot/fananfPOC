@@ -28,6 +28,9 @@
                     </header>
                     
                     <main>
+                        <% if (lastAction.status === 'success') { %>
+                            <div class="succes" > <%= lastAction.msg %> </div>
+                        <% }%>
                         <h1>Bienvenue sur l'application de transcription automatique de vidéos pour le projet fananf !</h1>
                     </main>  
     </body>

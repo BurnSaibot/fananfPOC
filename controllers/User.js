@@ -18,13 +18,11 @@ exports.create = function (req,res) {
     authentication.helper.generateSaltAndHash(req.body.password,function(error, salt, hash) {
         //throw error if exists
         if (error) {
-            //console.log("Error : " + error);
             _.response.sendError(res,'error in salt Generation',500);
             return;
         }
         
         //creating a new user
-        //console.log("Creating user : "+ req.body.username + " " + req.body.password + " " + req.body.name + " " + req.body.surname );
         var user = new User({
             login: req.body.username,
             nom: req.body.surname,
@@ -35,16 +33,16 @@ exports.create = function (req,res) {
 
         user.save(function(error,user){
             //console.log("\n\n\n\n" + error);
-            console.log(user);
             if (error && error.code === 11000) {
+                //console.log("Error: " + error + "error code : " + error.code );
                 error = 'Invalid login (duplicate)';
                 _.response.sendError(res,error,500);
+                return;
             } else if (error) {
                 _.response.sendError(res,'error while saving the user',500);
+                return;
             }
-            //_.response.sendSucces(res,"Registration was done");
-            //req.session.lastAction = {status: "succes",msg: "Registration succeded, you now have to log-in"};
-            res.redirect('/');
+            _.response.sendSucces(req,res,'/',"Registration succeeded, let's connect now !");
         })
     })
 

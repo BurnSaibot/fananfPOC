@@ -10,23 +10,29 @@
                         <ul class="menu">
                             <div class="dropdown">
                                 <li>
-                                    <a class="droplist" href="/" aria-current="page">Acceuil</a>
+                                    <a class="droplist" href="/home " aria-current="page">Acceuil</a>
                                 </li>
                             </div>
                             <div class="dropdown">
                                 <li>
-                                    <a class="droplist" href="/connect"> Mes transcriptions </a>
+                                    <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
+                                    <ul class="submenu" id="submenu">
+                                        <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
+                                    </ul>
                                 </li>
                             </div>
                             <div class="dropdown">
                                 <li>
-                                    <a class="droplist" href="/register"> S'enregistrer</a>
+                                    <a class="droplist" href="/logout"> Se deconnecter</a>
                                 </li>
                             </div>
                         </ul>		
                     </nav>
             </header>
             <main>
+                <% if (lastAction.status === 'success') { %>
+                   <div class="succes" > <%= lastAction.msg %> </div>
+                <% }%>
                 <h1>Bienvenue sur l'application de transcription automatique de vidéos pour le projet fananf !</h1>
             </main>  
     </body>

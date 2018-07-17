@@ -14,18 +14,19 @@ var app = express();
 
 const port = 3000;
 
-var sessionStore = new mongoStore({
-    mongooseConnection: mongoose.connection,
-    db: mongoose.connections[0].db,
-    clear_interval: 60
-  });
-
 //app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret: 'fananftopsecretsessioncookie',saveUninitialized: false, resave: false, cookie: { secure: false },store: sessionStore}
-));
+app.use(session({secret: 'fananftopsecretsessioncookie',saveUninitialized: false, resave: true, cookie: { secure: false }}));
+app.use(function(req,res,next) {
+    if (req.session.lastAction === undefined) {
+        req.session.lastAction = {status: 'none',msg: 'none'}
+    } else {
+        console.log(req.session.lastAction);
+    }
+    next();
+});
 app.use(bodyParser.json({
     // limit: '50mb'
 }));

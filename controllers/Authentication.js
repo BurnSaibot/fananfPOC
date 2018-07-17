@@ -45,13 +45,13 @@ var getHash = function (password, salt, callback) {
 
   //Routes
 
-  exports.register = function(req,res) {
+  exports.register = function(req,res,next) {
     console.log("on commence l'enregistrement");
     var failed = "Votre enregistrement à échouer, vérifiez que tous les champs ont bien été remplis"
 
     if (req.body.username === undefined || req.body.password === undefined 
         || req.body.surname === undefined || req.body.name === undefined) {
-            console.log(failed + " " + req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
+            //console.log(failed + " " + req.body.username + '\n' + req.body.password + '\n' + req.body.surname + '\n' + req.body.name);
             _.response.sendError(res,failed,400);
     }
     
@@ -64,7 +64,7 @@ var getHash = function (password, salt, callback) {
   };
 
   //login
-  exports.login = function(req,res) {
+  exports.login = function(req,res,next) {
       var missingInfo = "infos manquantes : veuillez remplir tous les champs correctement";
       var failed = "Votre connexion a échoué, vérifier vos login et password !";
 
@@ -87,10 +87,10 @@ var getHash = function (password, salt, callback) {
             _.response.sendError(res,failed,401);
             return;
           }
-          req.session.regenerate(function(req,res){
+          req.session.regenerate(function(){
             req.session.user = user;
-            _.response.sendSucces(res,'Authentication succeeded.');
-            res.redirect('/home');
+            
+            _.response.sendSucces(req,res,'/home',"Authentication succeeded");
           });
         });
       });
@@ -104,5 +104,5 @@ var getHash = function (password, salt, callback) {
   // logout
   exports.logout = function (req, res) {
     req.session.destroy(
-      _.response.fSendSuccess(res, 'Logout succeeded.'));
-  };
+      _.response.sendSucces(req,res, '/',"Logged Out succesfuly !"));
+  };  
