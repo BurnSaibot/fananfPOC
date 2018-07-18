@@ -105,4 +105,15 @@ var getHash = function (password, salt, callback) {
   exports.logout = function (req, res) {
     req.session.destroy(
       _.response.sendSucces(req,res, '/',"Logged Out succesfuly !"));
-  };  
+  };
+
+  exports.middleware = {};
+
+  // user is logged in?
+  exports.middleware.isLoggedIn = function (req, res, next) {
+    if (!req.session.user) {
+      _.response.sendError(res, "Access denied. You aren't connected  ", 401);
+      return;
+    }
+    next();
+  };

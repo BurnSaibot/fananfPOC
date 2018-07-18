@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title> fananf - s'enregistrer </title>
+        <title> fananf - utilisateurs </title>
         <link rel="stylesheet" href="/style/general.css">
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
@@ -28,19 +28,30 @@
                 </ul>		
             </nav>
         </header>
-        <h1>Se créer un compte utilisateur : </h1>
-        <p>Tous les champs marqués d'un * sont obligatoires</p>
-        <form method="POST" action="/registering">
-            <label for="username">Login* : </label>
-            <input type="text" name="username" required=""/> </br>
-            <label for="password">Mot de Passe *: </label>
-            <input type="password" name="password" required=""/> </br>
-            <label for="password" >(8 caractères au moins)</label> </br>
-            <label for="surname">Nom* :</label>
-            <input type="text" name ="surname" required=""/> </br>
-            <label for="name">Prenom* :</label>
-            <input type="text" name ="name" required=""/> </br>
-            <input type="submit" value="S'enregistrer"/>
-        </form>
+        <main>
+            <h1> Utilisateurs : </h1>
+            <tr>
+                <td>
+                    Nom
+                </td>
+                <td>
+                    Prenom
+                </td>
+            </tr>
+        </br>
+            <% if (users.length>0) {
+                users.forEach(function(user,index) { %>
+                <tr>
+                    <td>
+                        <%= user.nom %>
+                    </td>
+                    <td>
+                        <%= user.prenom %>
+                    </td>
+                </tr>
+            </br>
+            <% }); 
+            } %>
+        </main>
     </body>
 </html>

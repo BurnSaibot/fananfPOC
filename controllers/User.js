@@ -45,5 +45,24 @@ exports.create = function (req,res) {
             _.response.sendSucces(req,res,'/',"Registration succeeded, let's connect now !");
         })
     })
-
 }
+
+var getAll = exports.getAll = function (req,res,callback) {
+    //callback = function(result)
+    User.find({},'nom prenom _id', function(error,result) {
+        if( error ) {
+            _.response.sendError(res,error,500);
+            return;
+        }
+        callback(result);
+        return;
+    })
+}
+
+exports.displayAll = function(req,res) {
+    getAll(req,res,function(result) {
+        console.log(result);
+        console.log(result.length);
+        res.render('users.ejs',{users: result});
+    })
+} 

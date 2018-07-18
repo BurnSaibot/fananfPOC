@@ -1,4 +1,5 @@
 var authentication = require('./controllers/Authentication');
+var user = require('./controllers/User')
 //
 exports.initialize = function (app) {
     
@@ -11,14 +12,15 @@ app.get('/', function(req,res,next) {
 
 .get ('/connect',authentication.viewLogin)
 
-.get('/home',function(req,res){
+.get('/home',authentication.middleware.isLoggedIn,function(req,res){
     res.render('menu.ejs',{lastAction: req.session.lastAction})
 })
+.get('/users',authentication.middleware.isLoggedIn,user.displayAll)
 
 .post('/registering',authentication.register)
 
 .post('/login-in',authentication.login)
 
-.get('/logout',authentication.logout)
+.get('/logout',authentication.middleware.isLoggedIn,authentication.logout)
 
 };

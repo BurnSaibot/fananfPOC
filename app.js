@@ -23,7 +23,8 @@ app.use(function(req,res,next) {
     if (req.session.lastAction === undefined) {
         req.session.lastAction = {status: 'none',msg: 'none'}
     } else {
-        console.log(req.session.lastAction);
+        //console.log(req.session.lastAction);
+        //console.log(req.session.user)
     }
     next();
 });
