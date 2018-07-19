@@ -7,27 +7,38 @@
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
     <body>
-        <header role="banner"> 
-            <nav role="navigation" ara-label="Menu principal">
-                <ul class="menu">
-                    <div class="dropdown">
-                        <li>
-                            <a class="droplist" href="/" aria-current="page">Acceuil</a>
-                        </li>
-                    </div>
-                    <div class="dropdown">
-                        <li>
-                            <a class="droplist" href="/connect"> Se connecter </a>
-                        </li>
-                    </div>
-                    <div class="dropdown">
-                        <li>
-                            <a class="droplist" href="/register"> S'enregistrer</a>
-                        </li>
-                    </div>
-                </ul>		
-            </nav>
-        </header>
+            <header role="banner"> 
+                    <nav role="navigation" ara-label="Menu principal">
+                            <ul class="menu">
+                                <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/home " aria-current="page">Acceuil</a>
+                                    </li>
+                                </div>
+                                <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
+                                        <ul class="submenu" id="submenu">
+                                            <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
+                                        </ul>
+                                    </li>
+                                </div>
+                                <div class="dropdown">
+                                        <li>
+                                            <a class="droplist" href="/users"> Les utilisateurs </a>
+                                            <ul class="submenu" id="submenu">
+                                                    <li><a href="/user">Mes infos</a></li>
+                                                </ul>
+                                        </li>
+                                    </div>
+                                <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/logout"> Se deconnecter</a>
+                                    </li>
+                                </div>
+                            </ul>		
+                        </nav>
+            </header>
         <main>
             <h1> Utilisateurs : </h1>
             <tr>
@@ -47,6 +58,9 @@
                     </td>
                     <td>
                         <%= user.prenom %>
+                    </td>
+                    <td>
+                        <a href="/user/<%=user._id%>"> Plus d'infos </a>
                     </td>
                 </tr>
             </br>

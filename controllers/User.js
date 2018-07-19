@@ -1,5 +1,6 @@
 var _ = require('./Utils');
 var authentication = require('./Authentication');
+var mongoose = require('mongoose');
 var User = require('../models/User');
 
 exports.create = function (req,res) {
@@ -29,7 +30,7 @@ exports.create = function (req,res) {
             prenom: req.body.name,
             salt: salt,
             hash: hash
-        })
+        });
 
         user.save(function(error,user){
             //console.log("\n\n\n\n" + error);
@@ -43,9 +44,9 @@ exports.create = function (req,res) {
                 return;
             }
             _.response.sendSucces(req,res,'/',"Registration succeeded, let's connect now !");
-        })
-    })
-}
+        });
+    });
+};
 
 var getAll = exports.getAll = function (req,res,callback) {
     //callback = function(result)
@@ -56,13 +57,38 @@ var getAll = exports.getAll = function (req,res,callback) {
         }
         callback(result);
         return;
-    })
-}
+    });
+};
+
+var getOne = exports.getOne = function (req,res,idUser,callback) {
+    //callback = function(result)
+    User.findOne({_id: idUser},'nom prenom _id', function(error,result) {
+        if (!mongoose.Types.ObjectId.isValid(idUser)){
+            _.response.sendError(res,"invalid ID for query", 500)
+            return;
+        }
+        if( error ) {
+            _.response.sendError(res,error,500);
+            return;
+        }
+        callback(result);
+        return;
+    });
+};
 
 exports.displayAll = function(req,res) {
     getAll(req,res,function(result) {
-        console.log(result);
-        console.log(result.length);
+        //console.log(result);
+        //console.log(result.length);
         res.render('users.ejs',{users: result});
-    })
-} 
+    });
+} ;
+exports.displayOne = function(req,res) {
+    if (req.params.id === undefined) {
+        res.render('user.ejs',{user: req.session.user});
+    } else {
+        getOne(req,res,req.params.id,function(result) {
+            res.render('user.ejs',{user: result, me: req.session.user});
+        });
+    }
+}; 

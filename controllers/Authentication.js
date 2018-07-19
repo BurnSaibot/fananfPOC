@@ -112,7 +112,7 @@ var getHash = function (password, salt, callback) {
   // user is logged in?
   exports.middleware.isLoggedIn = function (req, res, next) {
     if (!req.session.user) {
-      _.response.sendError(res, "Access denied. You aren't connected  ", 401);
+      _.response.sendSucces(req,res,'/',"You have to be connected to acces this page, you have been redirected to the index");
       return;
     }
     next();

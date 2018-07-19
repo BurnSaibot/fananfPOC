@@ -37,6 +37,18 @@ var create = exports.create = function (req,res,groupName,tDescription) {
         users : members
     })
 
+    group.save(function(error,group){
+        if (error && error.code === 11000) {
+            error = "invalide group name (duplicate) " + groupName;
+            _.response.sendError(res,error,500);
+            return;
+        } else if (error) {
+            _.response.sendError(res,'error while saving the user',500);
+            return;
+        }
+        _.response.sendSucces(req,res,'/home',"Group created succesfuly");
+    })
+
 }
 
 module.exports = mongoose.model('Group', Group)

@@ -14,9 +14,13 @@ app.get('/', function(req,res,next) {
 
 .get('/home',authentication.middleware.isLoggedIn,function(req,res){
     res.render('menu.ejs',{lastAction: req.session.lastAction})
+
 })
 .get('/users',authentication.middleware.isLoggedIn,user.displayAll)
-
+.get('/user/:id',authentication.middleware.isLoggedIn,user.displayOne)
+.get('/user',authentication.middleware.isLoggedIn,function(req,res) {
+    res.redirect('/user/' + req.session.user._id);
+})
 .post('/registering',authentication.register)
 
 .post('/login-in',authentication.login)

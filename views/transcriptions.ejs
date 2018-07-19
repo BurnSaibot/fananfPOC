@@ -6,21 +6,39 @@
         <link rel="stylesheet" href="/style/general.css">
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
-    <body>  
-        <h1> Bonjour <%=prenom%> <%=nom%> !</h1>
-        <h2>Voici les listes que vous avez faites : </h2>
-        
-        <p> <%
-            if (lists.length>0) {
-                for(var i=0; i<lists.length;i++) {
-                    %>  <p><a href=/todo/list/<%=lists[i].idListe%> class="listName"><%=lists[i].nomListe%></a> <a href=/todo/removeList/<%=lists[i].idListe%>>  Supprimer </a> </p></br>
-        
-                    <% } 
-            } else { %>
-                <p>Aucune liste trouvée</p> <%
-            } %>
-            
-        </p>
+    <body>
+            <header role="banner"> 
+                    <nav role="navigation" ara-label="Menu principal">
+                            <ul class="menu">
+                                <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/home " aria-current="page">Acceuil</a>
+                                    </li>
+                                </div>
+                                <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
+                                        <ul class="submenu" id="submenu">
+                                            <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
+                                        </ul>
+                                    </li>
+                                </div>
+                                <div class="dropdown">
+                                        <li>
+                                            <a class="droplist" href="/users"> Les utilisateurs </a>
+                                            <ul class="submenu" id="submenu">
+                                                    <li><a href="/user">Mes infos</a></li>
+                                                </ul>
+                                        </li>
+                                    </div>
+                                <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/logout"> Se deconnecter</a>
+                                    </li>
+                                </div>
+                            </ul>		
+                        </nav>
+            </header>  
         <h2>Ajouter une liste</h2>
         <form method="POST" action="/todo/addList">
             <input type="text" name="listeAAjouter" required=""/>

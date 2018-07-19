@@ -1,0 +1,72 @@
+<!DOCTYPE hyml>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> fananf - <%=user.nom%> <%=user.prenom%> </title>
+        <link rel="stylesheet" href="/style/general.css">
+		<link rel="stylesheet" href="/style/menu.css">	
+    </head>
+    <body>
+        <header role="banner"> 
+                <nav role="navigation" ara-label="Menu principal">
+                        <ul class="menu">
+                            <div class="dropdown">
+                                <li>
+                                    <a class="droplist" href="/home " aria-current="page">Acceuil</a>
+                                </li>
+                            </div>
+                            <div class="dropdown">
+                                <li>
+                                    <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
+                                    <ul class="submenu" id="submenu">
+                                        <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                            <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/users"> Les utilisateurs </a>
+                                            <ul class="submenu" id="submenu">
+                                                <li><a href="/user">Mes infos</a></li>
+                                            </ul>
+                                    </li>
+                                </div>
+                            <div class="dropdown">
+                                <li>
+                                    <a class="droplist" href="/logout"> Se deconnecter</a>
+                                </li>
+                            </div>
+                        </ul>		
+                    </nav>
+        </header>
+        <main>
+            <h1> Vos infomations personelles : </h1>
+            <tr>
+                <td>
+                    Nom
+                </td>
+                <td>
+                    Prenom
+                </td>
+            </tr>
+        </br>
+                <tr>
+                    <td>
+                        <%= user.nom %>
+                    </td>
+                    <td>
+                        <%= user.prenom %>
+                    </td>
+                </tr>
+            </br>
+            <% if(user._id == me._id) { %>
+            <form method="POST" action="/user/me._id/delet">
+                <input type="submit" value="Supprimer mon compte"/>
+            </form>
+            <form method="POST" action="/logout">
+                <input typ="submit" value="Me deconnecter"/>
+            </form>
+            <% } %>
+        </main>
+    </body>
+</html>
