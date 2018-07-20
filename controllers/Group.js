@@ -1,4 +1,5 @@
 var Group = require('../models/Group');
+var User = require ('./User');
 var _ = require('./Utils');
 var mongoose = require('mongoose');
 
@@ -34,3 +35,31 @@ var create = exports.create = function (req,res,msg) {
     })
 
 }
+
+exports.getMembers = function(req,res,callback) {
+    //callback (users)
+
+    var users = [];
+    
+}
+
+var myGroups = exports.mygroups = function(req,res,callback) {
+    //callback(req,res)
+    console.log("in myGroups");
+    User.getGroupsFrom(req.session.user._id,function(error,myGroups) {
+        console.log("in Get groups From callback");
+        if (error ) {
+            _.response.sendError(res,error,500);
+        }
+        callback(req,res,myGroups);
+    });
+};
+
+exports.viewsMyGroups = function(req,res) {
+    console.log("in viewsMyGroup")
+    myGroups(req,res,function(req,res,myGroups){
+        console.log("In myGroupscallback");
+        res.render('groups.ejs',{groups: myGroups});
+    })
+}
+

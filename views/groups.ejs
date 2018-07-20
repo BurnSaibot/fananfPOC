@@ -1,0 +1,67 @@
+<!DOCTYPE hyml>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> fananf - My groups  </title>
+        <link rel="stylesheet" href="/style/general.css">
+		<link rel="stylesheet" href="/style/menu.css">	
+    </head>
+    <body>
+        <header role="banner"> 
+                <nav role="navigation" ara-label="Menu principal">
+                        <ul class="menu">
+                            <div class="dropdown">
+                                <li>
+                                    <a class="droplist" href="/home " aria-current="page">Acceuil</a>
+                                </li>
+                            </div>
+                            <div class="dropdown">
+                                <li>
+                                    <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
+                                    <ul class="submenu" id="submenu">
+                                        <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
+                                    </ul>
+                                </li>
+                            </div>
+                            <div class="dropdown">
+                                    <li>
+                                        <a class="droplist" href="/users"> Les utilisateurs </a>
+                                            <ul class="submenu" id="submenu">
+                                                <li><a href="/user">Mes infos</a></li>
+                                            </ul>
+                                    </li>
+                                </div>
+                            <div class="dropdown">
+                                <li>
+                                    <a class="droplist" href="/logout"> Se deconnecter</a>
+                                </li>
+                            </div>
+                        </ul>		
+                    </nav>
+        </header>
+        <main>
+            <h1> Vos groupes : </h1>
+            <tr>
+                <td>
+                    Nom du groupe
+                </td>
+            </tr>
+        </br>
+            <% for(var i = 0;i<groups.length;i++) { %>
+                <tr>
+                        <td>
+                            <%= groups[i].name %>
+                        </td>
+                        <td>
+                            <a href="/group/<%= groups[i]._ids %>"> Plus d'informations ici </a>
+                        </td>
+                    </tr>
+                    </br>
+            <% } %>
+                </br>
+                <form method="POST" action="/createGroup">
+                    <input type="submit" value="Ajouter un groupe"
+                </form>
+        </main>
+    </body>
+</html>

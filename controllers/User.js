@@ -2,6 +2,7 @@ var _ = require('./Utils');
 var authentication = require('./Authentication');
 var mongoose = require('mongoose');
 var User = require('../models/User');
+var Group = require('../models/Group')
 exports.create = function (req,res,callback) {
     console.log("on commence à créer l'user");
     //Check username validity
@@ -94,3 +95,14 @@ exports.displayOne = function(req,res) {
         });
     }
 }; 
+
+exports.getGroupsFrom = function (id_user,callback) {
+    console.log("In getGroupsFrom")
+    //callback(error,groups_ids)
+      Group.find({
+          users: id_user
+        }, '_id name',
+        function(error,groups) {
+            callback(error,groups);
+        });
+  };

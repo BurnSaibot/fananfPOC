@@ -1,5 +1,6 @@
 var authentication = require('./controllers/Authentication');
-var user = require('./controllers/User')
+var user = require('./controllers/User');
+var group = require('./controllers/Group');
 //
 exports.initialize = function (app) {
     
@@ -16,6 +17,7 @@ app.get('/', function(req,res,next) {
     res.render('menu.ejs',{lastAction: req.session.lastAction})
 
 })
+.get('/groups',authentication.middleware.isLoggedIn,group.viewsMyGroups)
 .get('/users',authentication.middleware.isLoggedIn,user.displayAll)
 .get('/user/:id',authentication.middleware.isLoggedIn,user.displayOne)
 .get('/user',authentication.middleware.isLoggedIn,function(req,res) {
