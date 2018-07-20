@@ -2,8 +2,7 @@ var _ = require('./Utils');
 var authentication = require('./Authentication');
 var mongoose = require('mongoose');
 var User = require('../models/User');
-
-exports.create = function (req,res) {
+exports.create = function (req,res,callback) {
     console.log("on commence à créer l'user");
     //Check username validity
     if ( req.body.username === undefined || req.body.username.length < 2 || req.body.username.indexOf(' ') > -1) {
@@ -43,8 +42,11 @@ exports.create = function (req,res) {
                 _.response.sendError(res,'error while saving the user',500);
                 return;
             }
-            _.response.sendSucces(req,res,'/',"Registration succeeded, let's connect now !");
+            req.session.user = user;
+            callback(req,res,"user & group registred succesfully");
         });
+        
+        
     });
 };
 

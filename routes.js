@@ -21,7 +21,7 @@ app.get('/', function(req,res,next) {
 .get('/user',authentication.middleware.isLoggedIn,function(req,res) {
     res.redirect('/user/' + req.session.user._id);
 })
-.post('/registering',authentication.register)
+.post('/register',authentication.register)
 
 .post('/login-in',authentication.login)
 

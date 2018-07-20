@@ -2,6 +2,8 @@ var crypto = require('crypto');
 var _ = require('./Utils');
 var mUser = require('../models/User');
 var User = require('./User');
+var Group = require('./Group')
+
 const KEYLEN = 128;
 const ITERATIONS = 12000;
 
@@ -55,7 +57,8 @@ var getHash = function (password, salt, callback) {
             _.response.sendError(res,failed,400);
     }
     
-    User.create(req,res);
+    User.create(req,res,Group.create);
+    
     
   };
 
@@ -89,13 +92,16 @@ var getHash = function (password, salt, callback) {
           }
           req.session.regenerate(function(){
             req.session.user = user;
+            //if(redirect == true) {
+              _.response.sendSucces(req,res,'/home',"Authentication succeeded");
+            //} 
             
-            _.response.sendSucces(req,res,'/home',"Authentication succeeded");
           });
         });
       });
 
   };
+
 
   exports.viewLogin = function(req,res,next) {
     res.render('connection.ejs');
