@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(session);
 
-var routes = require('./routes');
+var routes = require('./routes.js');
 
 var app = express();
 

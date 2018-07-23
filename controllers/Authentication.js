@@ -1,8 +1,8 @@
 var crypto = require('crypto');
-var _ = require('./Utils');
-var mUser = require('../models/User');
-var User = require('./User');
-var Group = require('./Group')
+var _ = require('./Utils.js');
+var mUser = require('../models/User.js');
+var User = require('./User.js');
+var Group = require('./Group.js')
 
 const KEYLEN = 128;
 const ITERATIONS = 12000;

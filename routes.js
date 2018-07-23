@@ -1,7 +1,7 @@
 var authentication = require('./controllers/Authentication');
-var user = require('./controllers/User');
-var group = require('./controllers/Group');
-var video = require('./controllers/video');
+var user = require('./controllers/User.js');
+var group = require('./controllers/Group.js');
+var video = require('./controllers/video.js');
 //
 exports.initialize = function (app) {
     

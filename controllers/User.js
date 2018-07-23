@@ -1,8 +1,8 @@
-var _ = require('./Utils');
-var authentication = require('./Authentication');
+var _ = require('./Utils.js');
+var authentication = require('./Authentication.js');
 var mongoose = require('mongoose');
-var User = require('../models/User');
-var Group = require('../models/Group');
+var User = require('../models/User.js');
+var Group = require('../models/Group.js');
 
 exports.create = function (req,res,callback) {
     console.log("on commence à créer l'user");

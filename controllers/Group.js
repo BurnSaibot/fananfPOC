@@ -1,6 +1,6 @@
-var Group = require('../models/Group');
-var User = require ('./User');
-var _ = require('./Utils');
+var Group = require('../models/Group.js');
+var User = require ('./User.js');
+var _ = require('./Utils.js');
 var mongoose = require('mongoose');
 
 var create = exports.create = function (req,res,msg) {
