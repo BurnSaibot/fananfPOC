@@ -43,6 +43,10 @@ exports.getMembers = function(req,res,callback) {
     
 }
 
+exports.viewsMembers = function(req,res) {
+    _.response.sendSucces(req,res,'/groups',"Work in Progress");
+}
+
 var myGroups = exports.mygroups = function(req,res,callback) {
     //callback(req,res)
     console.log("in myGroups");
@@ -58,7 +62,7 @@ var myGroups = exports.mygroups = function(req,res,callback) {
 exports.viewsMyGroups = function(req,res) {
     console.log("in viewsMyGroup")
     myGroups(req,res,function(req,res,myGroups){
-        console.log("In myGroupscallback");
+        console.log("In myGroupscallback" + myGroups);
         res.render('groups.ejs',{groups: myGroups});
     })
 }

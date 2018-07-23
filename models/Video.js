@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var transcriptionSchema = new Schema({
+var videoSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -9,10 +9,15 @@ var transcriptionSchema = new Schema({
         trime: true,
         lowercase: true
     },
+    urlVideo: {
+        type: String,
+        required: true,
+        unique: true
+    },
     group: {
         type: Schema.Types.ObjectId,
         ref: 'Group'
     }
 })
 
-module.exports = mongoose.model('Transcription', transcriptionSchema);
+module.exports = mongoose.model('video', videoSchema);

@@ -2,7 +2,8 @@ var _ = require('./Utils');
 var authentication = require('./Authentication');
 var mongoose = require('mongoose');
 var User = require('../models/User');
-var Group = require('../models/Group')
+var Group = require('../models/Group');
+
 exports.create = function (req,res,callback) {
     console.log("on commence à créer l'user");
     //Check username validity
@@ -33,9 +34,7 @@ exports.create = function (req,res,callback) {
         });
 
         user.save(function(error,user){
-            //console.log("\n\n\n\n" + error);
             if (error && error.code === 11000) {
-                //console.log("Error: " + error + "error code : " + error.code );
                 error = 'Invalid login (duplicate)';
                 _.response.sendError(res,error,500);
                 return;
@@ -85,7 +84,8 @@ exports.displayAll = function(req,res) {
         //console.log(result.length);
         res.render('users.ejs',{users: result});
     });
-} ;
+};
+
 exports.displayOne = function(req,res) {
     if (req.params.id === undefined) {
         res.render('user.ejs',{user: req.session.user});
@@ -105,4 +105,8 @@ exports.getGroupsFrom = function (id_user,callback) {
         function(error,groups) {
             callback(error,groups);
         });
-  };
+};
+
+exports.showUser = function(req,res) {
+    res.redirect('/user/' + req.session.user._id);
+}

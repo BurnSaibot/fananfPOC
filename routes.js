@@ -1,6 +1,7 @@
 var authentication = require('./controllers/Authentication');
 var user = require('./controllers/User');
 var group = require('./controllers/Group');
+var video = require('./controllers/video');
 //
 exports.initialize = function (app) {
     
@@ -18,11 +19,15 @@ app.get('/', function(req,res,next) {
 
 })
 .get('/groups',authentication.middleware.isLoggedIn,group.viewsMyGroups)
+.get('/group/:id',authentication.middleware.isLoggedIn,group.viewsMembers)
 .get('/users',authentication.middleware.isLoggedIn,user.displayAll)
 .get('/user/:id',authentication.middleware.isLoggedIn,user.displayOne)
-.get('/user',authentication.middleware.isLoggedIn,function(req,res) {
-    res.redirect('/user/' + req.session.user._id);
+.get('/user',authentication.middleware.isLoggedIn,user.showUser)
+.get('/transcriptions/new',authentication.middleware.isLoggedIn,function(req,res) {
+    res.redirect('/video');
 })
+.post('/videoupload',authentication.middleware.isLoggedIn,video.registerVideo)
+.get('/video',authentication.middleware.isLoggedIn,video.viewsUploadVideo)
 .post('/register',authentication.register)
 
 .post('/login-in',authentication.login)

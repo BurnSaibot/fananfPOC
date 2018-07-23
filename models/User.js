@@ -16,4 +16,4 @@ var userSchema = new Schema({
     hash: String
 });
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

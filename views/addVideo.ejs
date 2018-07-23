@@ -45,28 +45,10 @@
                         </nav>
             </header>
         <main>
-            <h1> Vos groupes : </h1>
-            <tr>
-                <td>
-                    Nom du groupe
-                </td>
-            </tr>
-        </br>
-            <% for(var i = 0;i<groups.length;i++) { %>
-                <tr>
-                        <td>
-                            <%= groups[i].name %>
-                        </td>
-                        <td>
-                            <a href="/group/<%= groups[i]._id %>"> Plus d'informations ici </a>
-                        </td>
-                    </tr>
-                    </br>
-            <% } %>
-                </br>
-                <form method="POST" action="/createGroup">
-                    <input type="submit" value="Ajouter un groupe"
-                </form>
+            <form action="videoupload" method="post" enctype="multipart/form-data">
+                <input type="file" name="videotoupload"></br>
+                <input type="submit"> </br> 
+            </form>
         </main>
     </body>
 </html>
