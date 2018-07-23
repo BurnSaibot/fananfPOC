@@ -1,4 +1,3 @@
-
 exports.response = {};
 
 var sendError = exports.response.sendError = function (res,errorText,code) {
