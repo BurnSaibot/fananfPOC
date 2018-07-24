@@ -1,6 +1,7 @@
 var http = require('http');
 var express = require('express');
 
+
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
@@ -11,6 +12,7 @@ var mongoStore = require('connect-mongo')(session);
 var routes = require('./routes.js');
 
 var app = express();
+var config = require('./config/' + process.argv[2] + '.js');
 
 const port = 3000;
 
@@ -26,6 +28,7 @@ app.use(function(req,res,next) {
         //console.log(req.session.lastAction);
         //console.log(req.session.user)
     }
+    req.session.config = config;
     next();
 });
 app.use(bodyParser.json({
@@ -38,12 +41,10 @@ app.use(bodyParser.urlencoded({
 
 
 //===== DB connection =====
-mongoose.connect('mongodb://localhost/fananfdb', function(err){
+mongoose.connect(config.db, function(err){
     if (err) throw err;
 });
-
-// à utiliser si on se connecte à une base pas en local
-//mongoose.connect('mongodb://KiwiLeOazo:Kiwi123.@ds117156.mlab.com:17156/fananfdb');//'mongodb://' + mongodb_host + ':' + mongodb_port + '/' + mongodb_name);
+//'mongodb://' + mongodb_host + ':' + mongodb_port + '/' + mongodb_name);
 
 mongoose.set('debug', false);
 

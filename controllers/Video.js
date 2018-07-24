@@ -8,7 +8,7 @@ exports.registerVideo = function(req,res) {
     form.parse(req, function (err, fields, files) {
         //console.log(files.videotoupload);
         var oldpath = files.videotoupload.path;
-        var newpath = path.join(__dirname, '../../../', 'data', files.videotoupload.name);
+        var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', files.videotoupload.name);
         console.log(__dirname);
         console.log(oldpath);
         console.log(newpath);
