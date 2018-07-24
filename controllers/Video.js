@@ -12,10 +12,26 @@ exports.registerVideo = function(req,res) {
         console.log(__dirname);
         console.log(oldpath);
         console.log(newpath);
-        fs.rename(oldpath, newpath, function (err) {
+
+        fs.readFile(oldpath,function(err,data) {
+            if (err) _.response.sendError(res,err,500);
+            console.log('File read : ' + oldpath);
+            fs.writeFile(newpath,data,function(err) {
+                if (err) _.response.sendError(res,err,500);
+                console.log("File uploaded & moved");
+
+                fs.unlink(oldpath, function(err) {
+                    if (err) _.response.sendError(res,err,500);
+                    _.response.sendSucces(req,res,'/home',"File uploaded & stored succesfuly, temporary file deleted")
+                })
+            })
+
+            
+        })
+        /*fs.rename(oldpath, newpath, function (err) {
             if (err) throw err;
             _.response.sendSucces(req,res,'/home','Video registered succesfuly');
-        });
+        });*/
     });
 }
 
