@@ -136,7 +136,6 @@ then
 fi
 
 echo "Folder = $Folder"
-createFolders
 doConversion
 extractingAudio
 #echo "$format"
