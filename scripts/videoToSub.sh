@@ -7,15 +7,6 @@ function usage() {
     printf "\t -h/--help help"
 }
 
-function createFolders() {
-    echo "creating needed folders"
-    echo `mkdir $folder`
-    echo `mkdir $folder/videos`
-    echo `mkdir $folder/audio`
-    echo `mkdir $folder/transcriptions`
-    echo `mkdir $folder/sousTitresGeneres`
-}
-
 function doConversion() {
     echo "Converting into mp4 if needed"
     if [ "$extension" = "mp4" ]
@@ -23,35 +14,44 @@ function doConversion() {
 	echo "bon format : pas besoin de convertion"
     else
 	echo "mauvais format : conversion en mp4"
-	echo `/bin/bash /vol/work2/cerveau/scripts/videoToMP4.sh $file`
-	echo `mv $filename.mp4 $folder/videos`	
+	echo `ffmpeg -i $inFile -b:v 4000k /srv/videos/$filename.mp4` 
+	echo `rm $inFile`
+	echo "conversion to mp4 done"	
     fi
 }
 
 function extractingAudio() {
     echo "Extracting audio"
-    echo `ffmpeg -i $inFile $folder/audio/$filename.mp3`
-    echo `mv $file $folder/videos`  
+    echo `ffmpeg -i $inFile /tmp/$filename.mp3`
+	#echo `ls -lrH /tmp | grp "$filname"`
+    echo "created temporary audio file"  
 }
 
 function xmlFromVocapia() {
     echo "Getting transcription from vocapia"
-    echo `curl -ksS -u cerveau:w4SAuEVL https://rest1.vocapia.com:8093/voxsigma -F method=vrbs_trans -F model=fre -F audiofile=@$folder/audio/$filename.mp3 > $folder/transcriptions/transcription$filename.xml`
+    echo `curl -ksS -u cerveau:w4SAuEVL https://rest1.vocapia.com:8093/voxsigma -F method=vrbs_trans -F model=fre -F audiofile=@/tmp/$filename.mp3 > /tmp/$filename.xml`
+    #echo `cat /tmp/$filename.xml`
 }
 
 function generatingSub() {
     echo "Starting to generate subtiles files"
-    #echo "$1"
+    inputFile="/tmp/$filename.xml"
+	scriptPath=$(dirname $0)
+	echo "scriptPath : $scriptPath"
+	echo "inputFile : $inputFile"
+	script="$scriptPath/xmlToSub/xmlToSub.py"
+	echo "Path from py script to execute : $script"
+	
     if [ "$1" = "srt" ]
     then
-	echo `python /vol/work2/cerveau/scripts/xmlToSub/xmlToSub.py --srt $folder/transcriptions/transcription$filename.xml > $folder/sousTitresGeneres/$filename.srt`
+	echo `python $script --srt $inputFile > $folder$filename.srt`
     elif [ "$1" = "vtt" ]
     then
-	echo `python /vol/work2/cerveau/scripts/xmlToSub/xmlToSub.py --webvtt $folder/transcriptions/transcription$filename.xml > $folder/sousTitresGeneres/$filename.vtt`
+	echo `python $script --webvtt $inputFile > $folder$filename.vtt`
     elif [ "$1" = "all" ]
     then
-	echo `python /vol/work2/cerveau/scripts/xmlToSub/xmlToSub.py --srt $folderilename/transcriptions/transcription$filename.xml > $folder/sousTitresGeneres/$filename.srt`
-	echo `python /vol/work2/cerveau/scripts/xmlToSub/xmlToSub.py --webvtt $folder/transcriptions/transcription$filename.xml > $folder/sousTitresGeneres/$filename.vtt`
+	echo `python $script  --srt $inputFile > $folder$filename.srt`
+	echo `python $script  --webvtt $inputFile > $folders$filename.vtt`
     fi
 }
 if [ $# -eq 0 ]
