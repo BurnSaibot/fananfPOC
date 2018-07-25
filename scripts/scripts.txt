@@ -1,0 +1,28 @@
+Utilisation du programme java pour les stats des fichiers .srt :
+
+java -jar /vol/work2/cerveau/info_srt.jar [filepath]
+java -jar /vol/work2/cerveau/info_srt.jar -w [filepath] permet de juste afficher un mot par ligne au lieu de donner toutes les informations. 05/06
+
+
+
+Petit script pour récupérer l'audio d'une video au format.WAV 05/06:
+
+si on veut le contenu de toute la vidéo
+	./convertVideoIntoWAV.sh filePath 
+
+
+/people/gauvain/lbin/sc
+
+sc -h pour l'aide
+
+Pour convertir un fichier doc en fichier text
+libreoffice --headless --convert-to "txt:Text (encoded):UTF8" document.docx
+
+utilisation de l'API de vocapia, cmd de base : 
+
+curl -ksS -u cerveau:w4SAuEVL https://rest1.vocapia.com:8093/voxsigma -F method=vrbs_trans -F model=fre -F audiofile=@audio/fichiersTest/atalan.mp3 > testCurl.xml &
+
+pour lire un fichier video avec vlc et lui indiquer un fichier de sous titre (ici exemple avec la vid d'atalan) : 
+vlc fananf+/temoins/atalan/video/videoAtalanTemoin.mp4 --sub-file fananf+/temoins/atalan/sousTitresGeneres/srtDefautAtalanVocapia.srt 
+
+
