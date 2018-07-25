@@ -45,8 +45,17 @@
                         </nav>
             </header>
         <main>
+            <label for="format">
+                Choisissez le format des sous titres voulu : 
+            </label> </br>
+            <select>
+                <option value="srt">Srt</option>
+                <option value="vtt">webVtt</option>
+                <option value="all">Tous</option>
+            </select>
+            </br>
             <form action="videoupload" method="post" enctype="multipart/form-data">
-                <input type="file" name="videotoupload"></br>
+                <input type="file" name="videotoupload" accept="video/*"></br>
                 <input type="submit"> </br> 
             </form>
         </main>
