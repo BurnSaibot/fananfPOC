@@ -45,6 +45,7 @@
                         </nav>
             </header>
         <main>
+            <form action="videoupload" method="post" enctype="multipart/form-data" >
             <label for="format">
                 Choisissez le format des sous titres voulu : 
             </label> </br>
@@ -54,8 +55,8 @@
                 <option value="all">Tous</option>
             </select>
             </br>
-            <form action="videoupload" method="post" enctype="multipart/form-data">
-                <input type="file" name="videotoupload" accept="video/*"></br>
+            
+                <input type="file" name="videotoupload" accept="video/*" required></br>
                 <input type="submit"> </br> 
             </form>
         </main>

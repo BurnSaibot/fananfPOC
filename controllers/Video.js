@@ -23,7 +23,7 @@ exports.registerVideo = function(req,res) {
                 if (err) _.response.sendError(res,err,500);
                 console.log("File uploaded & moved");
 
-                console.log("Subtitles should be find in : " + pathOut + "\n fomart = " + fields.format);
+                console.log("Subtitles should be find in : " + pathOut + "\n fomrat = " + fields.format);
                 //moving the temporary file to the good place : /data/videos
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
