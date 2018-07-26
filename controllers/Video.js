@@ -29,7 +29,7 @@ exports.registerVideo = function(req,res) {
                         if (code == 0) console.log("Succesfuly transcripted : " + propperName);
                         else console.log("Couldn't succed to transcript " + propperName);
                     }).stdout;
-                    _.response.sendSucces(res,req,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
+                    _.response.sendSucces(req,res,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
                     
 
                 });
