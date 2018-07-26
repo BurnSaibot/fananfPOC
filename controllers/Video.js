@@ -20,10 +20,10 @@ exports.registerVideo = function(req,res) {
             fs.writeFile(newpath,data,function(err) {
                 if (err) _.response.sendError(res,err,500);
                 console.log("File uploaded & moved");
-                console.log("Subtitles should be find in : ");
+                console.log("Subtitles should be find in : " + pathOut + "\n fomart = " + fields.format);
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
-                    shell.exec("/bin/bash " + pathScript + " -f " + req.body.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
+                    shell.exec("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
                         console.log("Code: " + code);
                         if (code == 0) console.log("Succesfuly transcripted : " + propperName);
                         else console.log("Couldn't succed to transcript " + propperName);
