@@ -141,6 +141,7 @@ extractingAudio
 #echo "$format"
 xmlFromVocapia
 generatingSub "$format"
+exit 0
 
 
 
