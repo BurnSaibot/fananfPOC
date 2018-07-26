@@ -26,9 +26,10 @@ exports.registerVideo = function(req,res) {
                     if (err) _.response.sendError(res,err,500);
                     shell.exec("/bin/bash " + pathScript + " -f " + req.params.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
                         console.log("Code: " + code);
-                        if (code == 0) _.response.sendSucces(req,res,'/home',"File uploaded & stored succesfuly, temporary file deleted");
-                        else _.response.sendError(res,"La transcription automatique a échouée",500);
+                        if (code == 0) console.log("Succesfuly transcripted : " + propperName);
+                        else console.log("Couldn't succed to transcript " + propperName);
                     }).stdout;
+                    _.response.sendSucces(res,req,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
                     
 
                 });
