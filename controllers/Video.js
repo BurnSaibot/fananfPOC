@@ -14,14 +14,13 @@ exports.registerVideo = function(req,res) {
         var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', propperName);
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles');
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
-        console.log(pathScript);
         fs.readFile(oldpath,function(err,data) {
             if (err) _.response.sendError(res,err,500);
             console.log('File read : ' + oldpath);
             fs.writeFile(newpath,data,function(err) {
                 if (err) _.response.sendError(res,err,500);
                 console.log("File uploaded & moved");
-
+                console.log("Subtitles should be find in : ");
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
                     shell.exec("/bin/bash " + pathScript + " -f " + req.body.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
