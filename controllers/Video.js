@@ -24,7 +24,7 @@ exports.registerVideo = function(req,res) {
 
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
-                    shell.exec("/bin/bash " + pathScript + " -f " + req.params.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
+                    shell.exec("/bin/bash " + pathScript + " -f " + req.body.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
                         console.log("Code: " + code);
                         if (code == 0) console.log("Succesfuly transcripted : " + propperName);
                         else console.log("Couldn't succed to transcript " + propperName);

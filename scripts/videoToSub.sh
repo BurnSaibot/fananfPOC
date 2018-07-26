@@ -36,14 +36,16 @@ function xmlFromVocapia() {
 function generatingSub() {
     echo "Starting to generate subtiles files"
     inputFile="/tmp/$filename.xml"
-	scriptPath=$(dirname $0)
-	echo "scriptPath : $scriptPath"
-	echo "inputFile : $inputFile"
-	script="$scriptPath/xmlToSub/xmlToSub.py"
-	echo "Path from py script to execute : $script"
+    scriptPath=$(dirname $0)
+    echo "scriptPath : $scriptPath"
+    echo "inputFile : $inputFile"
+    script="$scriptPath/xmlToSub/xmlToSub.py"
+    echo "Path from py script to execute : $script"
+    echo "dollar 1 = $1"
 	
     if [ "$1" = "srt" ]
     then
+	echo "python $script --srt $inputFile > $folder$filename.srt"
 	echo `python $script --srt $inputFile > $folder$filename.srt`
     elif [ "$1" = "vtt" ]
     then
@@ -52,6 +54,8 @@ function generatingSub() {
     then
 	echo `python $script  --srt $inputFile > $folder$filename.srt`
 	echo `python $script  --webvtt $inputFile > $folders$filename.vtt`
+    else
+	exit 4
     fi
 }
 if [ $# -eq 0 ]
