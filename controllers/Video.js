@@ -24,12 +24,8 @@ exports.registerVideo = function(req,res) {
 
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
-                    shell.exec("/bin/bash " + pathScript + " -f srt -i " + newpath + " -o " + pathOut + " & " ,{silent: false},function(code,stdout,stderr) {
-                        console.log(code);
-                        if (code == 0) _.response.sendSucces(req,res,'/home',"File uploaded & stored succesfuly, temporary file deleted");
-                        else _.response.sendError(res,"La transcription automatique a échouée",500);
-                    }).stdout;
-                    
+                    shell.exec("/bin/bash " + pathScript + " -f srt -i " + newpath + " -o " + pathOut,{silent: false}).stdout;
+                    _.response.sendSucces(req,res,'/home',"File uploaded & stored succesfuly, temporary file deleted");
 
                 });
             });
