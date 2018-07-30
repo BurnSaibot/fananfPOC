@@ -15,8 +15,8 @@ exports.register = function(req,res) {
         var oldpath = files.videotoupload.path;
         var filename = files.videotoupload.name;
         var propperName = filename.trim();
-        var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos',req.body.idgroup, propperName);
-        var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', req.body.idgroup);
+        var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group, propperName);
+        var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
 
         var newTrans = new Transcription({
@@ -115,7 +115,7 @@ exports.viewsUploadVideo = function(req,res){
             _.response.sendError(res,error,500);
         }
         console.log(result);
-        
+
         res.render('addVideo.ejs',{groups: result});
     })
 }
