@@ -3,50 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <title> fananf - menu </title>
-        <link rel="stylesheet" href="/style/general.css">
-		<link rel="stylesheet" href="/style/menu.css">	
+        <link rel="stylesheet" href="/stylesheets/general.css">
+		<link rel="stylesheet" href="/stylesheets/menu.css">	
     </head>
     <body>
-            <header role="banner"> 
-                    <nav role="navigation" ara-label="Menu principal">
-                            <ul class="menu">
-                                <div class="dropdown">
-                                    <li>
-                                        <a class="droplist" href="/home " aria-current="page">Acceuil</a>
-                                    </li>
-                                </div>
-                                <div class="dropdown">
-                                    <li>
-                                        <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
-                                        <ul class="submenu" id="submenu">
-                                            <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
-                                        </ul>
-                                    </li>
-                                </div>
-                                <div class="dropdown">
-                                        <li>
-                                            <a class="droplist" href="/groups"> Mes groupes </a>
-                                        </li>
-                                    </div>
-                                <div class="dropdown">
-                                        <li>
-                                            <a class="droplist" href="/users"> Les utilisateurs </a>
-                                            <ul class="submenu" id="submenu">
-                                                    <li><a href="/user">Mes infos</a></li>
-                                                </ul>
-                                        </li>
-                                    </div>
-                                <div class="dropdown">
-                                    <li>
-                                        <a class="droplist" href="/logout"> Se deconnecter</a>
-                                    </li>
-                                </div>
-                            </ul>		
-                        </nav>
-                        <% if (lastAction.status === 'success') { %>
-                            <div class="succes" > <%= lastAction.msg %> </div>
-                        <% }%>
-            </header>
+            <%- include('partials/headerConnected') %>
             <main>
                 <h1>Bienvenue sur l'application de transcription automatique de vidéos pour le projet fananf !</h1>
             </main>  

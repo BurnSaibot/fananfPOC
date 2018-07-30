@@ -7,38 +7,7 @@
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
     <body>
-        <header role="banner"> 
-                <nav role="navigation" ara-label="Menu principal">
-                        <ul class="menu">
-                            <div class="dropdown">
-                                <li>
-                                    <a class="droplist" href="/home " aria-current="page">Acceuil</a>
-                                </li>
-                            </div>
-                            <div class="dropdown">
-                                <li>
-                                    <a class="droplist" href="/transcriptions"> Mes transcriptions </a>
-                                    <ul class="submenu" id="submenu">
-                                        <li><a href="/transcriptions/new">Nouvelle transcription</a></li>
-                                    </ul>
-                                </li>
-                            </div>
-                            <div class="dropdown">
-                                    <li>
-                                        <a class="droplist" href="/users"> Les utilisateurs </a>
-                                            <ul class="submenu" id="submenu">
-                                                <li><a href="/user">Mes infos</a></li>
-                                            </ul>
-                                    </li>
-                                </div>
-                            <div class="dropdown">
-                                <li>
-                                    <a class="droplist" href="/logout"> Se deconnecter</a>
-                                </li>
-                            </div>
-                        </ul>		
-                    </nav>
-        </header>
+        <% include ./partials/header %>
         <main>
             <h1> Vos infomations personelles : </h1>
             <tr>

@@ -2,7 +2,7 @@ var config = {
     ubuntu: {
         mode: 'ubuntu',
         db: 'mongodb://localhost/fananfdb',
-        filePath: "../../../",
+        filePath: "../../../",  
         port: 3000
     }
 }
