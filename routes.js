@@ -1,7 +1,7 @@
 var authentication = require('./controllers/Authentication');
 var user = require('./controllers/User.js');
 var group = require('./controllers/Group.js');
-var video = require('./controllers/Video.js');
+var transcription = require('./controllers/Transcription.js');
 //
 exports.initialize = function (app) {
     
@@ -26,8 +26,8 @@ app.get('/', function(req,res,next) {
 .get('/transcriptions/new',authentication.middleware.isLoggedIn,function(req,res) {
     res.redirect('/video');
 })
-.post('/videoupload',authentication.middleware.isLoggedIn,video.registerVideo)
-.get('/video',authentication.middleware.isLoggedIn,video.viewsUploadVideo)
+.post('/videoupload',authentication.middleware.isLoggedIn,transcription.register)
+.get('/video',authentication.middleware.isLoggedIn,transcription.viewsUploadVideo)
 .post('/register',authentication.register)
 
 .post('/login-in',authentication.login)

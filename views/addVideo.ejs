@@ -49,6 +49,13 @@
             <label for="format">
                 Choisissez le format des sous titres voulu : 
             </label> </br>
+            <select name="group">
+            <%
+                for(var i=0; i = groups.length;i++) { %>
+                    <option value=<%=groups[i]._id%>> <%=groups[i].name%></option>
+
+            <%} %>
+            </select>
             <select name="format">
                 <option value="srt">Srt</option>
                 <option value="vtt">webVtt</option>
