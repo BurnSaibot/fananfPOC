@@ -18,7 +18,11 @@ exports.register = function(req,res) {
         var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group, propperName);
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
+        //now we have to create the file were we should store the videos & the subtitles
+        _.helper.mkdirSync(pathOut);
+        _.helper.mkdirSync(path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group));
 
+        //now we create the transcription
         var newTrans = new Transcription({
             name: propperName,
             group: fields.group,
@@ -34,9 +38,7 @@ exports.register = function(req,res) {
             fs.writeFile(newpath,data,function(err) {
                 if (err) _.response.sendError(res,err,500);
                 console.log("File uploaded & moved");
-
-                console.log("Subtitles should be find in : " + pathOut + "\n fomrat = " + fields.format);
-                //moving the temporary file to the good place : /data/videos
+                //moving the temporary file to the good place : /data/videos/idgroup
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
                     // executing the script to get transcription
@@ -119,3 +121,4 @@ exports.viewsUploadVideo = function(req,res){
         res.render('addVideo.ejs',{groups: result});
     })
 }
+
