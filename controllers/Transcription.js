@@ -114,6 +114,8 @@ exports.viewsUploadVideo = function(req,res){
         if (error) {
             _.response.sendError(res,error,500);
         }
+        console.log(result);
+        
         res.render('addVideo.ejs',{groups: result});
     })
 }

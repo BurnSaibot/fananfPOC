@@ -47,15 +47,19 @@
         <main>
             <form action="videoupload" method="post" enctype="multipart/form-data" >
             <label for="format">
-                Choisissez le format des sous titres voulu : 
+                Choisissez le groupe de travail pour lequel vous uploadez la video :
             </label> </br>
+            
             <select name="group">
             <%
-                for(var i=0; i = groups.length;i++) { %>
-                    <option value=<%=groups[i]._id%>> <%=groups[i].name%></option>
+                groups.forEach(function(group,index) { %>
+                    <option value=<%=group._id %>> <%=group.name%></option>
 
-            <%} %>
-            </select>
+            <%}) %>
+            </select> </br>
+            <label for="format">
+                Choisissez le format des sous titres voulu : 
+            </label> </br>
             <select name="format">
                 <option value="srt">Srt</option>
                 <option value="vtt">webVtt</option>
