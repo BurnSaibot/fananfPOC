@@ -7,27 +7,7 @@
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
     <body>
-        <header role="banner"> 
-            <nav role="navigation" ara-label="Menu principal">
-                <ul class="menu">
-                    <div class="dropdown">
-                        <li>
-                            <a class="droplist" href="/" aria-current="page">Acceuil</a>
-                        </li>
-                    </div>
-                    <div class="dropdown">
-                        <li>
-                            <a class="droplist" href="/connect"> Se connecter </a>
-                        </li>
-                    </div>
-                    <div class="dropdown">
-                        <li>
-                            <a class="droplist" href="/register"> S'enregistrer</a>
-                        </li>
-                    </div>
-                </ul>		
-            </nav>
-        </header>
+        <%- include('partials/headerDisconnected') %>
         <h1>Connexion : </h1>
         <form method="POST" action="/login-in">
             <label for="username">Login : </label>

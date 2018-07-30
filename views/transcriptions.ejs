@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
     <body>
-        <% include ./partials/header %>
+        <%- include('partials/headerConnected') %>
         <h2>Ajouter une liste</h2>
         <form method="POST" action="/todo/addList">
             <input type="text" name="listeAAjouter" required=""/>
