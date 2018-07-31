@@ -61,7 +61,11 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                console.log("\n\n\n\n Sub registered : " + sub1 + "\n\n\n\n")
+                                                var sub = updtTranscription.subTitles;
+                                                sub.push(sub1._id);
+                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
+                                                    if (error2) _.response.sendError(req,error2,500);
+                                                })
                                             })
                                         } else if (fields.format = "vtt") {
                                             var subtitle1 = new mSubtitle ({
@@ -71,6 +75,11 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
+                                                var sub = updtTranscription.subTitles;
+                                                sub.push(sub1._id);
+                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
+                                                    if (error2) _.response.sendError(req,error2,500);
+                                                })
                                             })
             
                                         } else if (fields.format = "all") {
@@ -86,10 +95,20 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
+                                                var sub = updtTranscription.subTitles;
+                                                sub.push(sub1._id);
+                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
+                                                    if (error2) _.response.sendError(req,error2,500);
+                                                })
                                             })
             
-                                            subtitle2.save(function(error,sub1) {
+                                            subtitle2.save(function(error,sub2) {
                                                 if (error) _.response.sendError(res,error,500);
+                                                var sub = updtTranscription.subTitles;
+                                                sub.push(sub1._id);
+                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
+                                                    if (error2) _.response.sendError(req,error2,500);
+                                                })
                                             })
             
                                         } else {
