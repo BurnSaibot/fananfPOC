@@ -26,6 +26,7 @@ app.get('/', function(req,res,next) {
 .get('/transcriptions/new',authentication.middleware.isLoggedIn,function(req,res) {
     res.redirect('/video');
 })
+.get('/transcriptions',authentication.middleware.isLoggedIn,transcription.viewsTranscriptions)
 .post('/videoupload',authentication.middleware.isLoggedIn,transcription.register)
 .get('/video',authentication.middleware.isLoggedIn,transcription.viewsUploadVideo)
 .post('/register',authentication.register)

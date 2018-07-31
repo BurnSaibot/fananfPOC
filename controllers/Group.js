@@ -1,4 +1,5 @@
 var Group = require('../models/Group.js');
+var mTranscription = require('../models/Transcription.js')
 var User = require ('./User.js');
 var _ = require('./Utils.js');
 var mongoose = require('mongoose');
@@ -66,4 +67,14 @@ exports.viewsMyGroups = function(req,res) {
         res.render('groups.ejs',{groups: myGroups});
     })
 }
+
+exports.getTranscriptionFrom = function(id_group,callback) {
+    //callback(error,transcriptions)
+    mTranscription.find({
+        group: id_group
+    }, '_id name status',
+    function(error,transcriptions) {
+        callback(error,transcriptions);
+    });
+};
 

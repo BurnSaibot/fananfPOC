@@ -2,7 +2,8 @@ var _ = require('./Utils.js');
 var authentication = require('./Authentication.js');
 var mongoose = require('mongoose');
 var User = require('../models/User.js');
-var Group = require('../models/Group.js');
+var mGroup = require('../models/Group.js');
+var Group = require('./Group')
 
 exports.create = function (req,res,callback) {
     console.log("on commence à créer l'user");
@@ -80,8 +81,6 @@ var getOne = exports.getOne = function (req,res,idUser,callback) {
 
 exports.displayAll = function(req,res) {
     getAll(req,res,function(result) {
-        //console.log(result);
-        //console.log(result.length);
         res.render('users.ejs',{users: result});
     });
 };
@@ -96,10 +95,9 @@ exports.displayOne = function(req,res) {
     }
 }; 
 
-exports.getGroupsFrom = function (id_user,callback) {
-    console.log("In getGroupsFrom")
+var getGroupsFrom = exports.getGroupsFrom = function (id_user,callback) {
     //callback(error,groups_ids)
-      Group.find({
+      mGroup.find({
           users: id_user
         }, '_id name',
         function(error,groups) {
@@ -107,6 +105,31 @@ exports.getGroupsFrom = function (id_user,callback) {
         });
 };
 
+var availableTranscription = exports.getAvailableTranscriptions = function(id_user,callback) {
+    //callback(errors,transcriptions)
+    var transcriptions = [];
+    getGroupsFrom(id_user,function(error,groups) {
+        if (error) _.response.sendError(res,error,500);
+        //for each groups, we want to get each transcription
+        groups.forEach(function(group,index) {
+            // so we get a collection of transcriptions
+            Group.getTranscriptionFrom(group._id, function(error,transcriptions) {
+                // & push each transcription into an array
+                if (error) _.response.sendError(res,error,500);
+                transcriptions.forEach(function(transcription,index) {
+
+                    transcriptions.push(transcription);
+                });
+
+            });
+
+        });
+        //then we allow the use of the transcription through a callback
+    callback(error,transcriptions);
+    });
+    
+}
+
 exports.showUser = function(req,res) {
     res.redirect('/user/' + req.session.user._id);
-}
+};

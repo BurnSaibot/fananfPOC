@@ -116,9 +116,14 @@ exports.viewsUploadVideo = function(req,res){
         if (error) {
             _.response.sendError(res,error,500);
         }
-        console.log(result);
-
         res.render('addVideo.ejs',{groups: result});
     })
 }
 
+exports.viewsTranscriptions = function(req,res) {
+    user.getAvailableTranscriptions(req.session.user._id,function(error,transcrips) {
+        if (error) _.response.sendError(res,error,500);
+        console.log(transcrips)
+        res.render('transcriptions.ejs',{transcriptions: transcrips})
+    })
+}

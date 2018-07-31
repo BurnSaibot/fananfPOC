@@ -8,11 +8,32 @@
     </head>
     <body>
         <%- include('partials/headerConnected') %>
-        <h2>Ajouter une liste</h2>
-        <form method="POST" action="/todo/addList">
-            <input type="text" name="listeAAjouter" required=""/>
-            <input type="submit" value="valider"/>
-        </form>
+        <h2>Liste des transcriptions auxquelles vous avez accès</h2>
+        
+        <% transcriptions.forEach(function(transcription,index) { %>
+            <tr>
+                <td>
+                    <%= transcription.name %> </a>
+                </td>
+                <td>
+                    <% if (transcription.status) { %>
+                        <td>
+                            Done
+                        </td>
+                    <% } else { %>
+                        <td>
+                            OnGoing
+                        </td>
+                    <% } %>
+                </td>
+                <% if (transcription.status) { %>
+                    <td>
+                        <a href="/transcription/<%=transcription._id%>"> Consulter </a>
+                    </td>
+                <% } %>
+            </tr>
+        <% }) %>
+
     </body>
     <%- include('partials/footer') %>
 </html>
