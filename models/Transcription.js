@@ -20,9 +20,9 @@ var transcriptionSchema = new Schema({
     status: {
         type: Boolean
     },
-    sousTitres:[{
+    subTitles:[{
         type: Schema.Types.ObjectId,
-        ref: 'sousTitres'
+        ref: 'subtitles'
     }]
 })
 

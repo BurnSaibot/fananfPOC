@@ -23,12 +23,10 @@ app.get('/', function(req,res,next) {
 .get('/users',authentication.middleware.isLoggedIn,user.displayAll)
 .get('/user/:id',authentication.middleware.isLoggedIn,user.displayOne)
 .get('/user',authentication.middleware.isLoggedIn,user.showUser)
-.get('/transcriptions/new',authentication.middleware.isLoggedIn,function(req,res) {
-    res.redirect('/video');
-})
+.get('/transcriptions/new',authentication.middleware.isLoggedIn,transcription.viewsUploadVideo)
 .get('/transcriptions',authentication.middleware.isLoggedIn,transcription.viewsTranscriptions)
+.get('/transcription/:id',authentication.middleware.isLoggedIn,transcription.viewsOneTranscription)
 .post('/videoupload',authentication.middleware.isLoggedIn,transcription.register)
-.get('/video',authentication.middleware.isLoggedIn,transcription.viewsUploadVideo)
 .post('/register',authentication.register)
 
 .post('/login-in',authentication.login)

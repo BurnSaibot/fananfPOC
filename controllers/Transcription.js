@@ -1,11 +1,12 @@
 var formidable = require('formidable');
 var fs = require('fs');
-var _ = require('./Utils.js');
 var path = require('path');
 const shell = require('shelljs');
+
+var _ = require('./Utils.js');
 var Transcription = require('../models/Transcription');
 var user = require('./User');
-var Subtitle = require('../models/Subtitle')
+var mSubtitle = require('../models/Subtitle')
 
 exports.register = function(req,res) {
     var form = new formidable.IncomingForm();
@@ -125,5 +126,31 @@ exports.viewsTranscriptions = function(req,res) {
         if (error) _.response.sendError(res,error,500);
         console.log(transcrips)
         res.render('transcriptions.ejs',{transcriptions: transcrips})
+    })
+}
+
+var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
+    //callback(error,subtitles)
+    var sub = [];
+    Transcription.findById(id_transcription, function(error,transcription){
+        if (error) _.response.sendError(res,error,500);
+        transcription.subTitles.forEach(function(subtitle,index){
+            mSubtitle.find({_id: subtitle},function(err,subContent){
+                if (err) _.response.sendError(res,err,500);
+                sub.push(subContent)
+            });
+        });
+        console.log(sub);
+        callback(error,sub);
+    }); 
+}
+
+exports.viewsOneTranscription = function(req,res) {
+    Transcription.findById(req.params.id,function(err, transcript){
+        if (err) _.response.sendError(res,err,500);
+        getSub(transcript._id,function(err2,sub) {
+            if (err2) _.response.sendError(res,err2,500);
+            res.render('transcription.ejs',{transcription: transcript,subtitles: sub});
+        })
     })
 }
