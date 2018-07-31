@@ -9,13 +9,22 @@
     <body>
         <%- include('partials/headerConnected') %>
         <h2>Liste des transcriptions auxquelles vous avez accès</h2>
-        
+        <tr>
+            <td>
+                Nom
+            </td>
+            <td>
+                Statut
+            </td>
+            <td>
+                Options
+            </td>
+        </tr>
         <% transcriptions.forEach(function(transcription,index) { %>
             <tr>
                 <td>
                     <%= transcription.name %> </a>
                 </td>
-                <td>
                     <% if (transcription.status) { %>
                         <td>
                             Done
@@ -25,13 +34,13 @@
                             OnGoing
                         </td>
                     <% } %>
-                </td>
                 <% if (transcription.status) { %>
                     <td>
                         <a href="/transcription/<%=transcription._id%>"> Consulter </a>
                     </td>
                 <% } %>
             </tr>
+        </br>
         <% }) %>
 
     </body>

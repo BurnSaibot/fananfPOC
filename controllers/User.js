@@ -116,9 +116,9 @@ var availableTranscription = exports.getAvailableTranscriptions = function(id_us
             Group.getTranscriptionFrom(group._id, function(error,transcriptions) {
                 // & push each transcription into an array
                 if (error) _.response.sendError(res,error,500);
-                console.log("Transcriptions : " + transcriptions);
+                //console.log("Transcriptions : " + transcriptions);
                 transcriptions.forEach(function(transcription,index) {
-                    console.log("Pushing : " + transcription + " into the array");
+                    //console.log("Pushing : " + transcription + " into the array");
                     transcrips.push(transcription);
                 });
                 callback(error,transcriptions);
