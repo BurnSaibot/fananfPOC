@@ -61,7 +61,6 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                console.log("\n\n\n\n Sub registered : " + sub1 + "\n\n\n\n")
                                             })
                                         } else if (fields.format = "vtt") {
                                             var subtitle1 = new mSubtitle ({
@@ -132,11 +131,16 @@ exports.viewsTranscriptions = function(req,res) {
 var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     //callback(error,subtitles)
     var sub = [];
+    
     Transcription.findById(id_transcription, function(error,transcription){
+        console.log("id:" + id_transcription);
         if (error) _.response.sendError(res,error,500);
+        console.log("Transcription : " + id_transcription);
         transcription.subTitles.forEach(function(subtitle,index){
+            console.log("id subtile" + subtitle);
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 if (err) _.response.sendError(res,err,500);
+                console.log("SubContent : "+ subContent);
                 sub.push(subContent)
             });
         });
@@ -150,7 +154,7 @@ exports.viewsOneTranscription = function(req,res) {
         if (err) _.response.sendError(res,err,500);
         getSub(transcript._id,function(err2,sub) {
             if (err2) _.response.sendError(res,err2,500);
-            console.log(sub);
+            //console.log(sub);
             res.render('transcription.ejs',{transcription: transcript,subtitles: sub});
         })
     })
