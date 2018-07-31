@@ -107,7 +107,7 @@ var getGroupsFrom = exports.getGroupsFrom = function (id_user,callback) {
 
 var availableTranscription = exports.getAvailableTranscriptions = function(id_user,callback) {
     //callback(errors,transcriptions)
-    var transcriptions = [];
+    var transcrips = [];
     getGroupsFrom(id_user,function(error,groups) {
         if (error) _.response.sendError(res,error,500);
         //for each groups, we want to get each transcription
@@ -116,16 +116,16 @@ var availableTranscription = exports.getAvailableTranscriptions = function(id_us
             Group.getTranscriptionFrom(group._id, function(error,transcriptions) {
                 // & push each transcription into an array
                 if (error) _.response.sendError(res,error,500);
+                console.log("Transcriptions : " + transcriptions);
                 transcriptions.forEach(function(transcription,index) {
-
-                    transcriptions.push(transcription);
+                    console.log("Pushing : " + transcription + " into the array");
+                    transcrips.push(transcription);
                 });
-
+                callback(error,transcriptions);
             });
 
         });
         //then we allow the use of the transcription through a callback
-    callback(error,transcriptions);
     });
     
 }
