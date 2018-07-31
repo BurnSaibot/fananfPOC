@@ -134,6 +134,7 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     var sub = [];
     Transcription.findById(id_transcription, function(error,transcription){
         if (error) _.response.sendError(res,error,500);
+        console.log("Transcription : " + id_transcription);
         transcription.subTitles.forEach(function(subtitle,index){
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 if (err) _.response.sendError(res,err,500);
