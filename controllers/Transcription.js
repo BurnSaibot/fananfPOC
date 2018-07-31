@@ -12,7 +12,6 @@ exports.register = function(req,res) {
     var form = new formidable.IncomingForm();
     //parsing the form
     form.parse(req, function (err, fields, files) {
-        //console.log(files.videotoupload);
         var oldpath = files.videotoupload.path;
         var filename = files.videotoupload.name;
         var propperName = filename.trim();
@@ -22,7 +21,7 @@ exports.register = function(req,res) {
         //now we have to create the file were we should store the videos & the subtitles
         _.helper.mkdirSync(pathOut);
         _.helper.mkdirSync(path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group));
-
+        console.log("\n\n\n\n Format : " + fields.format + "\n\n\n\n");
         //now we create the transcription
         var newTrans = new Transcription({
             name: propperName,
@@ -55,16 +54,17 @@ exports.register = function(req,res) {
                                         if (error) _.response.sendError(res,error,500);
                                         //then we save the different transcription in the db, depending on the format
                                         if (fields.format == "srt") {
-                                            var subtitle1 = new Subtitle ({
+                                            var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                                                 format: "srt" 
                                             })
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
+                                                console.log("\n\n\n\n Sub registered : " + sub1 + "\n\n\n\n")
                                             })
                                         } else if (fields.format = "vtt") {
-                                            var subtitle1 = new Subtitle ({
+                                            var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                                                 format: "vtt" 
                                             })
@@ -74,12 +74,12 @@ exports.register = function(req,res) {
                                             })
             
                                         } else if (fields.format = "all") {
-                                            var subtitle1 = new Subtitle ({
+                                            var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                                                 format: "srt" 
                                             })
                                 
-                                            var subtitle2 = new Subtitle ({
+                                            var subtitle2 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                                                 format: "vtt" 
                                             })
