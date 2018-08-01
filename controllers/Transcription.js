@@ -151,7 +151,6 @@ exports.viewsUploadVideo = function(req,res){
 exports.viewsTranscriptions = function(req,res) {
     user.getAvailableTranscriptions(req.session.user._id,function(error,transcrips) {
         if (error) _.response.sendError(res,error,500);
-        console.log(transcrips)
         res.render('transcriptions.ejs',{transcriptions: transcrips})
     })
 }
@@ -161,13 +160,9 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     var sub = [];
     Transcription.findById(id_transcription, function(error,transcription){
         if (error) _.response.sendError(res,error,500);
-        console.log("id transcription : " + id_transcription);
-        console.log("Transcription : " + transcription);
         transcription.subTitles.forEach(function(subtitle,index){
-            console.log("id_Sub : " + subtitle);
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 if (err) _.response.sendError(res,err,500);
-                console.log("sub content : " + subContent);
                 sub.push(subContent)
             });
         });
