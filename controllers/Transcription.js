@@ -155,11 +155,11 @@ exports.viewsOneTranscription = function(req,res) {
     })
 }
 
-var addSubtitle = function(res,tr_id,sub_id) {
+var addSubtitle = function(tr_id,sub_id) {
     console.log("In addSubtitle");
     Transcription.findById(tr_id,function(error,tr) {
         if (error) throw error; //_.response.sendError(res,error,500);
-        console.log("TRancription trouvée : " + tr + "pour l'id : " + tr_id);
+        console.log("TRancription trouvée : " + tr + " \n pour l'id : " + tr_id);
         var updtedSub = tr.subTitles.push(sub_id);
         Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(error2,updtedTr){
             if (error2) throw error2; //_.response.sendError(res,error2,500);
