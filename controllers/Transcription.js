@@ -87,11 +87,13 @@ exports.register = function(req,res) {
 
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
+                                                console.log("Soustitre 1:" + sub1);
                                                 addSubtitle(transcription._id,sub1._id); 
                                             })
             
                                             subtitle2.save(function(error,sub2) {
                                                 if (error) _.response.sendError(res,error,500);
+                                                console.log("Soustitre 1:" + sub1);
                                                 addSubtitle(transcription._id,sub2._id); 
                                             })
             
@@ -161,6 +163,7 @@ var addSubtitle = function(tr_id,sub_id) {
     Transcription.findById(tr_id,function(error,tr) {
         if (error) throw error; //_.response.sendError(res,error,500);
         console.log("TRancription trouvée : " + tr + " \n pour l'id : " + tr_id);
+        console.log("Sub_id" + sub_id);
         var updtedSub = tr.subTitles.push(sub_id);
         console.log("Updated sub : " + updtedSub)
         Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(error2,updtedTr){
