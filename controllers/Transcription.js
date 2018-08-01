@@ -165,19 +165,22 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
                 if (err) _.response.sendError(res,err,500);
                 sub.push(subContent)
             });
+            console.log("Index : " + index);
+            if (index == transcription.subTitles.length -1) {
+                callback(error,sub);
+            }
         });
         //console.log(sub);
-        callback(error,sub);
+        
     }); 
 }
-
 exports.viewsOneTranscription = function(req,res) {
     Transcription.findById(req.params.id,function(err, transcript){
         if (err) _.response.sendError(res,err,500);
         getSub(transcript._id,function(err2,sub) {
             if (err2) _.response.sendError(res,err2,500);
             console.log("Contenu du tableau \"sub\" avant de rendre : " + sub);
-            res.render('transcription.ejs',{transcription: transcript,subtitles: sub});
+            res.render('transcription.ejs',{transcription: transcript, subtitles: sub});
         })
     })
 }
