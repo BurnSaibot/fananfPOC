@@ -63,8 +63,9 @@ exports.register = function(req,res) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 var sub = updtTranscription.subTitles;
                                                 sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub)
+                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
+                                                    console.log("updating sub, new sub" + sub);
+                                                    console.log("updted transcription: " + updtTranscription);
                                                     if (error2) _.response.sendError(req,error2,500);
                                                 })
                                             })
@@ -78,8 +79,9 @@ exports.register = function(req,res) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 var sub = updtTranscription.subTitles;
                                                 sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub)
+                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
+                                                    console.log("updating sub, new sub" + sub);
+                                                    console.log("updted transcription: " + updtTranscription);
                                                     if (error2) _.response.sendError(req,error2,500);
                                                 })
                                             })
@@ -99,8 +101,9 @@ exports.register = function(req,res) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 var sub = updtTranscription.subTitles;
                                                 sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub)
+                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
+                                                    console.log("updating sub, new sub" + sub);
+                                                    console.log("updted transcription: " + updtTranscription);
                                                     if (error2) _.response.sendError(req,error2,500);
                                                 })
                                             })
@@ -109,8 +112,9 @@ exports.register = function(req,res) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 var sub = updtTranscription.subTitles;
                                                 sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,sub, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub)
+                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
+                                                    console.log("updating sub, new sub" + sub);
+                                                    console.log("updted transcription: " + updtTranscription);
                                                     if (error2) _.response.sendError(req,error2,500);
                                                 })
                                             })
