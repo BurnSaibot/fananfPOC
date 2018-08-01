@@ -147,7 +147,7 @@ extractingAudio
 #echo "$format"
 xmlFromVocapia
 generatingSub "$format"
-rmTpm
+rmTmp
 exit 0
 
 
