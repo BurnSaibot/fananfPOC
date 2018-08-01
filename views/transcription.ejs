@@ -8,6 +8,8 @@
     </head>
     <body>
         <%- include('partials/headerConnected') %>
+        <%=subtitles%> </br>
+        <%=transcription%> </br>
         <h2>Liste des sous-titres disponibles pour cette transcription</h2>
         <tr>
             <td>
@@ -21,7 +23,7 @@
         <% subtitles.forEach(function(sub,index) { %>
             <tr>
                 <td>
-                    <%= transcription.name %> . <%=sub.format%> </a>
+                    <%= transcription.name %>.<%=sub.format%> </a>
                 </td>
                 <td>
                     <a href="/subtitle/<%=sub._id%>"> Consulter </a>

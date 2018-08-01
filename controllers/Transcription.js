@@ -61,13 +61,7 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                var sub = updtTranscription.subTitles;
-                                                sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub);
-                                                    console.log("updted transcription: " + updtTranscription);
-                                                    if (error2) _.response.sendError(req,error2,500);
-                                                })
+                                                addSubtitle(transcription._id,sub1._id);
                                             })
                                         } else if (fields.format = "vtt") {
                                             var subtitle1 = new mSubtitle ({
@@ -77,13 +71,7 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                var sub = updtTranscription.subTitles;
-                                                sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub);
-                                                    console.log("updted transcription: " + updtTranscription);
-                                                    if (error2) _.response.sendError(req,error2,500);
-                                                })
+                                                addSubtitle(transcription._id,sub1._id); 
                                             })
             
                                         } else if (fields.format = "all") {
@@ -96,27 +84,15 @@ exports.register = function(req,res) {
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                                                 format: "vtt" 
                                             })
-            
+
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                var sub = updtTranscription.subTitles;
-                                                sub.push(sub1._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub);
-                                                    console.log("updted transcription: " + updtTranscription);
-                                                    if (error2) _.response.sendError(req,error2,500);
-                                                })
+                                                addSubtitle(transcription._id,sub1._id); 
                                             })
             
                                             subtitle2.save(function(error,sub2) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                var sub = updtTranscription.subTitles;
-                                                sub.push(sub2._id);
-                                                Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
-                                                    console.log("updating sub, new sub" + sub);
-                                                    console.log("updted transcription: " + updtTranscription);
-                                                    if (error2) _.response.sendError(req,error2,500);
-                                                })
+                                                addSubtitle(transcription._id,sub2._id); 
                                             })
             
                                         } else {
@@ -178,6 +154,17 @@ exports.viewsOneTranscription = function(req,res) {
             if (err2) _.response.sendError(res,err2,500);
             console.log("Contenu du tableau \"sub\" avant de rendre : " + sub);
             res.render('transcription.ejs',{transcription: transcript, subtitles: sub});
+        })
+    })
+}
+
+var addSubtitle = function(tr_id,sub_id) {
+    Transcription.findById(tr_id,function(error,tr) {
+        if (error) _.response.sendError(res,error,500);
+        var updtedSub = tr.subTitles.push(sub_id);
+        Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(error2,updtedTr){
+            if (error2) _.response.sendError(res,error2,500);
+            console.log("Updted sub : " + updtedSub);
         })
     })
 }
