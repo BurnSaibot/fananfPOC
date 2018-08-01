@@ -61,7 +61,7 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                addSubtitle(transcription._id,sub1._id);
+                                                addSubtitle(res,transcription._id,sub1._id);
                                             })
                                         } else if (fields.format = "vtt") {
                                             var subtitle1 = new mSubtitle ({
@@ -71,7 +71,7 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                addSubtitle(transcription._id,sub1._id); 
+                                                addSubtitle(res,transcription._id,sub1._id); 
                                             })
             
                                         } else if (fields.format = "all") {
@@ -87,12 +87,12 @@ exports.register = function(req,res) {
 
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                addSubtitle(transcription._id,sub1._id); 
+                                                addSubtitle(res,transcription._id,sub1._id); 
                                             })
             
                                             subtitle2.save(function(error,sub2) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                addSubtitle(transcription._id,sub2._id); 
+                                                addSubtitle(res,transcription._id,sub2._id); 
                                             })
             
                                         } else {
@@ -155,7 +155,7 @@ exports.viewsOneTranscription = function(req,res) {
     })
 }
 
-var addSubtitle = function(tr_id,sub_id) {
+var addSubtitle = function(res,tr_id,sub_id) {
     console.log("In addSubtitle");
     Transcription.findById(tr_id,function(error,tr) {
         if (error) _.response.sendError(res,error,500);
