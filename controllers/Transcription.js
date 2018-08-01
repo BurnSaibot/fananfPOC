@@ -163,12 +163,9 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
         transcription.subTitles.forEach(function(subtitle,index){
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 if (err) _.response.sendError(res,err,500);
-                sub.push(subContent)
-            });
-            console.log("Index : " + index);
-            if (index == transcription.subTitles.length -1) {
+                sub.push(subContent);
                 callback(error,sub);
-            }
+            });
         });
         //console.log(sub);
         
