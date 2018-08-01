@@ -64,7 +64,7 @@ exports.register = function(req,res) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 addSubtitle(transcription._id,sub1._id);
                                             })
-                                        } else if (fields.format = "vtt") {
+                                        } else if (fields.format == "vtt") {
                                             console.log("vtt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
@@ -76,7 +76,7 @@ exports.register = function(req,res) {
                                                 addSubtitle(transcription._id,sub1._id); 
                                             })
             
-                                        } else if (fields.format = "all") {
+                                        } else if (fields.format == "all") {
                                             console.log("ALL");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
