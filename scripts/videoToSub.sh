@@ -6,7 +6,9 @@ function usage() {
     printf "\t -o/--output outFilePath (existing)(if not specified,outputs will be created in current folder !) \n"
     printf "\t -h/--help help"
 }
-
+function rmTmp() {
+	echo `rm /tmp/$filename*`
+}
 function doConversion() {
     echo "Converting into mp4 if needed"
     if [ "$extension" = "mp4" ]
@@ -145,6 +147,7 @@ extractingAudio
 #echo "$format"
 xmlFromVocapia
 generatingSub "$format"
+rmTpm
 exit 0
 
 

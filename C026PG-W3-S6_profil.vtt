@@ -1,0 +1,521 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.370
+dans la séquence précédente, je vous 
+
+00:00:01.370 --> 00:00:02.500
+dans la séquence précédente, je vous 
+ai présenté comment rendre plus 
+
+00:00:02.500 --> 00:00:04.000
+ai présenté comment rendre plus 
+accessibles des documents numériques 
+
+00:00:04.000 --> 00:00:06.550
+accessibles des documents numériques 
+émanant de microsoft office dans 
+
+00:00:06.550 --> 00:00:08.590
+émanant de microsoft office dans 
+cette dernière séquence de notre 3ème 
+
+00:00:08.590 --> 00:00:10.250
+cette dernière séquence de notre 3ème 
+semaine je veux faire le même travail 
+
+00:00:10.250 --> 00:00:13.460
+semaine je veux faire le même travail 
+en considérant les documents pdf je 
+
+00:00:13.460 --> 00:00:15.000
+en considérant les documents pdf je 
+commencez par vous rappeler que pdf 
+
+00:00:15.000 --> 00:00:16.600
+commencez par vous rappeler que pdf 
+signifie portable document de format 
+
+00:00:16.600 --> 00:00:18.580
+signifie portable document de format 
+et que la principale caractéristique 
+
+00:00:18.580 --> 00:00:20.300
+et que la principale caractéristique 
+du pdf et qui ont fait 100, 
+
+00:00:20.300 --> 00:00:22.280
+du pdf et qui ont fait 100, 
+principale source de succès c'est un 
+
+00:00:22.280 --> 00:00:23.510
+principale source de succès c'est un 
+format de fichier qui est totalement 
+
+00:00:23.510 --> 00:00:26.300
+format de fichier qui est totalement 
+indépendant, d' une part du logiciel 
+
+00:00:26.300 --> 00:00:27.710
+indépendant, d' une part du logiciel 
+de l' équipement du sénat 
+
+00:00:27.710 --> 00:00:30.300
+de l' équipement du sénat 
+exploitation qui a servi à créer, et 
+
+00:00:30.300 --> 00:00:30.960
+exploitation qui a servi à créer, et 
+d' autre part, totalement 
+
+00:00:30.960 --> 00:00:32.600
+d' autre part, totalement 
+indépendante du périphérique utilisé 
+
+00:00:32.600 --> 00:00:34.340
+indépendante du périphérique utilisé 
+pour l' exploiter, que ce soit un 
+
+00:00:34.340 --> 00:00:37.900
+pour l' exploiter, que ce soit un 
+écran une imprimante, adobe a proposé 
+
+00:00:37.900 --> 00:00:39.780
+écran une imprimante, adobe a proposé 
+un certain nombre de versions pdf 
+
+00:00:39.780 --> 00:00:43.490
+un certain nombre de versions pdf 
+depuis 1993 et notons en 2012, une 
+
+00:00:43.490 --> 00:00:46.490
+depuis 1993 et notons en 2012, une 
+version dite du hein pour universal, 
+
+00:00:46.490 --> 00:00:49.700
+version dite du hein pour universal, 
+accessibilité associé à une norme iso 
+
+00:00:49.700 --> 00:00:50.960
+accessibilité associé à une norme iso 
+justement en référence à l' 
+
+00:00:50.960 --> 00:00:53.780
+justement en référence à l' 
+accessibilité numérique, donc les 
+
+00:00:53.780 --> 00:00:54.890
+accessibilité numérique, donc les 
+principes fondamentaux, que nous 
+
+00:00:54.890 --> 00:00:56.630
+principes fondamentaux, que nous 
+avons retrouver dans ce cas -là sont 
+
+00:00:56.630 --> 00:00:58.900
+avons retrouver dans ce cas -là sont 
+que le document doit structurer de 
+
+00:00:58.900 --> 00:01:00.100
+que le document doit structurer de 
+façon hiérarchique, nous retrouvons 
+
+00:01:00.100 --> 00:01:01.700
+façon hiérarchique, nous retrouvons 
+ce que j' ai dans la précédente 
+
+00:01:01.700 --> 00:01:05.600
+ce que j' ai dans la précédente 
+séquence sur des corps de textes 
+
+00:01:05.600 --> 00:01:07.700
+séquence sur des corps de textes 
+organisés façon arborescence pour qu' 
+
+00:01:07.700 --> 00:01:08.870
+organisés façon arborescence pour qu' 
+un lecteur d' écran puisse s' y 
+
+00:01:08.870 --> 00:01:10.980
+un lecteur d' écran puisse s' y 
+retrouver facilement et puis bien 
+
+00:01:10.980 --> 00:01:12.100
+retrouver facilement et puis bien 
+entendu que cette structure soit 
+
+00:01:12.100 --> 00:01:13.930
+entendu que cette structure soit 
+compatible avec le langage courant 
+
+00:01:13.930 --> 00:01:18.870
+compatible avec le langage courant 
+que son xml etc. autre notion 
+
+00:01:18.870 --> 00:01:22.500
+que son xml etc. autre notion 
+importante de pdf dit balisés qui 
+
+00:01:22.500 --> 00:01:24.180
+importante de pdf dit balisés qui 
+vont permettre d' extraire des 
+
+00:01:24.180 --> 00:01:25.590
+vont permettre d' extraire des 
+parties du fichier des textes 
+
+00:01:25.590 --> 00:01:27.750
+parties du fichier des textes 
+graphiques images pour des 
+
+00:01:27.750 --> 00:01:29.450
+graphiques images pour des 
+assistances numériques que nous 
+
+00:01:29.450 --> 00:01:34.100
+assistances numériques que nous 
+verrons dans la semaine 4. donc à se 
+
+00:01:34.100 --> 00:01:35.340
+verrons dans la semaine 4. donc à se 
+verront sans doute d' abord à la 
+
+00:01:35.340 --> 00:01:38.370
+verront sans doute d' abord à la 
+création d' un document pdf, on sait 
+
+00:01:38.370 --> 00:01:39.640
+création d' un document pdf, on sait 
+qu' il y a à peu près de façon en 
+
+00:01:39.640 --> 00:01:43.180
+qu' il y a à peu près de façon en 
+général de, créer document soit via 
+
+00:01:43.180 --> 00:01:45.400
+général de, créer document soit via 
+un logiciel externe comme word par 
+
+00:01:45.400 --> 00:01:46.170
+un logiciel externe comme word par 
+exemple qui est tout à fait capable 
+
+00:01:46.170 --> 00:01:49.310
+exemple qui est tout à fait capable 
+de sauvegarder sous une forme pdf n' 
+
+00:01:49.310 --> 00:01:51.600
+de sauvegarder sous une forme pdf n' 
+importe quel le contenu texte ou bien 
+
+00:01:51.600 --> 00:01:53.760
+importe quel le contenu texte ou bien 
+via la si vite logiciel acrobat pro 
+
+00:01:53.760 --> 00:01:55.650
+via la si vite logiciel acrobat pro 
+qui va créer directement un fichier 
+
+00:01:55.650 --> 00:01:58.480
+qui va créer directement un fichier 
+pdf dans les 2 cas, il est 
+
+00:01:58.480 --> 00:01:59.980
+pdf dans les 2 cas, il est 
+indispensable de suivre les 
+
+00:01:59.980 --> 00:02:01.200
+indispensable de suivre les 
+recommandations d' où les cas que 
+
+00:02:01.200 --> 00:02:02.290
+recommandations d' où les cas que 
+nous avons vu dans les séquences 
+
+00:02:02.290 --> 00:02:05.560
+nous avons vu dans les séquences 
+précédentes et que la liste des 
+
+00:02:05.560 --> 00:02:07.710
+précédentes et que la liste des 
+outils d' édition qui génère des pdf 
+
+00:02:07.710 --> 00:02:09.970
+outils d' édition qui génère des pdf 
+, accessible soit connue de tous, 
+
+00:02:09.970 --> 00:02:11.500
+, accessible soit connue de tous, 
+afin de les utiliser de façon 
+
+00:02:11.500 --> 00:02:14.930
+afin de les utiliser de façon 
+efficace. enfin, de la même façon que 
+
+00:02:14.930 --> 00:02:16.710
+efficace. enfin, de la même façon que 
+sous microsoft office ce je vous 
+
+00:02:16.710 --> 00:02:18.330
+sous microsoft office ce je vous 
+présenter des vérificateurs d' 
+
+00:02:18.330 --> 00:02:19.800
+présenter des vérificateurs d' 
+accessibilité, hé bien il existe 
+
+00:02:19.800 --> 00:02:21.990
+accessibilité, hé bien il existe 
+aussi pour pdf ce genre d' outil donc 
+
+00:02:21.990 --> 00:02:24.930
+aussi pour pdf ce genre d' outil donc 
+acrobat pro propose un vérificateur 
+
+00:02:24.930 --> 00:02:27.380
+acrobat pro propose un vérificateur 
+d' accessibilité et puis nous allons 
+
+00:02:27.380 --> 00:02:29.300
+d' accessibilité et puis nous allons 
+trouver qui sont externes acrobat pro 
+
+00:02:29.300 --> 00:02:30.930
+trouver qui sont externes acrobat pro 
+, donc on parlera de pdf, accessible 
+
+00:02:30.930 --> 00:02:32.960
+, donc on parlera de pdf, accessible 
+vérificateur réversibilité en anglais 
+
+00:02:32.960 --> 00:02:35.280
+vérificateur réversibilité en anglais 
+qui fonctionne sous windows qui 
+
+00:02:35.280 --> 00:02:36.120
+qui fonctionne sous windows qui 
+permet d' afficher de 
+
+00:02:36.120 --> 00:02:38.310
+permet d' afficher de 
+prévisualisation et qui fait là aussi 
+
+00:02:38.310 --> 00:02:39.650
+prévisualisation et qui fait là aussi 
+un rapport d' erreur avec une 
+
+00:02:39.650 --> 00:02:41.430
+un rapport d' erreur avec une 
+localisation la source donc vraiment 
+
+00:02:41.430 --> 00:02:44.180
+localisation la source donc vraiment 
+des outils très utilisable par tous 
+
+00:02:44.180 --> 00:02:46.500
+des outils très utilisable par tous 
+les utilisateurs, citons également 
+
+00:02:46.500 --> 00:02:47.460
+les utilisateurs, citons également 
+comme nous, qui est un vérificateur 
+
+00:02:47.460 --> 00:02:49.200
+comme nous, qui est un vérificateur 
+d' accessibilité qui fonctionne très 
+
+00:02:49.200 --> 00:02:54.770
+d' accessibilité qui fonctionne très 
+bien sur pdf. pour terminer, revenons 
+
+00:02:54.770 --> 00:02:57.590
+bien sur pdf. pour terminer, revenons 
+à notre étude webm qui nous sert un 
+
+00:02:57.590 --> 00:02:58.750
+à notre étude webm qui nous sert un 
+petit peu de fil conducteur que nous 
+
+00:02:58.750 --> 00:02:59.970
+petit peu de fil conducteur que nous 
+avons retrouvé dans plusieurs des 
+
+00:02:59.970 --> 00:03:01.660
+avons retrouvé dans plusieurs des 
+séquences précédentes qui s' 
+
+00:03:01.660 --> 00:03:02.270
+séquences précédentes qui s' 
+intéresse à l' accessibilité 
+
+00:03:02.270 --> 00:03:05.150
+intéresse à l' accessibilité 
+justement des fichiers pdf donc nous 
+
+00:03:05.150 --> 00:03:06.110
+justement des fichiers pdf donc nous 
+voyons dans cette figure que 
+
+00:03:06.110 --> 00:03:06.880
+voyons dans cette figure que 
+législateurs dont je vous rappelle 
+
+00:03:06.880 --> 00:03:08.330
+législateurs dont je vous rappelle 
+qu' ils étaient composés à peu près 
+
+00:03:08.330 --> 00:03:10.520
+qu' ils étaient composés à peu près 
+pour les 3 quarts de personnes vivant 
+
+00:03:10.520 --> 00:03:12.190
+pour les 3 quarts de personnes vivant 
+en amérique du nord et pour plus de 
+
+00:03:12.190 --> 00:03:13.590
+en amérique du nord et pour plus de 
+90 pourcent personnes en déficience 
+
+00:03:13.590 --> 00:03:15.680
+90 pourcent personnes en déficience 
+visuelle, ce que l' on peut voir, 
+
+00:03:15.680 --> 00:03:16.620
+visuelle, ce que l' on peut voir, 
+c'est qu' il y a à peu près à égalité 
+
+00:03:16.620 --> 00:03:19.340
+c'est qu' il y a à peu près à égalité 
+entre ce qui est accessible, ce qui 
+
+00:03:19.340 --> 00:03:20.210
+entre ce qui est accessible, ce qui 
+est facile en terme d' accessibilité 
+
+00:03:20.210 --> 00:03:22.490
+est facile en terme d' accessibilité 
+dans un document pdf de ce qui est 
+
+00:03:22.490 --> 00:03:25.900
+dans un document pdf de ce qui est 
+difficile en terme de bilan à la fois 
+
+00:03:25.900 --> 00:03:27.200
+difficile en terme de bilan à la fois 
+de cette séquence, mais aussi de 
+
+00:03:27.200 --> 00:03:29.650
+de cette séquence, mais aussi de 
+cette semaine, ce que nous avons vu 
+
+00:03:29.650 --> 00:03:31.780
+cette semaine, ce que nous avons vu 
+depuis le début du secours, c'est qu' 
+
+00:03:31.780 --> 00:03:33.280
+depuis le début du secours, c'est qu' 
+il existe beaucoup de fonctionnalités 
+
+00:03:33.280 --> 00:03:36.500
+il existe beaucoup de fonctionnalités 
+normes recommandations destinées à 
+
+00:03:36.500 --> 00:03:37.930
+normes recommandations destinées à 
+faciliter l' accessibilité numérique 
+
+00:03:37.930 --> 00:03:41.520
+faciliter l' accessibilité numérique 
+. souvent basée sur du bon sens, 
+
+00:03:41.520 --> 00:03:43.500
+. souvent basée sur du bon sens, 
+elles sont vraiment très utile pour 
+
+00:03:43.500 --> 00:03:45.560
+elles sont vraiment très utile pour 
+tous les types d' utilisateurs de 
+
+00:03:45.560 --> 00:03:47.300
+tous les types d' utilisateurs de 
+concepteurs développeurs, 
+
+00:03:47.300 --> 00:03:49.860
+concepteurs développeurs, 
+malheureusement pour la plupart d' 
+
+00:03:49.860 --> 00:03:51.410
+malheureusement pour la plupart d' 
+entre elles sont relativement peu 
+
+00:03:51.410 --> 00:03:54.200
+entre elles sont relativement peu 
+connus et donc suivi et utilisées ou 
+
+00:03:54.200 --> 00:03:58.160
+connus et donc suivi et utilisées ou 
+réutilisées. 2ème constatation pour 
+
+00:03:58.160 --> 00:03:59.530
+réutilisées. 2ème constatation pour 
+la plupart d' entre elles, elle 
+
+00:03:59.530 --> 00:04:01.900
+la plupart d' entre elles, elle 
+concerne principalement les 
+
+00:04:01.900 --> 00:04:02.900
+concerne principalement les 
+situations de handicap, sans souris 
+
+00:04:02.900 --> 00:04:06.600
+situations de handicap, sans souris 
+moteur. et enfin, dernière 
+
+00:04:06.600 --> 00:04:07.560
+moteur. et enfin, dernière 
+constatation elle ne sont pas 
+
+00:04:07.560 --> 00:04:09.550
+constatation elle ne sont pas 
+toujours adaptés au handicap multiple 
+
+00:04:09.550 --> 00:04:12.750
+toujours adaptés au handicap multiple 
+. c'estpour ces raisons notamment que 
+
+00:04:12.750 --> 00:04:14.870
+. c'estpour ces raisons notamment que 
+dans la prochaine semaine nous allons 
+
+00:04:14.870 --> 00:04:16.930
+dans la prochaine semaine nous allons 
+vous présenter un ensemble de méthode 
+
+00:04:16.930 --> 00:04:19.550
+vous présenter un ensemble de méthode 
+conception nouveaux outils de 
+
+00:04:19.550 --> 00:04:20.890
+conception nouveaux outils de 
+nouvelles normes nouveaux produits 
+
+00:04:20.890 --> 00:04:24.470
+nouvelles normes nouveaux produits 
+qui serait véritablement dédié à l' 
+
+00:04:24.470 --> 00:04:26.830
+qui serait véritablement dédié à l' 
+accessibilité en prenant compte à la 
+
+00:04:26.830 --> 00:04:28.830
+accessibilité en prenant compte à la 
+fois des handicap différents et 
+
+00:04:28.830 --> 00:04:31.570
+fois des handicap différents et 
+handicaps multiple surtout en prenant 
+
+00:04:31.570 --> 00:04:33.170
+handicaps multiple surtout en prenant 
+compte l' utilisateur et ses 
+
