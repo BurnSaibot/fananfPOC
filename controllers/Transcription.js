@@ -54,6 +54,7 @@ exports.register = function(req,res) {
                                         if (error) _.response.sendError(res,error,500);
                                         //then we save the different transcription in the db, depending on the format
                                         if (fields.format == "srt") {
+                                            console.log("srt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                                                 format: "srt" 
@@ -64,6 +65,7 @@ exports.register = function(req,res) {
                                                 addSubtitle(transcription._id,sub1._id);
                                             })
                                         } else if (fields.format = "vtt") {
+                                            console.log("vtt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                                                 format: "vtt" 
@@ -75,6 +77,7 @@ exports.register = function(req,res) {
                                             })
             
                                         } else if (fields.format = "all") {
+                                            console.log("ALL");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                                                 format: "srt" 
