@@ -171,7 +171,7 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
                 sub.push(subContent)
             });
         });
-        console.log(sub);
+        //console.log(sub);
         callback(error,sub);
     }); 
 }
@@ -181,7 +181,7 @@ exports.viewsOneTranscription = function(req,res) {
         if (err) _.response.sendError(res,err,500);
         getSub(transcript._id,function(err2,sub) {
             if (err2) _.response.sendError(res,err2,500);
-            console.log(sub);
+            console.log("Contenu du tableau \"sub\" avant de rendre : " + sub);
             res.render('transcription.ejs',{transcription: transcript,subtitles: sub});
         })
     })
