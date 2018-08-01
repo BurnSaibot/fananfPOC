@@ -106,11 +106,8 @@ exports.register = function(req,res) {
                     })
                     //even if the transcription isn't over, we redirect the user to home as the transcription could take a great amount of time.
                     _.response.sendSucces(req,res,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
-                    
-
                 });
-            });
-            
+            });            
         });
     });
 }
@@ -159,6 +156,7 @@ exports.viewsOneTranscription = function(req,res) {
 }
 
 var addSubtitle = function(tr_id,sub_id) {
+    console.log("In addSubtitle");
     Transcription.findById(tr_id,function(error,tr) {
         if (error) _.response.sendError(res,error,500);
         var updtedSub = tr.subTitles.push(sub_id);
