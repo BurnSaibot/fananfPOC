@@ -111,7 +111,7 @@ exports.register = function(req,res) {
                                             subtitle2.save(function(error,sub2) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 var sub = updtTranscription.subTitles;
-                                                sub.push(sub1._id);
+                                                sub.push(sub2._id);
                                                 Transcription.findByIdAndUpdate(transcription._id,{subTitles: sub}, function(error2,updtTranscription){
                                                     console.log("updating sub, new sub" + sub);
                                                     console.log("updted transcription: " + updtTranscription);
