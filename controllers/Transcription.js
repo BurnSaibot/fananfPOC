@@ -152,7 +152,7 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     }); 
 }
 
-var handlingSubtitles = async function(sub_ids,callback) {
+async function handlingSubtitles(sub_ids,callback) {
     var sub = []
     //Callback(error,sub)
     for (const sub of sub_ids) {
