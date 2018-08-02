@@ -91,7 +91,7 @@ exports.register = function(req,res) {
                                             })
 
                                             var subtitles = [subtitle1,subtitle2];
-                                            console.log(subtitles)
+                                            console.log("Before function" + subtitles)
                                             saveSubtitlesPlusAdd(subtitles);
                                                         
                                         } else {
