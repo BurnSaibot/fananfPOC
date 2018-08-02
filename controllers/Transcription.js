@@ -150,14 +150,15 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     Transcription.findById(id_transcription,function(error,transcription){
         if (error) throw error;//_.response.sendError(res,error,500);
         var counter = 0;
-        transcription.subTitles.forEach(function(subtitle,index){           
+        transcription.subTitles.forEach(function(subtitle,index){
+            console.log("Id : " + subtitle);    
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 counter++;
                 if (err) _.response.sendError(res,err,500);
-                    sub.push(subContent);
+                sub.push(subContent);
                 if (counter >= transcription.subTitles.length) {
                     callback(err,sub);
-            }
+                }
             });   
         }); 
     }); 
