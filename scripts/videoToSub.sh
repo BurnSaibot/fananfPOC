@@ -56,9 +56,7 @@ function generatingSub() {
     then
 	echo "On est bien dans le all"
 	echo `python $script  --srt $inputFile > $folder$filename.srt`
-	echo `python $script  --webvtt $inputFile > $folders$filename.vtt`
-    echo "python $script  --srt $inputFile > $folder$filename.srt"
-	echo "python $script  --webvtt $inputFile > $folders$filename.vtt"
+	echo `python $script  --webvtt $inputFile > $folder$filename.vtt`
     else
 	exit 4
     fi
