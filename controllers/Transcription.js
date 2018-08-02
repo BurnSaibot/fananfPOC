@@ -160,7 +160,9 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
         transcription.subTitles.forEach(function(subtitle,index){
             console.log("Id : " + subtitle);    
             mSubtitle.find({_id: subtitle},function(err,subContent){
+                console.log("Before push Increment");
                 pushIncrement(counter,sub,subContent,function(error,sub){
+                    console.log("In the callback of PUSHINCREMENT");
                     callback(err,sub);
                 });
             });   
