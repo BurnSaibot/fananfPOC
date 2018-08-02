@@ -145,10 +145,13 @@ exports.viewsTranscriptions = function(req,res) {
 
 var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     //callback(error,subtitles)
+    console.log("inGetSubt")
     var sub = [];
     Transcription.findById(id_transcription, function(error,transcription){
+        console.log("Searching for Transcription");
         if (error) //_.response.sendError(res,error,500);
         transcription.subTitles.forEach(function(subtitle,index){
+            console.log("Looping over subtitles, inde:" + index);
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 if (err) _.response.sendError(res,err,500);
                 sub.push(subContent);
@@ -168,7 +171,7 @@ exports.viewsOneTranscription = function(req,res) {
         getSub(transcript._id,function(err2,sub) {
             if (err2) _.response.sendError(res,err2,500);
             console.log("Contenu du tableau \"sub\" avant de rendre : " + sub);
-            res.render('testfile.ejs',{transcription: transcript, subtitles: sub});
+            res.render('transcription.ejs',{transcription: transcript, subtitles: sub});
         })
     })
 }
