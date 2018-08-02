@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 const shell = require('shelljs');
 
+
 var _ = require('./Utils.js');
 var Transcription = require('../models/Transcription');
 var user = require('./User');
@@ -41,11 +42,12 @@ exports.register = function(req,res) {
                 //moving the temporary file to the good place : /data/videos/idgroup
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
-                    // executing the script to get transcription
+                    
                     newTrans.save(function(error,transcription) {
                         //saving the transcription in the bdd & then wait for the script to create subtile files
                         if (error) _.response.sendError(res,error,500);
                         else {
+                            // executing the script to get transcription
                             shell.exec("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
                                 console.log("Code: " + code);
                                 //Vérifying there wasn't any trouble with the script, then register all data in db
@@ -88,16 +90,9 @@ exports.register = function(req,res) {
                                                 format: "vtt" 
                                             })
 
-                                            subtitle1.save(function(error,sub1) {
-                                                if (error) _.response.sendError(res,error,500);
-                                                console.log("Soustitre 1:" + sub1);
-                                                addSubtitle(transcription._id,sub1._id);
-                                                subtitle2.save(function(error,sub2) {
-                                                    if (error) _.response.sendError(res,error,500);
-                                                    console.log("Soustitre 2:" + sub2);
-                                                    addSubtitle(transcription._id,sub2._id); 
-                                                })
-                                            })
+                                            var subtitles = [subtitle1,subtitle2];
+                                            console.log(subtitles)
+                                            saveSubtitlesPlusAdd(subtitles);
                                                         
                                         } else {
                                             _.response.sendError(res,"bad format selected", 500);
@@ -173,3 +168,25 @@ var addSubtitle = function(tr_id,sub_id) {
         })
     })
 }
+
+var saveSubtitlesPlusAdd = function(tr_id,sub_ids) {
+    sub_ids.forEach(function(sub,index){
+        sub.save(function(error,savedSub){
+            addSubtitle(tr_id,savedSub._id);
+        })
+        
+    })
+}
+/*var addSubtitleP = function(tr_id,sub_id) {
+    return new Promise(function(resolve,reject){
+        Transcription.findById(tr_id,function(err,tr){
+            if (err) reject(err);
+        console.log("Contenu : " + tr.subTitles);
+        var updtedSub = tr.subTitles;
+        console.log("Before : " + updtedSub);
+        updtedSub.push(sub_id);
+        console.log("After : " + updtedSub);
+
+        })
+    });
+}*/
