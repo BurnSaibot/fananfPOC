@@ -89,10 +89,19 @@ exports.register = function(req,res) {
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                                                 format: "vtt" 
                                             })
-
-                                            var subtitles = [subtitle1,subtitle2];
-                                            console.log("Before function" + subtitles)
-                                            saveSubtitlesPlusAdd(subtitles);
+                                            
+                                            subtitle1.save()
+                                            .then(function(sub) {
+                                                return addSubtitleP(updtTranscription._id,sub._id)
+                                            })
+                                            .then( subtitle2.save() )
+                                            .then( function(sub2) {
+                                                return addSubtitleP(updtTranscription._id,sub2._id)
+                                            })
+                                            .catch(function(err) {
+                                                throw err
+                                            });
+                                            
                                                         
                                         } else {
                                             _.response.sendError(res,"bad format selected", 500);
@@ -169,7 +178,7 @@ var addSubtitle = function(tr_id,sub_id) {
     })
 }
 
-var saveSubtitlesPlusAdd = function(tr_id,subs) {
+/* var saveSubtitlesPlusAdd = function(tr_id,subs) {
     console.log("Dans la fonction, subs : " + subs)
     subs.forEach(function(sub,index){
         sub.save(function(error,savedSub){
@@ -177,8 +186,8 @@ var saveSubtitlesPlusAdd = function(tr_id,subs) {
         })
         
     })
-}
-/*var addSubtitleP = function(tr_id,sub_id) {
+}*/
+var addSubtitleP = function(tr_id,sub_id) {
     return new Promise(function(resolve,reject){
         Transcription.findById(tr_id,function(err,tr){
             if (err) reject(err);
@@ -187,7 +196,12 @@ var saveSubtitlesPlusAdd = function(tr_id,subs) {
         console.log("Before : " + updtedSub);
         updtedSub.push(sub_id);
         console.log("After : " + updtedSub);
-
+        Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(err2,updtedTr){
+            if (err) reject(err2); //_.response.sendError(res,error2,500);
+            else {
+                resolve(updtedTr);
+            }
+        })
         })
     });
-}*/
+}
