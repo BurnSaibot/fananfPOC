@@ -1,0 +1,657 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:01.700
+dans la séquence précédente, je vous 
+
+00:00:01.700 --> 00:00:04.660
+dans la séquence précédente, je vous 
+ai présenté l' initiative w i pour 
+
+00:00:04.660 --> 00:00:06.500
+ai présenté l' initiative w i pour 
+web accessibilité initiative du w3c 
+
+00:00:06.500 --> 00:00:09.560
+web accessibilité initiative du w3c 
+et je vous aime notamment présenté 3 
+
+00:00:09.560 --> 00:00:11.350
+et je vous aime notamment présenté 3 
+composants qui était à la base de 
+
+00:00:11.350 --> 00:00:13.550
+composants qui était à la base de 
+tout accès mérites dans cette 
+
+00:00:13.550 --> 00:00:15.190
+tout accès mérites dans cette 
+séquence, nous allons étudier, en 
+
+00:00:15.190 --> 00:00:16.570
+séquence, nous allons étudier, en 
+particulier les recommandations 
+
+00:00:16.570 --> 00:00:20.530
+particulier les recommandations 
+portant sur le contenu, donc ces 
+
+00:00:20.530 --> 00:00:23.600
+portant sur le contenu, donc ces 
+recommandations baptisé wk bien le z' 
+
+00:00:23.600 --> 00:00:24.800
+recommandations baptisé wk bien le z' 
+ont été publiés pour la 1ère fois en 
+
+00:00:24.800 --> 00:00:28.280
+ont été publiés pour la 1ère fois en 
+1998 et une 2ème version en 2008, d' 
+
+00:00:28.280 --> 00:00:30.800
+1998 et une 2ème version en 2008, d' 
+où la version actuelle de petites 2,0 
+
+00:00:30.800 --> 00:00:33.380
+où la version actuelle de petites 2,0 
+dans ses recommandations, nous allons 
+
+00:00:33.380 --> 00:00:35.650
+dans ses recommandations, nous allons 
+voir dans la suite 4 principes et 12 
+
+00:00:35.650 --> 00:00:37.320
+voir dans la suite 4 principes et 12 
+règles rattaché à ces différents 
+
+00:00:37.320 --> 00:00:39.920
+règles rattaché à ces différents 
+principes puis nous verrons qu' il 
+
+00:00:39.920 --> 00:00:41.850
+principes puis nous verrons qu' il 
+existe des critères de succès pour 
+
+00:00:41.850 --> 00:00:43.250
+existe des critères de succès pour 
+répondre à la conformité à ces 
+
+00:00:43.250 --> 00:00:44.990
+répondre à la conformité à ces 
+principes avec 3 niveaux différents 
+
+00:00:44.990 --> 00:00:48.350
+principes avec 3 niveaux différents 
+de conformité enfin w. a. il a 
+
+00:00:48.350 --> 00:00:49.700
+de conformité enfin w. a. il a 
+proposé un certain nombre de 
+
+00:00:49.700 --> 00:00:52.130
+proposé un certain nombre de 
+techniques permettant d' assurer la 
+
+00:00:52.130 --> 00:00:54.250
+techniques permettant d' assurer la 
+conformité à ces standards et puis 
+
+00:00:54.250 --> 00:00:57.380
+conformité à ces standards et puis 
+également commenté a fourni une liste 
+
+00:00:57.380 --> 00:00:58.820
+également commenté a fourni une liste 
+d' erreurs habituellement commises 
+
+00:00:58.820 --> 00:01:01.850
+d' erreurs habituellement commises 
+dans ce site, donc l' idée ici est d' 
+
+00:01:01.850 --> 00:01:03.950
+dans ce site, donc l' idée ici est d' 
+aider le concepteur du système web 
+
+00:01:03.950 --> 00:01:06.230
+aider le concepteur du système web 
+pour arriver à véritablement avoir un 
+
+00:01:06.230 --> 00:01:09.510
+pour arriver à véritablement avoir un 
+contenu accessible. je vous disais 
+
+00:01:09.510 --> 00:01:10.120
+contenu accessible. je vous disais 
+qu' il y avait 4 principes 
+
+00:01:10.120 --> 00:01:11.790
+qu' il y avait 4 principes 
+fondamentaux qui sont que les 
+
+00:01:11.790 --> 00:01:14.900
+fondamentaux qui sont que les 
+contenus doivent être perceptible qui 
+
+00:01:14.900 --> 00:01:18.310
+contenus doivent être perceptible qui 
+doivent être opérables. qui doivent 
+
+00:01:18.310 --> 00:01:20.310
+doivent être opérables. qui doivent 
+être compréhensibles et, enfin qui 
+
+00:01:20.310 --> 00:01:22.420
+être compréhensibles et, enfin qui 
+doivent être robustes, donc essayons 
+
+00:01:22.420 --> 00:01:24.180
+doivent être robustes, donc essayons 
+de détailler maintenant chacun de ces 
+
+00:01:24.180 --> 00:01:26.500
+de détailler maintenant chacun de ces 
+4 principes en commençant par le 1er 
+
+00:01:26.500 --> 00:01:28.280
+4 principes en commençant par le 1er 
+fait que les contenus soient 
+
+00:01:28.280 --> 00:01:30.930
+fait que les contenus soient 
+perceptibles, donc à partir de ce 
+
+00:01:30.930 --> 00:01:33.120
+perceptibles, donc à partir de ce 
+principe 4 règles spécifiques ont été 
+
+00:01:33.120 --> 00:01:36.530
+principe 4 règles spécifiques ont été 
+proposés, la 1ère et qu' il est 
+
+00:01:36.530 --> 00:01:37.680
+proposés, la 1ère et qu' il est 
+indispensable de fournir des 
+
+00:01:37.680 --> 00:01:39.370
+indispensable de fournir des 
+alternatifs textuelle aux contenus 
+
+00:01:39.370 --> 00:01:43.000
+alternatifs textuelle aux contenus 
+contextuels, prenons par exemple une 
+
+00:01:43.000 --> 00:01:45.670
+contextuels, prenons par exemple une 
+image si image n' est pas associé n' 
+
+00:01:45.670 --> 00:01:47.560
+image si image n' est pas associé n' 
+est pas accompagnée d' un texte, la 
+
+00:01:47.560 --> 00:01:49.260
+est pas accompagnée d' un texte, la 
+décrivant une personne avait 
+
+00:01:49.260 --> 00:01:50.730
+décrivant une personne avait 
+déficience visuelle ne pourra pas 
+
+00:01:50.730 --> 00:01:51.900
+déficience visuelle ne pourra pas 
+prendre connaissance de sa formation 
+
+00:01:51.900 --> 00:01:56.150
+prendre connaissance de sa formation 
+. on peut édicter principe 
+
+00:01:56.150 --> 00:01:57.870
+. on peut édicter principe 
+pratiquement similaire pour les 
+
+00:01:57.870 --> 00:01:59.900
+pratiquement similaire pour les 
+contenus multimédias, c'est le 
+
+00:01:59.900 --> 00:02:01.730
+contenus multimédias, c'est le 
+principal point 2 qui va concerner 
+
+00:02:01.730 --> 00:02:03.900
+principal point 2 qui va concerner 
+par exemple des vidéos qu' il sera 
+
+00:02:03.900 --> 00:02:04.650
+par exemple des vidéos qu' il sera 
+nécessaire d' accompagner avec un 
+
+00:02:04.650 --> 00:02:06.390
+nécessaire d' accompagner avec un 
+texte expliquant le contenu de la 
+
+00:02:06.390 --> 00:02:08.310
+texte expliquant le contenu de la 
+vidéo permettant à une personne en 
+
+00:02:08.310 --> 00:02:09.840
+vidéo permettant à une personne en 
+situation de handicap visuel, par 
+
+00:02:09.840 --> 00:02:11.690
+situation de handicap visuel, par 
+exemple de comprendre l' information 
+
+00:02:11.690 --> 00:02:13.280
+exemple de comprendre l' information 
+véhiculée par l' image, ou par le 
+
+00:02:13.280 --> 00:02:17.500
+véhiculée par l' image, ou par le 
+vide. naturellement, si l' on crée 
+
+00:02:17.500 --> 00:02:18.880
+vide. naturellement, si l' on crée 
+des contenus présentable de 
+
+00:02:18.880 --> 00:02:20.300
+des contenus présentable de 
+différentes façons, il est très 
+
+00:02:20.300 --> 00:02:22.400
+différentes façons, il est très 
+important de vérifier qu' on ne perd 
+
+00:02:22.400 --> 00:02:23.960
+important de vérifier qu' on ne perd 
+pas d' informations si on perd le 
+
+00:02:23.960 --> 00:02:24.710
+pas d' informations si on perd le 
+sens entre les différentes 
+
+00:02:24.710 --> 00:02:26.840
+sens entre les différentes 
+présentations, hé bien on n' a pas 
+
+00:02:26.840 --> 00:02:28.460
+présentations, hé bien on n' a pas 
+réussi à obtenir une bonne 
+
+00:02:28.460 --> 00:02:30.270
+réussi à obtenir une bonne 
+accessibilité, donc il sera très 
+
+00:02:30.270 --> 00:02:31.800
+accessibilité, donc il sera très 
+important de faciliter la perception 
+
+00:02:31.800 --> 00:02:33.860
+important de faciliter la perception 
+tant visuel qu' auditif comme vous 
+
+00:02:33.860 --> 00:02:35.580
+tant visuel qu' auditif comme vous 
+voir dans les précédentes, c'est quoi 
+
+00:02:35.580 --> 00:02:40.410
+voir dans les précédentes, c'est quoi 
+. dans ce de cela et j' ai voulu vous 
+
+00:02:40.410 --> 00:02:42.840
+. dans ce de cela et j' ai voulu vous 
+montrer un extrait des 
+
+00:02:42.840 --> 00:02:44.780
+montrer un extrait des 
+recommandations qui sont disponibles 
+
+00:02:44.780 --> 00:02:46.990
+recommandations qui sont disponibles 
+sur le site web, donc vous trouvez 
+
+00:02:46.990 --> 00:02:48.280
+sur le site web, donc vous trouvez 
+dans la partie haute de l' écran, le 
+
+00:02:48.280 --> 00:02:49.610
+dans la partie haute de l' écran, le 
+rappel du principe, l' information 
+
+00:02:49.610 --> 00:02:52.440
+rappel du principe, l' information 
+doit être perceptible l' énoncé de la 
+
+00:02:52.440 --> 00:02:55.000
+doit être perceptible l' énoncé de la 
+1ère règle un point et puis dans la 
+
+00:02:55.000 --> 00:02:56.590
+1ère règle un point et puis dans la 
+partie basse de l' écran ce que vous 
+
+00:02:56.590 --> 00:02:57.930
+partie basse de l' écran ce que vous 
+pouvez lire ce sont un certain nombre 
+
+00:02:57.930 --> 00:02:58.810
+pouvez lire ce sont un certain nombre 
+d' éléments d' information 
+
+00:02:58.810 --> 00:03:01.620
+d' éléments d' information 
+supplémentaire destiné à accompagner 
+
+00:03:01.620 --> 00:03:05.800
+supplémentaire destiné à accompagner 
+, aider le créateur de contenu web 
+
+00:03:05.800 --> 00:03:06.650
+, aider le créateur de contenu web 
+pour le rendre véritablement 
+
+00:03:06.650 --> 00:03:08.800
+pour le rendre véritablement 
+accessible et répondent à ce principe 
+
+00:03:08.800 --> 00:03:11.750
+accessible et répondent à ce principe 
+et à cette rue, je vous invite donc à 
+
+00:03:11.750 --> 00:03:13.620
+et à cette rue, je vous invite donc à 
+consulter ce site web, dont vous 
+
+00:03:13.620 --> 00:03:14.880
+consulter ce site web, dont vous 
+trouverez l' adresse sur le dernier 
+
+00:03:14.880 --> 00:03:17.900
+trouverez l' adresse sur le dernier 
+transparent de la séquence. 2ème 
+
+00:03:17.900 --> 00:03:20.120
+transparent de la séquence. 2ème 
+principe le fait que le contenu soit 
+
+00:03:20.120 --> 00:03:23.150
+principe le fait que le contenu soit 
+utilisable, donc cela passe par 4 
+
+00:03:23.150 --> 00:03:25.900
+utilisable, donc cela passe par 4 
+règles : la 1ère et tant que il est 
+
+00:03:25.900 --> 00:03:27.590
+règles : la 1ère et tant que il est 
+indispensable de rendre toutes les 
+
+00:03:27.590 --> 00:03:29.900
+indispensable de rendre toutes les 
+fonctionnalités accessibles via un 
+
+00:03:29.900 --> 00:03:32.900
+fonctionnalités accessibles via un 
+clavier. qu' il faut laisser 
+
+00:03:32.900 --> 00:03:33.560
+clavier. qu' il faut laisser 
+suffisamment de temps pour comprendre 
+
+00:03:33.560 --> 00:03:35.930
+suffisamment de temps pour comprendre 
+et utiliser les contenus donc éviter 
+
+00:03:35.930 --> 00:03:38.600
+et utiliser les contenus donc éviter 
+d' avoir des films trop rapide d' 
+
+00:03:38.600 --> 00:03:41.680
+d' avoir des films trop rapide d' 
+informations de commande. ne pas 
+
+00:03:41.680 --> 00:03:43.660
+informations de commande. ne pas 
+utiliser de contenus susceptibles de 
+
+00:03:43.660 --> 00:03:45.590
+utiliser de contenus susceptibles de 
+créer des crises de type épilepsie, 
+
+00:03:45.590 --> 00:03:47.470
+créer des crises de type épilepsie, 
+par exemple en utilisant des flashs 
+
+00:03:47.470 --> 00:03:49.210
+par exemple en utilisant des flashs 
+lumineux de façon trop intense ou 
+
+00:03:49.210 --> 00:03:52.310
+lumineux de façon trop intense ou 
+trop rapprochées et enfin d' aider l' 
+
+00:03:52.310 --> 00:03:54.500
+trop rapprochées et enfin d' aider l' 
+utilisateur à trouver naviguer à se 
+
+00:03:54.500 --> 00:03:57.580
+utilisateur à trouver naviguer à se 
+repérer sur un site. sur cette 
+
+00:03:57.580 --> 00:03:59.770
+repérer sur un site. sur cette 
+dernière règle, on peut faire une 
+
+00:03:59.770 --> 00:04:01.620
+dernière règle, on peut faire une 
+remarque qui a déjà été formulée au 
+
+00:04:01.620 --> 00:04:02.940
+remarque qui a déjà été formulée au 
+préalable, c'est que cette 
+
+00:04:02.940 --> 00:04:05.160
+préalable, c'est que cette 
+recommandation n' est pas spécifique 
+
+00:04:05.160 --> 00:04:06.840
+recommandation n' est pas spécifique 
+pour les personnes insurrection de 
+
+00:04:06.840 --> 00:04:09.900
+pour les personnes insurrection de 
+handicap, nous sommes tous concernés 
+
+00:04:09.900 --> 00:04:12.460
+handicap, nous sommes tous concernés 
+et si nous aidons l' utilisateur a 
+
+00:04:12.460 --> 00:04:13.990
+et si nous aidons l' utilisateur a 
+trouvé naviguer à se repérer, hé bien 
+
+00:04:13.990 --> 00:04:16.120
+trouvé naviguer à se repérer, hé bien 
+tous les inuits utilisateurs, ils 
+
+00:04:16.120 --> 00:04:19.640
+tous les inuits utilisateurs, ils 
+trouveront un bénéfice. 3ème principe 
+
+00:04:19.640 --> 00:04:21.580
+trouveront un bénéfice. 3ème principe 
+le fait que les contenus soient 
+
+00:04:21.580 --> 00:04:23.200
+le fait que les contenus soient 
+compréhensibles en rendant les texte 
+
+00:04:23.200 --> 00:04:26.600
+compréhensibles en rendant les texte 
+lisible et compréhensible, en faisant 
+
+00:04:26.600 --> 00:04:27.970
+lisible et compréhensible, en faisant 
+sorte que les pages apparaissent de 
+
+00:04:27.970 --> 00:04:29.890
+sorte que les pages apparaissent de 
+façon prévisible, là il est question 
+
+00:04:29.890 --> 00:04:31.630
+façon prévisible, là il est question 
+, pour le concepteur de s' interroger 
+
+00:04:31.630 --> 00:04:33.910
+, pour le concepteur de s' interroger 
+sur la logique de présentation, la 
+
+00:04:33.910 --> 00:04:35.600
+sur la logique de présentation, la 
+logique d' enchaînement des 
+
+00:04:35.600 --> 00:04:36.620
+logique d' enchaînement des 
+différentes informations et vérifier 
+
+00:04:36.620 --> 00:04:39.290
+différentes informations et vérifier 
+que, elle répond à une logique à peu 
+
+00:04:39.290 --> 00:04:40.850
+que, elle répond à une logique à peu 
+près clair pour tous les utilisateurs 
+
+00:04:40.850 --> 00:04:43.330
+près clair pour tous les utilisateurs 
+et puis naturellement, et nous en 
+
+00:04:43.330 --> 00:04:45.700
+et puis naturellement, et nous en 
+avons déjà parlé, assisté à la saisie 
+
+00:04:45.700 --> 00:04:46.570
+avons déjà parlé, assisté à la saisie 
+d' informations pour l' utilisateur. 
+
+00:04:46.570 --> 00:04:51.270
+d' informations pour l' utilisateur. 
+enfin 4ème principe le fait que le 
+
+00:04:51.270 --> 00:04:53.130
+enfin 4ème principe le fait que le 
+contenu doivent être robustes en 
+
+00:04:53.130 --> 00:04:56.170
+contenu doivent être robustes en 
+optimisant la compatibilité avec les 
+
+00:04:56.170 --> 00:04:57.930
+optimisant la compatibilité avec les 
+logiciels utilisateurs y compris ceux 
+
+00:04:57.930 --> 00:05:01.790
+logiciels utilisateurs y compris ceux 
+des assistances numériques. je vous 
+
+00:05:01.790 --> 00:05:04.910
+des assistances numériques. je vous 
+ai dit en introduction que wa il y 
+
+00:05:04.910 --> 00:05:07.600
+ai dit en introduction que wa il y 
+avait également proposé un certain 
+
+00:05:07.600 --> 00:05:08.310
+avait également proposé un certain 
+nombre de critères et de niveau 
+
+00:05:08.310 --> 00:05:12.100
+nombre de critères et de niveau 
+conformité si votre page est 
+
+00:05:12.100 --> 00:05:14.200
+conformité si votre page est 
+parfaitement conforme aux 
+
+00:05:14.200 --> 00:05:15.250
+parfaitement conforme aux 
+recommandations, vous pourrez 
+
+00:05:15.250 --> 00:05:16.850
+recommandations, vous pourrez 
+bénéficier d' un triple a si elle est 
+
+00:05:16.850 --> 00:05:18.290
+bénéficier d' un triple a si elle est 
+un peu moins d' un double à et enfin 
+
+00:05:18.290 --> 00:05:20.600
+un peu moins d' un double à et enfin 
+si elle est juste accessible d' un 
+
+00:05:20.600 --> 00:05:22.490
+si elle est juste accessible d' un 
+simple et donc ce niveau de 
+
+00:05:22.490 --> 00:05:25.180
+simple et donc ce niveau de 
+conformité traitera comportera 
+
+00:05:25.180 --> 00:05:28.370
+conformité traitera comportera 
+prendra en compte la page complète le 
+
+00:05:28.370 --> 00:05:30.620
+prendra en compte la page complète le 
+processus complet les technologies 
+
+00:05:30.620 --> 00:05:33.800
+processus complet les technologies 
+compatibles accessibilité et enfin, 
+
+00:05:33.800 --> 00:05:35.120
+compatibles accessibilité et enfin, 
+la non- interférence entre tous ces 
+
+00:05:35.120 --> 00:05:37.310
+la non- interférence entre tous ces 
+processus en d' autres termes, il ne 
+
+00:05:37.310 --> 00:05:38.990
+processus en d' autres termes, il ne 
+suffit pas d' avoir une page unique 
+
+00:05:38.990 --> 00:05:42.470
+suffit pas d' avoir une page unique 
+prise de façon individuelle qui soit 
+
+00:05:42.470 --> 00:05:43.810
+prise de façon individuelle qui soit 
+compatible, c'est l' ensemble de tout 
+
+00:05:43.810 --> 00:05:46.270
+compatible, c'est l' ensemble de tout 
+le processus qui va être vérifié et 
+
+00:05:46.270 --> 00:05:48.810
+le processus qui va être vérifié et 
+qui sera attestée avec un double ou 
+
+00:05:48.810 --> 00:05:51.120
+qui sera attestée avec un double ou 
+un triple dans la séquence suivante, 
+
+00:05:51.120 --> 00:05:52.310
+un triple dans la séquence suivante, 
+je vais vous présenter d' autres 
+
+00:05:52.310 --> 00:05:54.440
+je vais vous présenter d' autres 
+recommandations émanant de w. a. i 
+
+00:05:54.440 --> 00:05:56.440
+recommandations émanant de w. a. i 
+portant sur des attributs notamment 
+
+00:05:56.440 --> 00:05:57.800
+portant sur des attributs notamment 
+pour rendent contenus encore plus 
+

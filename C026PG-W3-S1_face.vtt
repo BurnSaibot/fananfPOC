@@ -1,0 +1,853 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.500
+dans la semaine précédente, je vais 
+
+00:00:08.500 --> 00:00:09.560
+dans la semaine précédente, je vais 
+présenter un certain nombre de 
+
+00:00:09.560 --> 00:00:11.520
+présenter un certain nombre de 
+fonctionnalités d' aide numérique 
+
+00:00:11.520 --> 00:00:13.640
+fonctionnalités d' aide numérique 
+destiné à être intégré dans un 
+
+00:00:13.640 --> 00:00:15.220
+destiné à être intégré dans un 
+certain nombre de logiciels comme les 
+
+00:00:15.220 --> 00:00:16.350
+certain nombre de logiciels comme les 
+système exploitation de logiciels 
+
+00:00:16.350 --> 00:00:18.710
+système exploitation de logiciels 
+type plus générique et nous avons 
+
+00:00:18.710 --> 00:00:20.210
+type plus générique et nous avons 
+conclu sur le fait que si seulement 
+
+00:00:20.210 --> 00:00:22.160
+conclu sur le fait que si seulement 
+logiciels présentaient des 
+
+00:00:22.160 --> 00:00:23.350
+logiciels présentaient des 
+fonctionnalités d' interface pour l' 
+
+00:00:23.350 --> 00:00:24.920
+fonctionnalités d' interface pour l' 
+accès des numériques c'était 
+
+00:00:24.920 --> 00:00:26.570
+accès des numériques c'était 
+insuffisant, il fallait aussi s' 
+
+00:00:26.570 --> 00:00:28.700
+insuffisant, il fallait aussi s' 
+intéresser à l' accessibilité contenu 
+
+00:00:28.700 --> 00:00:29.510
+intéresser à l' accessibilité contenu 
+et c'est ce que nous allons faire 
+
+00:00:29.510 --> 00:00:32.780
+et c'est ce que nous allons faire 
+dans cette 3ème semaine donc pour 
+
+00:00:32.780 --> 00:00:34.300
+dans cette 3ème semaine donc pour 
+cela nous avons commencé par le 
+
+00:00:34.300 --> 00:00:35.920
+cela nous avons commencé par le 
+concentrer sur les contenus du web 
+
+00:00:35.920 --> 00:00:39.790
+concentrer sur les contenus du web 
+dans les 4 premières séquences où 
+
+00:00:39.790 --> 00:00:42.250
+dans les 4 premières séquences où 
+nous évoquerons le consortium w3c, 
+
+00:00:42.250 --> 00:00:44.680
+nous évoquerons le consortium w3c, 
+qui gère le développement du web et 
+
+00:00:44.680 --> 00:00:45.850
+qui gère le développement du web et 
+les recommandations qu' il a 
+
+00:00:45.850 --> 00:00:48.200
+les recommandations qu' il a 
+formulées pour ce sujet, et puis nous 
+
+00:00:48.200 --> 00:00:49.670
+formulées pour ce sujet, et puis nous 
+terminerons cette semaine par 2 
+
+00:00:49.670 --> 00:00:50.860
+terminerons cette semaine par 2 
+séquences sur des types particuliers 
+
+00:00:50.860 --> 00:00:52.750
+séquences sur des types particuliers 
+documents numériques que sont les 
+
+00:00:52.750 --> 00:00:54.290
+documents numériques que sont les 
+documents issus de microsoft office 
+
+00:00:54.290 --> 00:00:56.960
+documents issus de microsoft office 
+ou des documents de type pdf donc, en 
+
+00:00:56.960 --> 00:00:58.340
+ou des documents de type pdf donc, en 
+introduction nous pouvons rappeler 
+
+00:00:58.340 --> 00:00:59.570
+introduction nous pouvons rappeler 
+que l' accessibilité numérique 
+
+00:00:59.570 --> 00:01:01.840
+que l' accessibilité numérique 
+commence par des équipements, des 
+
+00:01:01.840 --> 00:01:03.200
+commence par des équipements, des 
+méthodes matériels, des mécanismes 
+
+00:01:03.200 --> 00:01:05.320
+méthodes matériels, des mécanismes 
+principes qui seront implémenté dans 
+
+00:01:05.320 --> 00:01:07.180
+principes qui seront implémenté dans 
+de logiciels, mais qu' elle continue 
+
+00:01:07.180 --> 00:01:09.120
+de logiciels, mais qu' elle continue 
+par les contenus qu' ils soient web 
+
+00:01:09.120 --> 00:01:11.000
+par les contenus qu' ils soient web 
+ou documents générique et que ces 2 
+
+00:01:11.000 --> 00:01:11.620
+ou documents générique et que ces 2 
+facettes sont absolument 
+
+00:01:11.620 --> 00:01:13.430
+facettes sont absolument 
+indispensables, une seule des 2 
+
+00:01:13.430 --> 00:01:17.260
+indispensables, une seule des 2 
+serait insuffisant. donc, si je 
+
+00:01:17.260 --> 00:01:19.670
+serait insuffisant. donc, si je 
+considère le web dans un 1er temps il 
+
+00:01:19.670 --> 00:01:21.790
+considère le web dans un 1er temps il 
+est facile de constater que c'est une 
+
+00:01:21.790 --> 00:01:23.510
+est facile de constater que c'est une 
+véritable révolution dans nos vies, 
+
+00:01:23.510 --> 00:01:25.700
+véritable révolution dans nos vies, 
+et que cette révolution pourrait l' 
+
+00:01:25.700 --> 00:01:27.920
+et que cette révolution pourrait l' 
+être aussi pour des personnes en 
+
+00:01:27.920 --> 00:01:29.480
+être aussi pour des personnes en 
+situation de handicap, mais qu' elle 
+
+00:01:29.480 --> 00:01:31.900
+situation de handicap, mais qu' elle 
+ne l' est pas complètement, je prends 
+
+00:01:31.900 --> 00:01:33.290
+ne l' est pas complètement, je prends 
+un seul exemple concret autrefois 
+
+00:01:33.290 --> 00:01:34.960
+un seul exemple concret autrefois 
+avant la parution du web, des 
+
+00:01:34.960 --> 00:01:36.620
+avant la parution du web, des 
+personnes aux situations de handicap 
+
+00:01:36.620 --> 00:01:39.510
+personnes aux situations de handicap 
+visuel ou moteur avec, par exemple, 
+
+00:01:39.510 --> 00:01:41.450
+visuel ou moteur avec, par exemple, 
+difficultés pour tourner les pages d' 
+
+00:01:41.450 --> 00:01:43.250
+difficultés pour tourner les pages d' 
+un journal était dépendante d' autres 
+
+00:01:43.250 --> 00:01:44.750
+un journal était dépendante d' autres 
+personnes, ce qui limitait d' autant 
+
+00:01:44.750 --> 00:01:46.560
+personnes, ce qui limitait d' autant 
+leur indépendance, leur autonomie. 
+
+00:01:46.560 --> 00:01:49.180
+leur indépendance, leur autonomie. 
+aujourd'hui avec des lecteurs d' 
+
+00:01:49.180 --> 00:01:50.200
+aujourd'hui avec des lecteurs d' 
+écran avait des équipements d' 
+
+00:01:50.200 --> 00:01:51.760
+écran avait des équipements d' 
+interface comme ce que je vous ai 
+
+00:01:51.760 --> 00:01:53.480
+interface comme ce que je vous ai 
+présenté la semaine dernière, il est 
+
+00:01:53.480 --> 00:01:54.890
+présenté la semaine dernière, il est 
+possible pour une personne en 
+
+00:01:54.890 --> 00:01:56.000
+possible pour une personne en 
+situation de handicap d' être 
+
+00:01:56.000 --> 00:01:58.670
+situation de handicap d' être 
+totalement autonome et de lire ces 
+
+00:01:58.670 --> 00:02:01.180
+totalement autonome et de lire ces 
+journaux sans assistance extérieure, 
+
+00:02:01.180 --> 00:02:03.340
+journaux sans assistance extérieure, 
+malheureusement en dépit de ce 
+
+00:02:03.340 --> 00:02:04.870
+malheureusement en dépit de ce 
+potentiel immense qui est offert par 
+
+00:02:04.870 --> 00:02:07.600
+potentiel immense qui est offert par 
+le web, il existe trop peu de 
+
+00:02:07.600 --> 00:02:08.500
+le web, il existe trop peu de 
+véritables applications accessibles 
+
+00:02:08.500 --> 00:02:11.600
+véritables applications accessibles 
+connectés à des contenus accessibles 
+
+00:02:11.600 --> 00:02:14.440
+connectés à des contenus accessibles 
+, donc il existe des navigateurs qui 
+
+00:02:14.440 --> 00:02:16.660
+, donc il existe des navigateurs qui 
+permettent de fournir des fonctions 
+
+00:02:16.660 --> 00:02:18.500
+permettent de fournir des fonctions 
+d' accessibilité, mais si le contenu 
+
+00:02:18.500 --> 00:02:20.360
+d' accessibilité, mais si le contenu 
+ne sont pas, on n' aura pas d' 
+
+00:02:20.360 --> 00:02:22.690
+ne sont pas, on n' aura pas d' 
+accessibilité, donc comment faire et 
+
+00:02:22.690 --> 00:02:24.880
+accessibilité, donc comment faire et 
+la question sous jacente, c'est de se 
+
+00:02:24.880 --> 00:02:26.930
+la question sous jacente, c'est de se 
+demander comment le web est organisée 
+
+00:02:26.930 --> 00:02:29.960
+demander comment le web est organisée 
+pour arriver à introduire ces 
+
+00:02:29.960 --> 00:02:31.120
+pour arriver à introduire ces 
+contenus qui soit véritablement 
+
+00:02:31.120 --> 00:02:33.710
+contenus qui soit véritablement 
+accessible donc évoquons le 
+
+00:02:33.710 --> 00:02:36.620
+accessible donc évoquons le 
+consortium w3c pour world wild web 
+
+00:02:36.620 --> 00:02:39.460
+consortium w3c pour world wild web 
+consortium, qui êtes issu de la 
+
+00:02:39.460 --> 00:02:41.620
+consortium, qui êtes issu de la 
+communauté internationale et qui est 
+
+00:02:41.620 --> 00:02:43.280
+communauté internationale et qui est 
+composé de personnes l' association 
+
+00:02:43.280 --> 00:02:46.200
+composé de personnes l' association 
+3c d' organisation des entreprises, 
+
+00:02:46.200 --> 00:02:47.680
+3c d' organisation des entreprises, 
+des structures et aussi du public, 
+
+00:02:47.680 --> 00:02:51.900
+des structures et aussi du public, 
+les utilisateurs ce consortium vise à 
+
+00:02:51.900 --> 00:02:52.780
+les utilisateurs ce consortium vise à 
+assurer le bon fonctionnement du web 
+
+00:02:52.780 --> 00:02:54.530
+assurer le bon fonctionnement du web 
+et pour cela travailler 
+
+00:02:54.530 --> 00:02:56.300
+et pour cela travailler 
+collectivement, avec toutes ces 
+
+00:02:56.300 --> 00:02:58.400
+collectivement, avec toutes ces 
+différentes parties pour développer 
+
+00:02:58.400 --> 00:03:00.830
+différentes parties pour développer 
+des standards, donc même si en tant 
+
+00:03:00.830 --> 00:03:01.810
+des standards, donc même si en tant 
+qu' utilisateur, nous ne connaissons 
+
+00:03:01.810 --> 00:03:03.500
+qu' utilisateur, nous ne connaissons 
+pas ces standards et leur nom comme 
+
+00:03:03.500 --> 00:03:06.740
+pas ces standards et leur nom comme 
+html, xml css, peu importe, c'est 
+
+00:03:06.740 --> 00:03:08.360
+html, xml css, peu importe, c'est 
+grâce à ces standards, grâce à ce 
+
+00:03:08.360 --> 00:03:10.300
+grâce à ces standards, grâce à ce 
+protocole que nous pouvons utiliser 
+
+00:03:10.300 --> 00:03:12.800
+protocole que nous pouvons utiliser 
+le web sans nous préoccuper de savoir 
+
+00:03:12.800 --> 00:03:13.370
+le web sans nous préoccuper de savoir 
+sur quels types de machines nous 
+
+00:03:13.370 --> 00:03:14.930
+sur quels types de machines nous 
+accédons web et sur quels types de 
+
+00:03:14.930 --> 00:03:16.120
+accédons web et sur quels types de 
+machines par exemple stocker l' 
+
+00:03:16.120 --> 00:03:17.360
+machines par exemple stocker l' 
+information que nous utilisons 
+
+00:03:17.360 --> 00:03:20.990
+information que nous utilisons 
+rappelons pour finir que l' inventeur 
+
+00:03:20.990 --> 00:03:23.500
+rappelons pour finir que l' inventeur 
+du web, tim bernard se lit à nîmes et 
+
+00:03:23.500 --> 00:03:27.750
+du web, tim bernard se lit à nîmes et 
+à fonder w3c en 1994. ce chercheur 
+
+00:03:27.750 --> 00:03:30.410
+à fonder w3c en 1994. ce chercheur 
+avait une vision dès le début, très 
+
+00:03:30.410 --> 00:03:32.340
+avait une vision dès le début, très 
+clairs et en particulier autour de 3 
+
+00:03:32.340 --> 00:03:34.870
+clairs et en particulier autour de 3 
+principes généraux de conception d' 
+
+00:03:34.870 --> 00:03:36.380
+principes généraux de conception d' 
+abord mettre en oeuvre son dard 
+
+00:03:36.380 --> 00:03:38.500
+abord mettre en oeuvre son dard 
+ouvert, c'est-à-dire indépendant d' 
+
+00:03:38.500 --> 00:03:39.960
+ouvert, c'est-à-dire indépendant d' 
+un constructeur de matériel d' un 
+
+00:03:39.960 --> 00:03:41.710
+un constructeur de matériel d' un 
+éditeur de logiciels, de façon à 
+
+00:03:41.710 --> 00:03:43.870
+éditeur de logiciels, de façon à 
+favoriser l' indépendance du web et à 
+
+00:03:43.870 --> 00:03:45.660
+favoriser l' indépendance du web et à 
+ne pas être dépendant d' une seule 
+
+00:03:45.660 --> 00:03:48.970
+ne pas être dépendant d' une seule 
+structure. 2ème, principe qu' il 
+
+00:03:48.970 --> 00:03:50.870
+structure. 2ème, principe qu' il 
+avait évoqué très rapidement, c'était 
+
+00:03:50.870 --> 00:03:53.300
+avait évoqué très rapidement, c'était 
+la notion de pour tous lutter contre 
+
+00:03:53.300 --> 00:03:56.750
+la notion de pour tous lutter contre 
+les fractures et de cette volonté de 
+
+00:03:56.750 --> 00:03:57.940
+les fractures et de cette volonté de 
+web pour tous et n' est une 
+
+00:03:57.940 --> 00:03:59.600
+web pour tous et n' est une 
+initiative que je vais vous détailler 
+
+00:03:59.600 --> 00:04:00.940
+initiative que je vais vous détailler 
+juste après qui s' appelle la web 
+
+00:04:00.940 --> 00:04:03.710
+juste après qui s' appelle la web 
+accessibilité initiative w i en 
+
+00:04:03.710 --> 00:04:07.630
+accessibilité initiative w i en 
+abrégé, et enfin 3ème principe qui 
+
+00:04:07.630 --> 00:04:10.610
+abrégé, et enfin 3ème principe qui 
+est de plus en d' actualité, le web 
+
+00:04:10.610 --> 00:04:12.740
+est de plus en d' actualité, le web 
+partout, donc on parle aujourd'hui d' 
+
+00:04:12.740 --> 00:04:14.120
+partout, donc on parle aujourd'hui d' 
+internet des objets internet au film 
+
+00:04:14.120 --> 00:04:15.800
+internet des objets internet au film 
+l' anglais ont, par les objets 
+
+00:04:15.800 --> 00:04:17.360
+l' anglais ont, par les objets 
+connectés, c'est une vision que qui 
+
+00:04:17.360 --> 00:04:19.300
+connectés, c'est une vision que qui 
+était déjà envisagé dès le début du 
+
+00:04:19.300 --> 00:04:23.730
+était déjà envisagé dès le début du 
+mois. et finalement pour arriver à 
+
+00:04:23.730 --> 00:04:24.990
+mois. et finalement pour arriver à 
+appliquer véritablement ces principes 
+
+00:04:24.990 --> 00:04:26.270
+appliquer véritablement ces principes 
+, un certain nombre d' éléments de 
+
+00:04:26.270 --> 00:04:27.950
+, un certain nombre d' éléments de 
+vision qui sont qu' il est absolument 
+
+00:04:27.950 --> 00:04:30.120
+vision qui sont qu' il est absolument 
+indispensable de proposer une 
+
+00:04:30.120 --> 00:04:31.430
+indispensable de proposer une 
+interaction très riche, pas 
+
+00:04:31.430 --> 00:04:33.970
+interaction très riche, pas 
+uniquement en lecture de site web qu' 
+
+00:04:33.970 --> 00:04:35.390
+uniquement en lecture de site web qu' 
+il est nécessaire d' avoir bien sûr 
+
+00:04:35.390 --> 00:04:36.680
+il est nécessaire d' avoir bien sûr 
+des données mais aussi des services 
+
+00:04:36.680 --> 00:04:38.100
+des données mais aussi des services 
+pour aller vers ce que l' on appelle 
+
+00:04:38.100 --> 00:04:40.430
+pour aller vers ce que l' on appelle 
+le web sémantique et puis enfin de s' 
+
+00:04:40.430 --> 00:04:41.970
+le web sémantique et puis enfin de s' 
+intéresser aux problèmes de 
+
+00:04:41.970 --> 00:04:43.740
+intéresser aux problèmes de 
+confidentialité respect la vie privée 
+
+00:04:43.740 --> 00:04:45.360
+confidentialité respect la vie privée 
+pour avoir un web véritablement 
+
+00:04:45.360 --> 00:04:48.910
+pour avoir un web véritablement 
+dignes de confiance. donc concentrons 
+
+00:04:48.910 --> 00:04:50.760
+dignes de confiance. donc concentrons 
+-nous maintenant sur cette web 
+
+00:04:50.760 --> 00:04:53.110
+-nous maintenant sur cette web 
+accessibilité initiative qui se 
+
+00:04:53.110 --> 00:04:54.310
+accessibilité initiative qui se 
+réfère explicitement à la convention 
+
+00:04:54.310 --> 00:04:56.250
+réfère explicitement à la convention 
+onu sur les droits des personnes 
+
+00:04:56.250 --> 00:04:58.160
+onu sur les droits des personnes 
+restitution de handicap que hélène 
+
+00:04:58.160 --> 00:04:59.500
+restitution de handicap que hélène 
+vous a présenté dans la 1ère semaine 
+
+00:04:59.500 --> 00:05:02.230
+vous a présenté dans la 1ère semaine 
+et qui insistait sur l' accès au 
+
+00:05:02.230 --> 00:05:03.750
+et qui insistait sur l' accès au 
+monde numérique des personnes en 
+
+00:05:03.750 --> 00:05:05.990
+monde numérique des personnes en 
+situation de handicap cette 
+
+00:05:05.990 --> 00:05:07.750
+situation de handicap cette 
+initiative regroupe des entreprises, 
+
+00:05:07.750 --> 00:05:09.000
+initiative regroupe des entreprises, 
+des chercheurs des utilisateurs et 
+
+00:05:09.000 --> 00:05:11.110
+des chercheurs des utilisateurs et 
+aussi les associations, elles ne 
+
+00:05:11.110 --> 00:05:12.440
+aussi les associations, elles ne 
+développent des stratégies et des 
+
+00:05:12.440 --> 00:05:14.430
+développent des stratégies et des 
+recommandations, ainsi que des 
+
+00:05:14.430 --> 00:05:16.360
+recommandations, ainsi que des 
+ressources pour rendre le web 
+
+00:05:16.360 --> 00:05:18.270
+ressources pour rendre le web 
+accessible aux personnes en situation 
+
+00:05:18.270 --> 00:05:20.380
+accessible aux personnes en situation 
+de handicap et c'est ce que je vous 
+
+00:05:20.380 --> 00:05:22.890
+de handicap et c'est ce que je vous 
+êtes -vous détailler dans les slide 
+
+00:05:22.890 --> 00:05:25.660
+êtes -vous détailler dans les slide 
+qui suit, elle travaille en anglais 
+
+00:05:25.660 --> 00:05:26.700
+qui suit, elle travaille en anglais 
+parce que c'est un milieu 
+
+00:05:26.700 --> 00:05:28.720
+parce que c'est un milieu 
+international, mais il existe des 
+
+00:05:28.720 --> 00:05:29.740
+international, mais il existe des 
+traductions dans beaucoup de langues 
+
+00:05:29.740 --> 00:05:30.910
+traductions dans beaucoup de langues 
+par exemple en france, l' association 
+
+00:05:30.910 --> 00:05:33.810
+par exemple en france, l' association 
+braille net habilité pour proposer 
+
+00:05:33.810 --> 00:05:36.790
+braille net habilité pour proposer 
+diffuser ses recommandations qu' en 
+
+00:05:36.790 --> 00:05:39.600
+diffuser ses recommandations qu' en 
+français, vous trouverez sur les 
+
+00:05:39.600 --> 00:05:41.100
+français, vous trouverez sur les 
+derniers cela et de ressources des 
+
+00:05:41.100 --> 00:05:42.180
+derniers cela et de ressources des 
+liens pour accéder à cette traduction 
+
+00:05:42.180 --> 00:05:46.410
+liens pour accéder à cette traduction 
+. finalement, le coeur de cette 
+
+00:05:46.410 --> 00:05:49.520
+. finalement, le coeur de cette 
+initiative étaient la séparation en 3 
+
+00:05:49.520 --> 00:05:52.640
+initiative étaient la séparation en 3 
+composantes fondamentales pour l' 
+
+00:05:52.640 --> 00:05:54.500
+composantes fondamentales pour l' 
+accessibilité d' une part, en 
+
+00:05:54.500 --> 00:05:55.930
+accessibilité d' une part, en 
+commençant par la partie en bas à 
+
+00:05:55.930 --> 00:05:58.250
+commençant par la partie en bas à 
+gauche du schéma les développeurs qui 
+
+00:05:58.250 --> 00:05:59.970
+gauche du schéma les développeurs qui 
+vont éditer des systèmes d' édition 
+
+00:05:59.970 --> 00:06:03.260
+vont éditer des systèmes d' édition 
+pour les contenus sur la partie haute 
+
+00:06:03.260 --> 00:06:05.400
+pour les contenus sur la partie haute 
+, les contenus eux- mêmes, donc les 
+
+00:06:05.400 --> 00:06:06.600
+, les contenus eux- mêmes, donc les 
+informations, services qui sont 
+
+00:06:06.600 --> 00:06:07.980
+informations, services qui sont 
+contenus dans les pages web et dans 
+
+00:06:07.980 --> 00:06:09.480
+contenus dans les pages web et dans 
+la partie en bas à droite, les 
+
+00:06:09.480 --> 00:06:11.160
+la partie en bas à droite, les 
+utilisateurs qui accèdent à ce 
+
+00:06:11.160 --> 00:06:13.350
+utilisateurs qui accèdent à ce 
+contenu via des navigateurs comme ce 
+
+00:06:13.350 --> 00:06:14.270
+contenu via des navigateurs comme ce 
+que nous avons évoqués la semaine 
+
+00:06:14.270 --> 00:06:16.620
+que nous avons évoqués la semaine 
+précédente et finalement pour chacun 
+
+00:06:16.620 --> 00:06:20.600
+précédente et finalement pour chacun 
+, chacune de ces 3 partis w. a. il va 
+
+00:06:20.600 --> 00:06:22.580
+, chacune de ces 3 partis w. a. il va 
+éditer un ensemble de recommandations 
+
+00:06:22.580 --> 00:06:26.500
+éditer un ensemble de recommandations 
+. que l' on appellera en anglais les 
+
+00:06:26.500 --> 00:06:28.850
+. que l' on appellera en anglais les 
+accessible eating highlights âgé, 
+
+00:06:28.850 --> 00:06:31.550
+accessible eating highlights âgé, 
+donc pour les systèmes auteur ce qu' 
+
+00:06:31.550 --> 00:06:32.630
+donc pour les systèmes auteur ce qu' 
+on appellera les attaques pour les 
+
+00:06:32.630 --> 00:06:34.550
+on appellera les attaques pour les 
+systèmes d' édition comme cms par 
+
+00:06:34.550 --> 00:06:37.100
+systèmes d' édition comme cms par 
+exemple pour les contenus parlera wk 
+
+00:06:37.100 --> 00:06:38.810
+exemple pour les contenus parlera wk 
+gay c'est cette partie -là en 
+
+00:06:38.810 --> 00:06:40.510
+gay c'est cette partie -là en 
+particulier que je vais détailler 
+
+00:06:40.510 --> 00:06:43.970
+particulier que je vais détailler 
+dans la suite et puis également des 
+
+00:06:43.970 --> 00:06:46.250
+dans la suite et puis également des 
+recommandations pour les clients, 
+
+00:06:46.250 --> 00:06:48.890
+recommandations pour les clients, 
+navigateur web par exemple écoute 
+
+00:06:48.890 --> 00:06:50.930
+navigateur web par exemple écoute 
+utiliseront les utilisateurs et 
+
+00:06:50.930 --> 00:06:52.810
+utiliseront les utilisateurs et 
+évidemment pour un souci de cohérence 
+
+00:06:52.810 --> 00:06:54.320
+évidemment pour un souci de cohérence 
+toutes ses recommandations sont 
+
+00:06:54.320 --> 00:06:55.550
+toutes ses recommandations sont 
+basées sur des spécifications 
+
+00:06:55.550 --> 00:06:58.290
+basées sur des spécifications 
+techniques w3c que son html, xml etc 
+
+00:06:58.290 --> 00:07:02.120
+techniques w3c que son html, xml etc 
+. citons rapidement pour conclure, 
+
+00:07:02.120 --> 00:07:03.270
+. citons rapidement pour conclure, 
+une initiative qui a eu beaucoup 
+
+00:07:03.270 --> 00:07:05.830
+une initiative qui a eu beaucoup 
+moins de d' importance mais qui était 
+
+00:07:05.830 --> 00:07:08.140
+moins de d' importance mais qui était 
+très intéressante, l' étendard sur la 
+
+00:07:08.140 --> 00:07:09.740
+très intéressante, l' étendard sur la 
+littérature scientifique on considère 
+
+00:07:09.740 --> 00:07:12.430
+littérature scientifique on considère 
+peu près 150 études pour les 
+
+00:07:12.430 --> 00:07:14.800
+peu près 150 études pour les 
+personnes âgées et qui a émis des 
+
+00:07:14.800 --> 00:07:15.110
+personnes âgées et qui a émis des 
+recommandations pour sites 
+
+00:07:15.110 --> 00:07:18.240
+recommandations pour sites 
+accessibles aux personnes âgées. dans 
+
+00:07:18.240 --> 00:07:19.990
+accessibles aux personnes âgées. dans 
+la prochaine séquence je vais 
+
+00:07:19.990 --> 00:07:21.560
+la prochaine séquence je vais 
+détailler les recommandations pour 
+
