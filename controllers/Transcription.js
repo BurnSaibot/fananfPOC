@@ -146,30 +146,24 @@ exports.viewsTranscriptions = function(req,res) {
 var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     //callback(error,subtitles)
     console.log("inGetSubt")
-    var sub = [];
     Transcription.findById(id_transcription,function(error,transcription){
         if (error) throw error;//_.response.sendError(res,error,500);
-        var counter = 0;
-        var pushIncrement = function(counter,subArray,subContent,callback2) {
-            counter++;
-            subArray.push(subContent);
-            if (counter >= transcription.subTitles.length) {
-                callback2(err,sub);
-            }
-        }
-        transcription.subTitles.forEach(function(subtitle,index){
-            console.log("Id : " + subtitle);    
-            mSubtitle.find({_id: subtitle},function(err,subContent){
-                console.log("Before push Increment");
-                pushIncrement(counter,sub,subContent,function(error,sub){
-                    console.log("In the callback of PUSHINCREMENT");
-                    callback(err,sub);
-                });
-            });   
-        }); 
+        handlingSubtitles(transcription.subTitles,callback(err,subtitles));
     }); 
 }
 
+var handlingSubtitles = async function(sub_ids,callback) {
+    var sub = []
+    //Callback(error,sub)
+    for (const sub of sub_ids) {
+        await mSubtitle.find({_id: sub},function(err,foundSub){
+            Console.log("On traite : " + sub);
+            if (err) _.response.sendError(res,err,500);
+            sub.push(foundSub);
+        })
+    }
+    callback(err,sub);
+}
 
 exports.viewsOneTranscription = function(req,res) {
     console.log("Id de la transcription à trouver : " + req.params.id);
