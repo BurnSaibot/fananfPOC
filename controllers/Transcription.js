@@ -161,7 +161,9 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
 }
 
 exports.viewsOneTranscription = function(req,res) {
+    console.log("Id de la transcription à trouver : " + req.params.id);
     Transcription.findById(req.params.id,function(err, transcript){
+        console.log("Transcription trouvée" + transcript + "\n calling getSub()");
         if (err) _.response.sendError(res,err,500);
         getSub(transcript._id,function(err2,sub) {
             if (err2) _.response.sendError(res,err2,500);
