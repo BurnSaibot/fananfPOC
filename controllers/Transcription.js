@@ -160,12 +160,13 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
                 console.log("Incremented : " + counter);
                 if (err) _.response.sendError(res,err,500);
                 sub.push(subContent);
-            });
-            console.log("Counter : " + counter + " length : " + transcription.subTitles.length);
-            if (counter >= transcription.subTitles.length) {
+                console.log("Counter : " + counter + " length : " + transcription.subTitles.length);
+                if (counter >= transcription.subTitles.length) {
                 console.log("On lance le callback ?");
                 callback(err,sub);
             }
+            });
+            
         });
         
         //console.log(sub);
