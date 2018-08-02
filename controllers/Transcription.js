@@ -42,22 +42,25 @@ exports.register = function(req,res) {
                 //moving the temporary file to the good place : /data/videos/idgroup
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
-                    
+                    console.log("Saving the transcription before working on the video");
                     newTrans.save(function(error,transcription) {
                         //saving the transcription in the bdd & then wait for the script to create subtile files
                         if (error) {
                             throw error;
                         } else {
                             // executing the script to get transcription
+                            console.log("Launching the script on the Video to get subtitles");
                             shell.exec("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true},function(code,stdout,stderr) {
                                 console.log("Code: " + code);
                                 //Vérifying there wasn't any trouble with the script, then register all data in db
                                 if (code == 0) {
+                                    console.log("Updating the transcription on \"Done\"");
                                     Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'}, function(error,updtTranscription){
                                         if (error) _.response.sendError(res,error,500);
                                         //then we save the different transcription in the db, depending on the format
+                                        console.log("Saving the generated subtitles in db ");
                                         if (fields.format == "srt") {
-                                            console.log("srt only");
+                                            console.log(" Format : srt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                                                 format: "srt" 
@@ -68,7 +71,7 @@ exports.register = function(req,res) {
                                                 addSubtitle(transcription._id,sub1._id);
                                             })
                                         } else if (fields.format == "vtt") {
-                                            console.log("vtt only");
+                                            console.log("Format : vtt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                                                 format: "vtt" 
@@ -80,7 +83,7 @@ exports.register = function(req,res) {
                                             })
             
                                         } else if (fields.format == "all") {
-                                            console.log("ALL");
+                                            console.log("Format : All");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                                                 format: "srt" 
@@ -105,6 +108,7 @@ exports.register = function(req,res) {
                                             
                                                         
                                         } else {
+                                            console.log("Script failed, updating the transcription to \"failed\"");
                                             Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
                                                 if (error) throw err
                                             });
