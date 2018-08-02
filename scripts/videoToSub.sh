@@ -56,6 +56,8 @@ function generatingSub() {
     then
 	echo `python $script  --srt $inputFile > $folder$filename.srt`
 	echo `python $script  --webvtt $inputFile > $folders$filename.vtt`
+    echo "python $script  --srt $inputFile > $folder$filename.srt"
+	echo "python $script  --webvtt $inputFile > $folders$filename.vtt"
     else
 	exit 4
     fi
