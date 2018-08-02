@@ -163,6 +163,7 @@ exports.viewsOneTranscription = function(req,res) {
 var addSubtitle = function(tr_id,sub_id) {
     Transcription.findById(tr_id,function(error,tr) {
         if (error) throw error; //_.response.sendError(res,error,500);
+        console.log("Contenu : " + tr);
         var updtedSub = tr.subTitles;
         console.log("Before : " + updtedSub);
         updtedSub.push(sub_id);
