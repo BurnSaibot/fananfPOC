@@ -151,10 +151,12 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
         console.log("Searching for Transcription");
         if (error) throw error;//_.response.sendError(res,error,500);
         var counter = 0;
+        console.log(counter);
         transcription.subTitles.forEach(function(subtitle,index,array){
             
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 counter++;
+                console.log("Incremented : " + counter);
                 if (err) _.response.sendError(res,err,500);
                 sub.push(subContent);
             });
