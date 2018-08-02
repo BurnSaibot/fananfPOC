@@ -150,11 +150,17 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     Transcription.findById(id_transcription,function(error,transcription){
         console.log("Searching for Transcription");
         if (error) throw error;//_.response.sendError(res,error,500);
-        getSubFrom(transcription,sub).then(function(sub){
-            callback(error,sub);
-        },
-        function(error2){
-            _.response.sendError(res,error2,500);
+        var counter = 0;
+        transcription.subTitles.forEach(function(subtitle,index,array){
+            
+            mSubtitle.find({_id: subtitle},function(err,subContent){
+                counter++;
+                if (err) _.response.sendError(res,err,500);
+                sub.push(subContent);
+            });
+            if (counter >= array.length) {
+                callback(err,sub);
+            }
         });
         
         //console.log(sub);
@@ -162,19 +168,7 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     }); 
 }
 
-var getSubFrom = function(transcription,sub) {
-    return new Promise (function(resolve,reject){
-        transcription.subTitles.forEach(function(subtitle,index){
-            console.log("Looping over subtitles, inde:" + index);
-            mSubtitle.find({_id: subtitle},function(err,subContent){
-                if (err) reject(err);
-                sub.push(subContent);
-            });
-            resolve(sub);
-        });
-        
-    })
-}
+
 exports.viewsOneTranscription = function(req,res) {
     console.log("Id de la transcription à trouver : " + req.params.id);
     Transcription.findById(req.params.id,function(err, transcript){
