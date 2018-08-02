@@ -169,8 +169,9 @@ var addSubtitle = function(tr_id,sub_id) {
     })
 }
 
-var saveSubtitlesPlusAdd = function(tr_id,sub_ids) {
-    sub_ids.forEach(function(sub,index){
+var saveSubtitlesPlusAdd = function(tr_id,subs) {
+    console.log("Dans la fonction, subs : " + subs)
+    subs.forEach(function(sub,index){
         sub.save(function(error,savedSub){
             addSubtitle(tr_id,savedSub._id);
         })
