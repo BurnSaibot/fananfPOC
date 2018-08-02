@@ -91,15 +91,14 @@ exports.register = function(req,res) {
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
                                                 console.log("Soustitre 1:" + sub1);
-                                                addSubtitle(transcription._id,sub1._id); 
+                                                addSubtitle(transcription._id,sub1._id);
+                                                subtitle2.save(function(error,sub2) {
+                                                    if (error) _.response.sendError(res,error,500);
+                                                    console.log("Soustitre 2:" + sub2);
+                                                    addSubtitle(transcription._id,sub2._id); 
+                                                })
                                             })
-            
-                                            subtitle2.save(function(error,sub2) {
-                                                if (error) _.response.sendError(res,error,500);
-                                                console.log("Soustitre 2:" + sub2);
-                                                addSubtitle(transcription._id,sub2._id); 
-                                            })
-            
+                                                        
                                         } else {
                                             _.response.sendError(res,"bad format selected", 500);
                                         }
