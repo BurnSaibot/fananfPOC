@@ -164,7 +164,9 @@ var addSubtitle = function(tr_id,sub_id) {
     Transcription.findById(tr_id,function(error,tr) {
         if (error) throw error; //_.response.sendError(res,error,500);
         var updtedSub = tr.subTitles;
+        console.log("Before : " + updtedSub);
         updtedSub.push(sub_id);
+        console.log("After : " + updtedSub)
         Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(error2,updtedTr){
             if (error2) throw error2; //_.response.sendError(res,error2,500);
         })
