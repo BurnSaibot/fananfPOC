@@ -149,7 +149,7 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     var sub = [];
     Transcription.findById(id_transcription, function(error,transcription){
         console.log("Searching for Transcription");
-        if (error) //_.response.sendError(res,error,500);
+        if (error) throw error;//_.response.sendError(res,error,500);
         transcription.subTitles.forEach(function(subtitle,index){
             console.log("Looping over subtitles, inde:" + index);
             mSubtitle.find({_id: subtitle},function(err,subContent){
