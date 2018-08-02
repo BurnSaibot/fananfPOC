@@ -54,6 +54,7 @@ function generatingSub() {
 	echo `python $script --webvtt $inputFile > $folder$filename.vtt`
     elif [ "$1" = "all" ]
     then
+	echo "On est bien dans le all"
 	echo `python $script  --srt $inputFile > $folder$filename.srt`
 	echo `python $script  --webvtt $inputFile > $folders$filename.vtt`
     echo "python $script  --srt $inputFile > $folder$filename.srt"
