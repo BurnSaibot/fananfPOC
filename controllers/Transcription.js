@@ -148,29 +148,18 @@ var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
     console.log("inGetSubt")
     var sub = [];
     Transcription.findById(id_transcription,function(error,transcription){
-        console.log("Searching for Transcription");
         if (error) throw error;//_.response.sendError(res,error,500);
         var counter = 0;
-        console.log(counter);
-        console.log("Length : " + transcription.subTitles.length);
-        transcription.subTitles.forEach(function(subtitle,index){
-            
+        transcription.subTitles.forEach(function(subtitle,index){           
             mSubtitle.find({_id: subtitle},function(err,subContent){
                 counter++;
-                console.log("Incremented : " + counter);
                 if (err) _.response.sendError(res,err,500);
-                sub.push(subContent);
-                console.log("Counter : " + counter + " length : " + transcription.subTitles.length);
+                    sub.push(subContent);
                 if (counter >= transcription.subTitles.length) {
-                console.log("On lance le callback ?");
-                callback(err,sub);
+                    callback(err,sub);
             }
-            });
-            
-        });
-        
-        //console.log(sub);
-        
+            });   
+        }); 
     }); 
 }
 
