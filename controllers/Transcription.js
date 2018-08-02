@@ -28,7 +28,7 @@ exports.register = function(req,res) {
             name: propperName,
             group: fields.group,
             urlVideo: newpath,
-            status: false,
+            status: 'On Going',
             sousTitres: []
         })
 
@@ -45,14 +45,15 @@ exports.register = function(req,res) {
                     
                     newTrans.save(function(error,transcription) {
                         //saving the transcription in the bdd & then wait for the script to create subtile files
-                        if (error) _.response.sendError(res,error,500);
-                        else {
+                        if (error) {
+                            throw error;
+                        } else {
                             // executing the script to get transcription
-                            shell.exec("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: false},function(code,stdout,stderr) {
+                            shell.exec("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true},function(code,stdout,stderr) {
                                 console.log("Code: " + code);
                                 //Vérifying there wasn't any trouble with the script, then register all data in db
                                 if (code == 0) {
-                                    Transcription.findByIdAndUpdate(transcription._id, {status: true}, function(error,updtTranscription){
+                                    Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'}, function(error,updtTranscription){
                                         if (error) _.response.sendError(res,error,500);
                                         //then we save the different transcription in the db, depending on the format
                                         if (fields.format == "srt") {
@@ -104,7 +105,9 @@ exports.register = function(req,res) {
                                             
                                                         
                                         } else {
-                                            _.response.sendError(res,"bad format selected", 500);
+                                            Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                                                if (error) throw err
+                                            });
                                         }
                                     })
                                     }
@@ -178,15 +181,6 @@ var addSubtitle = function(tr_id,sub_id) {
     })
 }
 
-/* var saveSubtitlesPlusAdd = function(tr_id,subs) {
-    console.log("Dans la fonction, subs : " + subs)
-    subs.forEach(function(sub,index){
-        sub.save(function(error,savedSub){
-            addSubtitle(tr_id,savedSub._id);
-        })
-        
-    })
-}*/
 var addSubtitleP = function(tr_id,sub_id) {
     return new Promise(function(resolve,reject){
         Transcription.findById(tr_id,function(err,tr){

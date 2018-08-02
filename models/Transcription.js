@@ -18,7 +18,8 @@ var transcriptionSchema = new Schema({
         unique: true
     },
     status: {
-        type: Boolean
+        type: String,
+        enum: ['On Going','Failed','Done']
     },
     subTitles:[{
         type: Schema.Types.ObjectId,
