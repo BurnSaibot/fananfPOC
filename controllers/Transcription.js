@@ -168,7 +168,7 @@ exports.viewsOneTranscription = function(req,res) {
         getSub(transcript._id,function(err2,sub) {
             if (err2) _.response.sendError(res,err2,500);
             console.log("Contenu du tableau \"sub\" avant de rendre : " + sub);
-            res.render('transcription.ejs',{transcription: transcript, subtitles: sub});
+            res.render('testfile.ejs',{transcription: transcript, subtitles: sub});
         })
     })
 }
