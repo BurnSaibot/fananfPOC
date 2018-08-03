@@ -19,10 +19,13 @@ exports.register = function(req,res) {
         var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group, propperName);
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
+
+        
         //now we have to create the file were we should store the videos & the subtitles
         _.helper.mkdirSync(pathOut);
         _.helper.mkdirSync(path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group));
-        console.log("\n\n\n\n Format : " + fields.format + "\n\n\n\n");
+
+
         //now we create the transcription
         var newTrans = new Transcription({
             name: propperName,
