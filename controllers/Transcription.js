@@ -152,17 +152,14 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
                 transcription: tr._id
             })
 
-            var subtitle1 = new mSubtitle ({
+            var subtitle2 = new mSubtitle ({
                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                 format: "vtt",
                 transcription: tr._id
             })
-            
+
             subtitle1.save()
-            .then( function(result) {
-                console.log("did save sub 1, will save sub2");
-                 return subtitle2.save() 
-            })
+            .then( subtitle2.save())
             .then(function(result){
                 console.log("did save sub 2, will resolve now");
                 resolve(tr);
