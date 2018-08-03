@@ -32,6 +32,10 @@
         </br>
         <% }) %>
 
+        <form method="GET" action="/transcription/<%=transcription._id%>/edit">
+            <input type="submit" value="Modifier"/>
+        </form>
+
     </body>
     <%- include('partials/footer') %>
 </html>
