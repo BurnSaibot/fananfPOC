@@ -50,11 +50,12 @@ exports.register = function(req,res) {
                     })
                     .then(function(transcription){
                         console.log("Launching the script");
-                        return execScript("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: false},transcription)
+                        var script = "/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut;
+                        return execScript(script,{silent: false},transcription);
                     })
                     .then(function(transcription) {
                         console.log("EVerything should be good, so we are chaging status to \"done\"");
-                        return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'})
+                        return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'});
                     })
                     .catch(function(err) {
                         Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error2,updtTranscription){
@@ -111,14 +112,15 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
                 transcription: tr._id
             })
 
-            subtitle1.save(function(error,sub1) {
-                if (error) reject(error);
-            }).then(resolve(tr))
+            subtitle1.save()
+            .then(function(tr){
+                resolve(tr);
+            })
             .catch(function(error2) {
                 Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
-                    if (error) throw error
+                    if (error) reject(error);
                 });
-                throw error2;
+                reject(error2);
             });
         } else if (format == "vtt") {
             console.log("Format : vtt only");
@@ -129,12 +131,14 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             })
 
             subtitle1.save()
-            .then(resolve(tr))
+            .then(function(tr){
+                resolve(tr);
+            })
             .catch(function(error2) {
                 Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
-                    if (error) throw error
+                    if (error) reject(error);
                 });
-                throw error2;
+                reject(error2);
             });
 
         } else if (format == "all") {
@@ -153,12 +157,14 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             
             subtitle1.save()
             .then( subtitle2.save() )
-            .then(resolve(tr))
+            .then(function(tr){
+                resolve(tr);
+            })
             .catch(function(error2) {
                 Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
-                    if (error) throw error
+                    if (error) reject(error);
                 });
-                throw error2;
+                reject(error2);
             });
             
                         
