@@ -45,12 +45,15 @@ exports.register = function(req,res) {
                     console.log("Saving the transcription before working on the video");
                     newTrans.save()
                     .then(function(transcription) {
+                        console.log("Saving subtitles");
                         return saveSubtitles(pathOut,propperName,fields.format,transcription);
                     })
                     .then(function(transcription){
-                        return execScript("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true},transcription)
+                        console.log("Launching the script");
+                        return execScript("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: false},transcription)
                     })
                     .then(function(transcription) {
+                        console.log("EVerything should be good, so we are chaging status to \"done\"");
                         return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'})
                     })
                     .catch(function(err) {
