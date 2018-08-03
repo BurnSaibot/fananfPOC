@@ -10,8 +10,8 @@
         <%- include('partials/headerConnected') %>
 
         <form method="post" action="transcription/<%=transcription._id%>/updt"</form>>
-            <label for="newName">Nouveau nom : </label>
-            <input type="text" name="newName" value="<%=transcription.name%>" required/>
+            <label for="newName"> Nouveau nom : </label>
+            <input type="text" name="newName" value=<%=transcription.name%> required/>
             <input type="submit" value="Valider les changements">
         </form>
         
