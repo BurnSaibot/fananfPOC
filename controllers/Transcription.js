@@ -118,7 +118,7 @@ exports.updt = function(req,res) {
              _.response.sendError(res,err,500);
         } else {
             console.log("transcription updated redirecting to " + '/trancription/' +tr._id);
-            res.redirect('/trancription/'+tr._id);
+            res.redirect('/trancriptions/');
         }
     })
 }
