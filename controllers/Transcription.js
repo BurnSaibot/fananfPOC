@@ -69,7 +69,6 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                addSubtitle(transcription._id,sub1._id);
                                             })
                                         } else if (fields.format == "vtt") {
                                             console.log("Format : vtt only");
@@ -81,7 +80,6 @@ exports.register = function(req,res) {
             
                                             subtitle1.save(function(error,sub1) {
                                                 if (error) _.response.sendError(res,error,500);
-                                                addSubtitle(transcription._id,sub1._id); 
                                             })
             
                                         } else if (fields.format == "all") {
@@ -99,13 +97,7 @@ exports.register = function(req,res) {
                                             })
                                             
                                             subtitle1.save()
-                                            .then(function(sub) {
-                                                return addSubtitleP(updtTranscription._id,sub._id)
-                                            })
                                             .then( subtitle2.save() )
-                                            .then( function(sub2) {
-                                                return addSubtitleP(updtTranscription._id,sub2._id)
-                                            })
                                             .catch(function(err) {
                                                 throw err
                                             });
@@ -154,36 +146,4 @@ exports.viewsOneTranscription = function(req,res) {
     }, (err) => {
         _.response.sendError(res,err,500);
     })
-}
-var addSubtitle = function(tr_id,sub_id) {
-    Transcription.findById(tr_id,function(error,tr) {
-        if (error) throw error; //_.response.sendError(res,error,500);
-        //console.log("Contenu : " + tr.subTitles);
-        var updtedSub = tr.subTitles;
-        //console.log("Before : " + updtedSub);
-        updtedSub.push(sub_id);
-        //console.log("After : " + updtedSub)
-        Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(error2,updtedTr){
-            if (error2) throw error2; //_.response.sendError(res,error2,500);
-        })
-    })
-}
-
-var addSubtitleP = function(tr_id,sub_id) {
-    return new Promise(function(resolve,reject){
-        Transcription.findById(tr_id,function(err,tr){
-            if (err) reject(err);
-        console.log("Contenu : " + tr.subTitles);
-        var updtedSub = tr.subTitles;
-        console.log("Before : " + updtedSub);
-        updtedSub.push(sub_id);
-        console.log("After : " + updtedSub);
-        Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(err2,updtedTr){
-            if (err) reject(err2); //_.response.sendError(res,error2,500);
-            else {
-                resolve(updtedTr);
-            }
-        })
-        })
-    });
 }
