@@ -1,0 +1,19 @@
+<!DOCTYPE hyml>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title> Edition de la transcription transcription : <%=transcription.name%> </title>
+        <link rel="stylesheet" href="/style/general.css">
+		<link rel="stylesheet" href="/style/menu.css">	
+    </head>
+    <body>
+        <%- include('partials/headerConnected') %>
+        <form method="post" action="transaction/<%=transaction._id/edit">
+            <label for="newName">Nouveau nom : </label>
+            <input type="text" value="<%=transaction.name%>" required/>
+            <input type="submit" value="Valider les changements">
+        </form>
+
+    </body>
+    <%- include('partials/footer') %>
+</html>
