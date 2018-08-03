@@ -43,80 +43,17 @@ exports.register = function(req,res) {
                 fs.unlink(oldpath, function(err) {
                     if (err) _.response.sendError(res,err,500);
                     console.log("Saving the transcription before working on the video");
-                    newTrans.save(function(error,transcription) {
-                        //saving the transcription in the bdd & then wait for the script to create subtile files
-                        if (error) {
-                            Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error2,updtTranscription){
-                                if (error2) throw error2;
-                            })
-                        } else {
-                            // executing the script to get transcription
-                            console.log("Launching the script on the Video to get subtitles");
-                            shell.exec("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true},function(code,stdout,stderr) {
-                                console.log("Code: " + code);
-                                //Vérifying there wasn't any trouble with the script, then register all data in db
-                                if (code == 0) {
-                                    console.log("Updating the transcription on \"Done\"");
-                                    Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'}, function(error,updtTranscription){
-                                        if (error) _.response.sendError(res,error,500);
-                                        //then we save the different transcription in the db, depending on the format
-                                        console.log("Saving the generated subtitles in db ");
-                                        if (fields.format == "srt") {
-                                            console.log(" Format : srt only");
-                                            var subtitle1 = new mSubtitle ({
-                                                urlSousTitres: path.join(pathOut,propperName) + ".srt",
-                                                format: "srt",
-                                                transcription: updtTranscription._id
-                                            })
-            
-                                            subtitle1.save(function(error,sub1) {
-                                                if (error) _.response.sendError(res,error,500);
-                                            })
-                                        } else if (fields.format == "vtt") {
-                                            console.log("Format : vtt only");
-                                            var subtitle1 = new mSubtitle ({
-                                                urlSousTitres: path.join(pathOut,propperName) + ".vtt",
-                                                format: "vtt",
-                                                transcription: updtTranscription._id
-                                            })
-            
-                                            subtitle1.save(function(error,sub1) {
-                                                if (error) _.response.sendError(res,error,500);
-                                            })
-            
-                                        } else if (fields.format == "all") {
-                                            console.log("Format : All");
-                                            var subtitle1 = new mSubtitle ({
-                                                urlSousTitres: path.join(pathOut,propperName) + ".srt",
-                                                format: "srt",
-                                                transcription: updtTranscription._id 
-                                            })
-                                
-                                            var subtitle2 = new mSubtitle ({
-                                                urlSousTitres: path.join(pathOut,propperName) + ".vtt",
-                                                format: "vtt",
-                                                transcription: updtTranscription._id 
-                                            })
-                                            
-                                            subtitle1.save()
-                                            .then( subtitle2.save() )
-                                            .catch(function(err) {
-                                                throw err
-                                            });
-                                            
-                                                        
-                                        } else {
-                                            console.log("Script failed, updating the transcription to \"failed\"");
-                                            Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
-                                                if (error) throw err
-                                            });
-                                        }
-                                    })
-                                    }
-                                }
-                            ).stdout;
-                        }
+                    newTrans.save()
+                    .then(function(transcription) {
+                        return saveSubtitles(pathOut,propperName,fields.format,transcription._id);
                     })
+                    .then(function(){
+                        return execScript("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true})
+                    })
+                    .then(Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'}))
+                    .catch(Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error2,updtTranscription){
+                        if (error2) throw error2;
+                    }));
                     //even if the transcription isn't over, we redirect the user to home as the transcription could take a great amount of time.
                     _.response.sendSucces(req,res,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
                 });
@@ -143,10 +80,88 @@ exports.viewsTranscriptions = function(req,res) {
 
 exports.viewsOneTranscription = function(req,res) {
     console.log("Id de la transcription à trouver : " + req.params.id);
-    mSubtitle.find({transciption: req.params.id}).then( (subtitles) => {
-        console.log("subtitles found for id " + req.params.id + " : \n" + subtitles);
-        res.render('transcription',{transciption: transcript,subtitles: subtitles})
-    }, (err) => {
-        _.response.sendError(res,err,500);
+    mSubtitle.find({transciption: req.params.id}, function(err,subtitlesFound) {
+        if (err) {
+            _.response.sendError(res,err,500);
+        }
+        Transcription.find({_id: req.params.id}, function(err2,tr) {
+            if (err2) {
+                _.response.sendError(res,err2,500);
+            }
+            res.render('transaction.ejs',{transciption: tr,subtitles: subtitlesFound});
+        })
+    })
+}
+
+var saveSubtitles = function(pathOut,propperName,format,tr_id) {
+    return new Promise(function(resolve,reject) {
+        if (format == "srt") {
+            console.log(" Format : srt only");
+            var subtitle1 = new mSubtitle ({
+                urlSousTitres: path.join(pathOut,propperName) + ".srt",
+                format: format,
+                transcription: tr_id
+            })
+
+            subtitle1.save(function(error,sub1) {
+                if (error) reject(error);
+            }).then(resolve())
+        } else if (format == "vtt") {
+            console.log("Format : vtt only");
+            var subtitle1 = new mSubtitle ({
+                urlSousTitres: path.join(pathOut,propperName) + ".srt",
+                format: format,
+                transcription: tr_id
+            })
+
+            subtitle1.save(function(error,sub1) {
+                if (error) reject(error);
+            }).then(resolve())
+
+        } else if (format == "all") {
+            console.log("Format : All");
+            var subtitle1 = new mSubtitle ({
+                urlSousTitres: path.join(pathOut,propperName) + ".srt",
+                format: "srt",
+                transcription: tr_id
+            })
+
+            var subtitle1 = new mSubtitle ({
+                urlSousTitres: path.join(pathOut,propperName) + ".vtt",
+                format: "vtt",
+                transcription: tr_id
+            })
+            
+            subtitle1.save()
+            .then( subtitle2.save() )
+            .catch(function(err) {
+                reject(err);
+            });
+            
+            resolve();
+                        
+        } else {
+            console.log("Script failed, updating the transcription to \"failed\"");
+            Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                if (error) throw err
+            });
+        }
+    })
+}
+
+var execScript = function(script,mode) {
+    return new Promise (function(resolve,reject){
+        shell.exec(script,mode,function(code,stdout,stderr) {
+            console.log("Code: " + code);
+            //Vérifying there wasn't any trouble with the script, then register all data in db
+            
+                if (code == 0) {
+                    console.log("Updating the transcription on \"Done\"");
+                    resolve(code);
+                } else {
+                    reject("Erreur lors du script de transcription : " + code);
+                }
+            }
+        )
     })
 }
