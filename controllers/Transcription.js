@@ -100,7 +100,7 @@ exports.viewsOneTranscription = function(req,res) {
             if (err2) {
                 _.response.sendError(res,err2,500);
             }
-            res.render('transciption.ejs',{transciption: tr,subtitles: subtitlesFound});
+            res.render('transcription.ejs',{transciption: tr,subtitles: subtitlesFound});
         })
     })
 }
