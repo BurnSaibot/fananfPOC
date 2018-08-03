@@ -111,6 +111,12 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             subtitle1.save(function(error,sub1) {
                 if (error) reject(error);
             }).then(resolve(tr))
+            .catch(function(error2) {
+                Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                    if (error) throw error
+                });
+                throw error2;
+            });
         } else if (format == "vtt") {
             console.log("Format : vtt only");
             var subtitle1 = new mSubtitle ({
@@ -119,9 +125,14 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
                 transcription: tr._id
             })
 
-            subtitle1.save(function(error,sub1) {
-                if (error) reject(error);
-            }).then(resolve(tr))
+            subtitle1.save()
+            .then(resolve(tr))
+            .catch(function(error2) {
+                Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                    if (error) throw error
+                });
+                throw error2;
+            });
 
         } else if (format == "all") {
             console.log("Format : All");
@@ -139,16 +150,19 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             
             subtitle1.save()
             .then( subtitle2.save() )
-            .catch(function(err) {
-                reject(err);
+            .then(resolve(tr))
+            .catch(function(error2) {
+                Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                    if (error) throw error
+                });
+                throw error2;
             });
             
-            resolve(tr);
                         
         } else {
             console.log("Script failed, updating the transcription to \"failed\"");
             Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
-                if (error) throw err
+                if (error) throw error;
             });
         }
     })
