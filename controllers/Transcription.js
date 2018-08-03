@@ -10,7 +10,6 @@ var user = require('./User');
 var mSubtitle = require('../models/Subtitle')
 
 exports.register = function(req,res) {
-    var form = new formidable.IncomingForm();
     //parsing the form
     form.parse(req, function (err, fields, files) {
         var oldpath = files.videotoupload.path;
@@ -114,7 +113,7 @@ exports.viewsEditOneTranscription = function(req,res) {
 }
 
 exports.updt = function(req,res) {
-    Transcription.findByIdAndUpdate(req.params.id,{name: fields.newName}, function(err,tr){
+    Transcription.findByIdAndUpdate(req.params.id,{name: req.body.newName}, function(err,tr){
         if(err){
              _.response.sendError(res,err,500);
         } else {
