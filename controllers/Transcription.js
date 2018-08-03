@@ -46,7 +46,9 @@ exports.register = function(req,res) {
                     newTrans.save(function(error,transcription) {
                         //saving the transcription in the bdd & then wait for the script to create subtile files
                         if (error) {
-                            throw error;
+                            Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error2,updtTranscription){
+                                if (error2) throw error2;
+                            })
                         } else {
                             // executing the script to get transcription
                             console.log("Launching the script on the Video to get subtitles");
@@ -142,6 +144,7 @@ exports.viewsTranscriptions = function(req,res) {
 exports.viewsOneTranscription = function(req,res) {
     console.log("Id de la transcription à trouver : " + req.params.id);
     mSubtitle.find({transciption: req.params.id}).then( (subtitles) => {
+        console.log("subtitles found for id " + req.params.id + " : \n" + subtitles);
         res.render('transcription',{transciption: transcript,subtitles: subtitles})
     }, (err) => {
         _.response.sendError(res,err,500);
