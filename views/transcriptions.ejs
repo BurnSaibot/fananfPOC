@@ -25,16 +25,8 @@
                 <td>
                     <%= transcription.name %> </a>
                 </td>
-                    <% if (transcription.status) { %>
-                        <td>
-                            Done
-                        </td>
-                    <% } else { %>
-                        <td>
-                            OnGoing
-                        </td>
-                    <% } %>
-                <% if (transcription.status) { %>
+                    <%= transcription.Status%>
+                <% if (transcription.status == "Done") { %>
                     <td>
                         <a href="/transcription/<%=transcription._id%>"> Consulter </a>
                     </td>
