@@ -34,6 +34,9 @@
             </tr>
         </br>
         <% }) %>
+        <form method="GET" action="/transaction/<%=transaction._id%>/edit">
+            <input type="submit" value="Modifier"/>
+        </form>
 
     </body>
     <%- include('partials/footer') %>

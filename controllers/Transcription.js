@@ -54,10 +54,10 @@ exports.register = function(req,res) {
                     .then(function(transcription){
                         console.log("Launching the script");
                         var script = "/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut;
-                        return execScript(script,{silent: false},transcription);
+                        return execScript(script,{silent: true},transcription);
                     })
                     .then(function(transcription) {
-                        console.log("EVerything should be good, so we are chaging status to \"done\"");
+                        console.log("Everything should be good, so we are chaging status to \"done\"");
                         return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'});
                     })
                     .catch(function(err) {
@@ -100,11 +100,18 @@ exports.viewsOneTranscription = function(req,res) {
             if (err2) {
                 _.response.sendError(res,err2,500);
             }
-            res.render('transaction.ejs',{transciption: tr,subtitles: subtitlesFound});
+            res.render('transciption.ejs',{transciption: tr,subtitles: subtitlesFound});
         })
     })
 }
-
+exports.viewsEditOneTranscription = function(req,res) {
+    Transcription.find({_id: req.params.id}, function(err2,tr) {
+        if (err2) {
+            _.response.sendError(res,err2,500);
+        }
+        res.render('transciption.ejs',{transciption: tr});
+    });
+}
 var saveSubtitles = function(pathOut,propperName,format,tr) {
     return new Promise(function(resolve,reject) {
         if (format == "srt") {

@@ -26,6 +26,7 @@ app.get('/', function(req,res,next) {
 .get('/transcriptions/new',authentication.middleware.isLoggedIn,transcription.viewsUploadVideo)
 .get('/transcriptions',authentication.middleware.isLoggedIn,transcription.viewsTranscriptions)
 .get('/transcription/:id',authentication.middleware.isLoggedIn,transcription.viewsOneTranscription)
+.get('/transcription/:id/edit',authentication.middleware.isLoggedIn,transcription.viewsEditOneTranscription)
 .post('/transcription/videoupload',authentication.middleware.isLoggedIn,transcription.register)
 .post('/register',authentication.register)
 
