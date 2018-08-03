@@ -99,7 +99,7 @@ var getGroupsFrom = exports.getGroupsFrom = function (id_user,callback) {
     //callback(error,groups_ids)
       mGroup.find({
           users: id_user
-        }, '_id name',
+        },
         function(error,groups) {
             callback(error,groups);
         });

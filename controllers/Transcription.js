@@ -63,7 +63,8 @@ exports.register = function(req,res) {
                                             console.log(" Format : srt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
-                                                format: "srt" 
+                                                format: "srt",
+                                                transcription: updtTranscription._id
                                             })
             
                                             subtitle1.save(function(error,sub1) {
@@ -74,7 +75,8 @@ exports.register = function(req,res) {
                                             console.log("Format : vtt only");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
-                                                format: "vtt" 
+                                                format: "vtt",
+                                                transcription: updtTranscription._id
                                             })
             
                                             subtitle1.save(function(error,sub1) {
@@ -86,12 +88,14 @@ exports.register = function(req,res) {
                                             console.log("Format : All");
                                             var subtitle1 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
-                                                format: "srt" 
+                                                format: "srt",
+                                                transcription: updtTranscription._id 
                                             })
                                 
                                             var subtitle2 = new mSubtitle ({
                                                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
-                                                format: "vtt" 
+                                                format: "vtt",
+                                                transcription: updtTranscription._id 
                                             })
                                             
                                             subtitle1.save()
@@ -143,49 +147,22 @@ exports.viewsTranscriptions = function(req,res) {
     })
 }
 
-var getSub = exports.getSubtitlesFrom = function(id_transcription,callback) {
-    //callback(error,subtitles)
-    console.log("inGetSubt")
-    Transcription.findById(id_transcription,function(error,transcription){
-        if (error) throw error;//_.response.sendError(res,error,500);
-        handlingSubtitles(transcription.subTitles,callback(err,subtitles));
-    }); 
-}
-
-async function handlingSubtitles(sub_ids,callback) {
-    var sub = []
-    //Callback(error,sub)
-    for (const sub of sub_ids) {
-        await mSubtitle.find({_id: sub},function(err,foundSub){
-            Console.log("On traite : " + sub);
-            if (err) _.response.sendError(res,err,500);
-            sub.push(foundSub);
-        })
-    }
-    callback(err,sub);
-}
-
 exports.viewsOneTranscription = function(req,res) {
     console.log("Id de la transcription à trouver : " + req.params.id);
-    Transcription.findById(req.params.id,function(err, transcript){
-        console.log("Transcription trouvée" + transcript + "\n calling getSub()");
-        if (err) _.response.sendError(res,err,500);
-        getSub(transcript._id,function(err2,sub) {
-            if (err2) _.response.sendError(res,err2,500);
-            console.log("Contenu du tableau \"sub\" avant de rendre : " + sub);
-            res.render('transcription.ejs',{transcription: transcript, subtitles: sub});
-        })
+    mSubtitle.find({transciption: req.params.id}).then( (subtitles) => {
+        res.render('transcription',{transciption: transcript,subtitles: subtitles})
+    }, (err) => {
+        _.response.sendError(res,err,500);
     })
 }
-
 var addSubtitle = function(tr_id,sub_id) {
     Transcription.findById(tr_id,function(error,tr) {
         if (error) throw error; //_.response.sendError(res,error,500);
-        console.log("Contenu : " + tr.subTitles);
+        //console.log("Contenu : " + tr.subTitles);
         var updtedSub = tr.subTitles;
-        console.log("Before : " + updtedSub);
+        //console.log("Before : " + updtedSub);
         updtedSub.push(sub_id);
-        console.log("After : " + updtedSub)
+        //console.log("After : " + updtedSub)
         Transcription.findByIdAndUpdate(tr_id,{subTitles: updtedSub},function(error2,updtedTr){
             if (error2) throw error2; //_.response.sendError(res,error2,500);
         })

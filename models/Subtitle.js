@@ -11,6 +11,10 @@ var sousTitresSchema = new Schema({
         type: String,
         require: true,
         lowercase: true,
+    },
+    transcription: {
+        type: Schema.Types.ObjectId,
+        ref: 'Transcription'
     }
 })
 

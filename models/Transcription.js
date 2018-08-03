@@ -20,11 +20,7 @@ var transcriptionSchema = new Schema({
     status: {
         type: String,
         enum: ['On Going','Failed','Done']
-    },
-    subTitles:[{
-        type: Schema.Types.ObjectId,
-        ref: 'subtitles'
-    }]
+    }
 })
 
 module.exports = mongoose.model('Transcription', transcriptionSchema);
