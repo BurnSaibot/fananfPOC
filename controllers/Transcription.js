@@ -102,6 +102,7 @@ exports.viewsOneTranscription = function(req,res) {
         })
     })
 }
+
 exports.viewsEditOneTranscription = function(req,res) {
     Transcription.find({_id: req.params.id}, function(err2,tr) {
         if (err2) {
@@ -109,6 +110,13 @@ exports.viewsEditOneTranscription = function(req,res) {
         }
         res.render('transcriptionEdit.ejs',{transcription: tr});
     });
+}
+
+exports.updt = function(req,res) {
+    Transcription.findByIdAndUpdate(req.params.id,{name: fields.newName}, function(err,tr){
+        if(err) _.response.sendError(res,err,500);
+        else res.redirect('/trancription/'+tr._id);
+    })
 }
 var saveSubtitles = function(pathOut,propperName,format,tr) {
     return new Promise(function(resolve,reject) {
