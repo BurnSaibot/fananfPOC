@@ -134,7 +134,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             })
 
             subtitle1.save()
-            .then(function(tr){
+            .then(function(){
                 resolve(tr);
             })
             .catch(function(error2) {
@@ -159,10 +159,12 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             })
             
             subtitle1.save()
-            .then( function() {
+            .then( function(result) {
+                console.log("did save sub 1, will save sub2");
                  return subtitle2.save() 
             })
-            .then(function(tr){
+            .then(function(result){
+                console.log("did save sub 2, will resolve now");
                 resolve(tr);
             })
             .catch(function(error2) {
