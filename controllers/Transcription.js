@@ -20,7 +20,7 @@ exports.register = function(req,res) {
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
 
-        
+
         //now we have to create the file were we should store the videos & the subtitles
         _.helper.mkdirSync(pathOut);
         _.helper.mkdirSync(path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group));
@@ -159,7 +159,9 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             })
             
             subtitle1.save()
-            .then( subtitle2.save() )
+            .then( function() {
+                 return subtitle2.save() 
+            })
             .then(function(tr){
                 resolve(tr);
             })
