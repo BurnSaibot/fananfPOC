@@ -31,8 +31,9 @@ app.use(function(req,res,next) {
     req.session.config = config;
     next();
 });
-app.use(function(req,res) {
+app.use(function(req,res,next) {
     console.log(req.url)
+    next();
 })
 app.use(bodyParser.json({
     // limit: '50mb'
