@@ -45,15 +45,20 @@ exports.register = function(req,res) {
                     console.log("Saving the transcription before working on the video");
                     newTrans.save()
                     .then(function(transcription) {
-                        return saveSubtitles(pathOut,propperName,fields.format,transcription._id);
+                        return saveSubtitles(pathOut,propperName,fields.format,transcription);
                     })
-                    .then(function(){
-                        return execScript("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true})
+                    .then(function(transcription){
+                        return execScript("/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut ,{silent: true},transcription)
                     })
-                    .then(Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'}))
-                    .catch(Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error2,updtTranscription){
-                        if (error2) throw error2;
-                    }));
+                    .then(function(transcription) {
+                        return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'})
+                    })
+                    .catch(function(err) {
+                        Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error2,updtTranscription){
+                            if (error2) throw error2;
+                        })
+                        throw err;
+                    });
                     //even if the transcription isn't over, we redirect the user to home as the transcription could take a great amount of time.
                     _.response.sendSucces(req,res,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
                 });
@@ -93,43 +98,43 @@ exports.viewsOneTranscription = function(req,res) {
     })
 }
 
-var saveSubtitles = function(pathOut,propperName,format,tr_id) {
+var saveSubtitles = function(pathOut,propperName,format,tr) {
     return new Promise(function(resolve,reject) {
         if (format == "srt") {
             console.log(" Format : srt only");
             var subtitle1 = new mSubtitle ({
                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                 format: format,
-                transcription: tr_id
+                transcription: tr._id
             })
 
             subtitle1.save(function(error,sub1) {
                 if (error) reject(error);
-            }).then(resolve())
+            }).then(resolve(tr))
         } else if (format == "vtt") {
             console.log("Format : vtt only");
             var subtitle1 = new mSubtitle ({
                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                 format: format,
-                transcription: tr_id
+                transcription: tr._id
             })
 
             subtitle1.save(function(error,sub1) {
                 if (error) reject(error);
-            }).then(resolve())
+            }).then(resolve(tr))
 
         } else if (format == "all") {
             console.log("Format : All");
             var subtitle1 = new mSubtitle ({
                 urlSousTitres: path.join(pathOut,propperName) + ".srt",
                 format: "srt",
-                transcription: tr_id
+                transcription: tr._id
             })
 
             var subtitle1 = new mSubtitle ({
                 urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                 format: "vtt",
-                transcription: tr_id
+                transcription: tr._id
             })
             
             subtitle1.save()
@@ -138,7 +143,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr_id) {
                 reject(err);
             });
             
-            resolve();
+            resolve(tr);
                         
         } else {
             console.log("Script failed, updating the transcription to \"failed\"");
@@ -149,7 +154,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr_id) {
     })
 }
 
-var execScript = function(script,mode) {
+var execScript = function(script,mode,tr) {
     return new Promise (function(resolve,reject){
         shell.exec(script,mode,function(code,stdout,stderr) {
             console.log("Code: " + code);
@@ -157,7 +162,7 @@ var execScript = function(script,mode) {
             
                 if (code == 0) {
                     console.log("Updating the transcription on \"Done\"");
-                    resolve(code);
+                    resolve(tr);
                 } else {
                     reject("Erreur lors du script de transcription : " + code);
                 }
