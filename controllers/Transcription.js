@@ -104,7 +104,7 @@ exports.viewsOneTranscription = function(req,res) {
 }
 
 exports.viewsEditOneTranscription = function(req,res) {
-    Transcription.find({_id: req.params.id}, function(err2,tr) {
+    Transcription.findById({_id: req.params.id}, function(err2,tr) {
         if (err2) {
             _.response.sendError(res,err2,500);
         }
