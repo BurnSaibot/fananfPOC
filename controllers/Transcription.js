@@ -10,8 +10,10 @@ var user = require('./User');
 var mSubtitle = require('../models/Subtitle')
 
 exports.register = function(req,res) {
+    var form = new formidable.IncomingForm();
     //parsing the form
     form.parse(req, function (err, fields, files) {
+        if (err) _.response.sendError(res,err,500);
         var oldpath = files.videotoupload.path;
         var filename = files.videotoupload.name;
         var propperName = filename.trim();
