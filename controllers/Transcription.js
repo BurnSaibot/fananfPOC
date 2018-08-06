@@ -58,7 +58,11 @@ exports.register = function(req,res) {
                         return execScript(script,{silent: true},transcription);
                     })
                     .then(function(transcription) {
-                        console.log("Everything should be good, so we are chaging status to \"done\"");
+                        console.log("Everything should be good, so we are chaging status to \"Done\"");
+                        Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'},function(err,result) {
+                            if (err) throw err;
+                            console.log(result);
+                        })
                         return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'});
                     })
                     .catch(function(err) {
