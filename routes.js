@@ -2,6 +2,7 @@ var authentication = require('./controllers/Authentication');
 var user = require('./controllers/User.js');
 var group = require('./controllers/Group.js');
 var transcription = require('./controllers/Transcription.js');
+var subtitle = require ('./controllers/Subtitle.js')
 //
 exports.initialize = function (app) {
     
@@ -27,6 +28,7 @@ app.get('/', function(req,res,next) {
 .get('/transcriptions',authentication.middleware.isLoggedIn,transcription.viewsTranscriptions)
 .get('/transcription/:id',authentication.middleware.isLoggedIn,transcription.viewsOneTranscription)
 .get('/transcription/:id/edit',authentication.middleware.isLoggedIn,transcription.viewsEditOneTranscription)
+.get('subtitle/:id',authentication.middleware.isLoggedIn,subtitle.test)
 .post('/transcription/:id/updt',authentication.middleware.isLoggedIn,transcription.updt)
 .post('/transcription/videoupload',authentication.middleware.isLoggedIn,transcription.register)
 .post('/register',authentication.register)
