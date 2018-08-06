@@ -48,24 +48,23 @@ exports.register = function(req,res) {
                     if (err) _.response.sendError(res,err,500);
                     console.log("Saving the transcription before working on the video");
                     newTrans.save()
-                    .then(function(subtitle) {
+                    .then(function(tr) {
                         console.log("Saving subtitles");
-                        return saveSubtitles(pathOut,propperName,fields.format,subtitle);
+                        return saveSubtitles(pathOut,propperName,fields.format,tr);
                     })
-                    .then(function(subtitle){
+                    .then(function(tr_id){
                         console.log("Launching the script");
                         var script = "/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut;
-                        console.log("Avant exec script" + subtitle );
-                        return execScript(script,{silent: true},subtitle);
+                        return execScript(script,{silent: true},tr_id);
                     })
-                    .then(function(subtitle) {
+                    .then(function(tr_id) {
                         console.log("Everything should be good, so we are chaging status to \"Done\"");
-                        console.log("Avant l'updt final" + subtitle);
-                        Transcription.findById(subtitle.transcription,function(err,result) {
+                        console.log("Id de la transcription" + tr_id);
+                        Transcription.findById(tr_id,function(err,result) {
                             if (err) throw err;
-                            console.log("Transcription find :" + result);
+                            console.log("Transcription trouvée : " + result);
                         })
-                        return Transcription.findByIdAndUpdate(subtitle.transcription, {status: 'Done'});
+                        return Transcription.findByIdAndUpdate(tr_id, {status: 'Done'});
                     })
                     .catch(function(err) {
                         Transcription.findByIdAndUpdate(subtitle.transcription, {status: 'Failed'}, function(error2,updtTranscription){
@@ -142,11 +141,11 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             })
 
             subtitle1.save()
-            .then(function(tr){
-                resolve(tr);
+            .then(function(sub){
+                resolve(sub.transcription);
             })
             .catch(function(error2) {
-                Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                Transcription.findByIdAndUpdate(tr._id, {status: 'Failed'}, function(error,updtTranscription){
                     if (error) reject(error);
                 });
                 reject(error2);
@@ -160,11 +159,11 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
             })
 
             subtitle1.save()
-            .then(function(){
-                resolve(tr);
+            .then(function(sub){
+                resolve(sub.transcription);
             })
             .catch(function(error2) {
-                Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                Transcription.findByIdAndUpdate(tr._id, {status: 'Failed'}, function(error,updtTranscription){
                     if (error) reject(error);
                 });
                 reject(error2);
@@ -186,12 +185,11 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
 
             subtitle1.save()
             .then( subtitle2.save())
-            .then(function(result){
-                console.log("did save sub 2, will resolve now");
-                resolve(tr);
+            .then(function(sub){
+                resolve(sub.transcription);
             })
             .catch(function(error2) {
-                Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+                Transcription.findByIdAndUpdate(tr._id, {status: 'Failed'}, function(error,updtTranscription){
                     if (error) reject(error);
                 });
                 reject(error2);
@@ -200,14 +198,14 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
                         
         } else {
             console.log("Script failed, updating the transcription to \"failed\"");
-            Transcription.findByIdAndUpdate(transcription._id, {status: 'Failed'}, function(error,updtTranscription){
+            Transcription.findByIdAndUpdate(tr._id, {status: 'Failed'}, function(error,updtTranscription){
                 if (error) throw error;
             });
         }
     })
 }
 
-var execScript = function(script,mode,sub) {
+var execScript = function(script,mode,tr_id) {
     return new Promise (function(resolve,reject){
         shell.exec(script,mode,function(code,stdout,stderr) {
             console.log("Code: " + code);
@@ -215,7 +213,7 @@ var execScript = function(script,mode,sub) {
             
                 if (code == 0) {
                     console.log("Updating the transcription on \"Done\"");
-                    resolve(sub);
+                    resolve(tr_id);
                 } else {
                     reject("Erreur lors du script de transcription : " + code);
                 }
