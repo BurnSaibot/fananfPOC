@@ -55,14 +55,12 @@ exports.register = function(req,res) {
                     .then(function(transcription){
                         console.log("Launching the script");
                         var script = "/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut;
+                        console.log("Avant exec script" + transcription );
                         return execScript(script,{silent: true},transcription);
                     })
                     .then(function(transcription) {
                         console.log("Everything should be good, so we are chaging status to \"Done\"");
-                        Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'},function(err,result) {
-                            if (err) throw err;
-                            console.log(result);
-                        })
+                        console.log("Avant l'updt final" + transcription);
                         return Transcription.findByIdAndUpdate(transcription._id, {status: 'Done'});
                     })
                     .catch(function(err) {
