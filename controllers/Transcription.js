@@ -61,6 +61,10 @@ exports.register = function(req,res) {
                     .then(function(subtitle) {
                         console.log("Everything should be good, so we are chaging status to \"Done\"");
                         console.log("Avant l'updt final" + subtitle);
+                        Transcription.findById(subtitle.transcription,function(err,result) {
+                            if (err) throw err;
+                            console.log("Transcription find :" + result);
+                        })
                         return Transcription.findByIdAndUpdate(subtitle.transcription, {status: 'Done'});
                     })
                     .catch(function(err) {
@@ -126,6 +130,7 @@ exports.updt = function(req,res) {
         }
     })
 }
+
 var saveSubtitles = function(pathOut,propperName,format,tr) {
     return new Promise(function(resolve,reject) {
         if (format == "srt") {
@@ -210,10 +215,6 @@ var execScript = function(script,mode,sub) {
             
                 if (code == 0) {
                     console.log("Updating the transcription on \"Done\"");
-                    Transcription.findById(sub.transcription,function(err,result) {
-                        if (err) throw err;
-                        console.log("Transcription find :" + result);
-                    })
                     resolve(sub);
                 } else {
                     reject("Erreur lors du script de transcription : " + code);
