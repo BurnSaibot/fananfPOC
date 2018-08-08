@@ -48,15 +48,15 @@ function generatingSub() {
     if [ "$1" = "srt" ]
     then
 	echo "python $script --srt $inputFile > $folder$filename.srt"
-	echo `python $script --srt $inputFile > $folder$filename.srt`
+	echo `python $script --srt $inputFile > $folder.srt`
     elif [ "$1" = "vtt" ]
     then
-	echo `python $script --webvtt $inputFile > $folder$filename.vtt`
+	echo `python $script --webvtt $inputFile > $folder.vtt`
     elif [ "$1" = "all" ]
     then
 	echo "On est bien dans le all"
-	echo `python $script  --srt $inputFile > $folder$filename.srt`
-	echo `python $script  --webvtt $inputFile > $folder$filename.vtt`
+	echo `python $script  --srt $inputFile > $folder.srt`
+	echo `python $script  --webvtt $inputFile > $folder.vtt`
     else
 	exit 4
     fi
