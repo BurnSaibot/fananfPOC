@@ -19,6 +19,7 @@ exports.register = function(req,res) {
         var propperName = filename.trim();
         var propperFileName = propperName.replace(/\.[^/.]+$/, "");
         var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group, propperName);
+        console.log(newpath);
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
 
