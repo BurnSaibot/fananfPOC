@@ -26,6 +26,7 @@ var extract = exports.extract = function(sub) {
 
 var fillup = function(i,content,index,timecode,subs) {
         return new Promise(function(resolve,reject){
+            console.log("In fillup index : " + i);
             if (i<content.length) {
                 if (content[i].test(regNumber)) {
                     index.push(content[i]);
