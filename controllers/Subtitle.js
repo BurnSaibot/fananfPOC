@@ -13,24 +13,38 @@ var extract = exports.extract = function(sub) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             
             if (err) reject(err);
+            //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
             var index = [];
             var timecode = [];
             var subs = [];
-            for(var i = 0;i<content.length; i++) {
-                if (content[i].test(regNumber)) {
-                    index.push(content[i]);
-                } else if ( content[i].test(regTimecode)){
-                    timecode.push(content[i]);
-                } else if ( content[i].test(regNonEmpty)) {
-                    subs.push(cotent[i]);
+
+            var i=-1;
+
+            var loop = function(content,index,timecode,subs){
+                
+                i++;
+
+                if(i<content.length) {
+                    if (content[i].test(regNumber)) {
+
+                        index.push(content[i]);
+                    } else if ( content[i].test(regTimecode)){
+
+                        timecode.push(content[i]);
+                    } else if ( content[i].test(regNonEmpty)) {
+
+                        subs.push(content[i]);
+                    }
+                } else {
+
+                    resolve(index,timecode,subs);
                 }
             }
-            resolve(index,timecode,subs);
-        })
 
-        
-    })
+            loop();
+        });   
+    });
 }
 
 exports.test = function(req,res,next) {
@@ -39,9 +53,9 @@ exports.test = function(req,res,next) {
         return extract(result);
     })
     .then(function(index,timecode,content){
-        console.log(index);
-        console.log(timecode);
-        console.log(content);
+        console.log("Index : \n" + index);
+        console.log("Timecode : \n" + timecode);
+        console.log("Contenu : \n" + content);
         res.redirect('/home');
     }).catch(function(err){
         _.response.sendError(res,err,500);
