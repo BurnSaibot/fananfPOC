@@ -19,6 +19,7 @@ var extract = exports.extract = function(sub) {
             var index = [];
             var timecode = [];
             var subs = [];
+            console.log(content)
             for(var i=0; i<content.length ; i++) {
                 if (regNumber.test(content[i])) {
                     console.log("number ok " + content[i]);
