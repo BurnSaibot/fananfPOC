@@ -13,8 +13,20 @@ var extract = exports.extract = function(sub) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             
             if (err) reject(err);
-            console.log(data);
-            //resolve(data);
+            var content = data.split("\n");
+            var index = [];
+            var timecode = [];
+            var subs = [];
+            for(var i = 0;i<content.length; i++) {
+                if (content[i].test(regNumber)) {
+                    index.push(content[i]);
+                } else if ( content[i].test(regTimecode)){
+                    timecode.push(content[i]);
+                } else if ( content[i].test(regNonEmpty)) {
+                    subs.push(cotent[i]);
+                }
+            }
+            resolve(index,timecode,subs);
         })
 
         
