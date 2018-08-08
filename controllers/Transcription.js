@@ -19,7 +19,6 @@ exports.register = function(req,res) {
         var propperName = filename.trim();
         var propperFileName = propperName.replace(/\.[^/.]+$/, "");
         var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group, propperName);
-        console.log(newpath);
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
 
@@ -57,7 +56,7 @@ exports.register = function(req,res) {
                     .then(function(tr_id){
                         console.log("Launching the script");
                         var script = "/bin/bash " + pathScript + " -f " + fields.format + " -i " + newpath + " -o " + pathOut;
-                        return execScript(script,{silent: true},tr_id);
+                        return execScript(script,{silent: false},tr_id);
                     })
                     .then(function(tr_id) {
                         console.log("Everything should be good, so we are chaging status to \"Done\"");
