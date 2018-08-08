@@ -29,8 +29,11 @@ var extract = exports.extract = function(sub) {
                     subs.push(content[i]);
                 }
             }
+            console.log(index);
+            console.log(timecode);
+            console.log(content);
             
-            resolve(index,timecode,subs);
+            resolve(index);
         });   
     });
 }
@@ -40,10 +43,8 @@ exports.test = function(req,res,next) {
     .then(function(result){
         return extract(result);
     })
-    .then(function(index,timecode,content){
+    .then(function(index){
         console.log(index);
-        console.log(timecode);
-        console.log(content);
         res.redirect('/home');
     }).catch(function(err){
         _.response.sendError(res,err,500);
