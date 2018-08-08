@@ -16,7 +16,8 @@ exports.register = function(req,res) {
         if (err) _.response.sendError(res,err,500);
         var oldpath = files.videotoupload.path;
         var filename = files.videotoupload.name;
-        var propperName = filename.trim()//.replace(/\.[^/.]+$/, "");
+        var propperName = filename.trim();
+        var propperFileName = propperName.replace(/\.[^/.]+$/, "");
         var newpath = path.join(__dirname, req.session.config.filePath , 'data', 'videos', fields.group, propperName);
         var pathOut = path.join(__dirname, req.session.config.filePath, 'data', 'subtitles', fields.group);
         var pathScript = path.join(__dirname, "../","scripts","videoToSub.sh");
@@ -50,7 +51,7 @@ exports.register = function(req,res) {
                     newTrans.save()
                     .then(function(tr) {
                         console.log("Saving subtitles");
-                        return saveSubtitles(pathOut,propperName,fields.format,tr);
+                        return saveSubtitles(pathOut,propperFileName,fields.format,tr);
                     })
                     .then(function(tr_id){
                         console.log("Launching the script");
