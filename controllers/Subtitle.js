@@ -16,18 +16,12 @@ var extract = exports.extract = function(sub) {
             const regNonEmpty = "^\w";
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
+            console.log(content);
             var index = [];
             var timecode = [];
             var subs = [];
-            return fillup(0,content,index,timecode,subs);
-        });   
-    });
-}
-
-var fillup = function(i,content,index,timecode,subs) {
-        return new Promise(function(resolve,reject){
-            console.log("In fillup index : " + i);
-            if (i<content.length) {
+            for(var i=0; i<content.length ; i++) {
+                console.log(i);
                 if (content[i].test(regNumber)) {
                     index.push(content[i]);
                 } else if ( content[i].test(regTimecode)){
@@ -35,15 +29,12 @@ var fillup = function(i,content,index,timecode,subs) {
                 } else if ( content[i].test(regNonEmpty)) {
                     subs.push(content[i]);
                 }
-                fillup(i+1,content,index,timecode,subs);
-        } else {
-            console.log("Index : \n" + index);
-            console.log("Timecode : \n" + timecode);
-            console.log("Contenu : \n" + content);
+            }
             resolve(index,timecode,subs);
-        }
+        });   
     });
 }
+
 exports.test = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
