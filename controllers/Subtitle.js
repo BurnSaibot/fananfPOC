@@ -9,8 +9,8 @@ var extract = exports.extract = function(sub) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             
             if (err) reject(err);
-            console.log(data);
-            //resolve(data);
+            //console.log(data);
+            resolve(data);
         })
 
         
