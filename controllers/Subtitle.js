@@ -17,13 +17,14 @@ var extract = exports.extract = function(sub) {
         var content = [];
         var index = [];
         rl.on('line', function (line) {
-            if (line.test(regNumber)) {
+            /*if (line.test(regNumber)) {
                 index.push(line);
             } else if (line.test(regTimecode)) {
                 timecode.push(line);
             } else if (line.test(regNonEmpty)) {
                 content.push(line);      
-            }
+            }*/
+            console.log(line);
         });
         resolve(index,timecode,content);
         
