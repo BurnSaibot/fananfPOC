@@ -7,8 +7,10 @@ var mSubtitle = require('../models/Subtitle');
 var extract = exports.extract = function(sub) {
     return new Promise(function(resolve,reject) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
+            
             if (err) reject(err);
-            resolve(data)
+            console.log(data);
+            //resolve(data);
         })
 
         
