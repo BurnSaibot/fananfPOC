@@ -29,9 +29,7 @@ var extract = exports.extract = function(sub) {
                     subs.push(content[i]);
                 }
             }
-            console.log(index);
-            console.log(timecode);
-            console.log(subs);
+            
             resolve(index,timecode,subs);
         });   
     });
@@ -43,6 +41,9 @@ exports.test = function(req,res,next) {
         return extract(result);
     })
     .then(function(index,timecode,content){
+        console.log(index);
+        console.log(timecode);
+        console.log(subs);
         res.redirect('/home');
     }).catch(function(err){
         _.response.sendError(res,err,500);
