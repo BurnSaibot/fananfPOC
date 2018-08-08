@@ -10,23 +10,13 @@ var extract = exports.extract = function(sub) {
     const regTimecode = "((\d{2}:){2}\d{2},\d{3})";
     const regNonEmpty = "^\w";
     return new Promise(function(resolve,reject) {
-        const rl = readline.createInterface({
-            input: fs.createReadStream(sub)
-        });
-        var timecode = [];
-        var content = [];
-        var index = [];
-        rl.on('line', function (line) {
-            /*if (line.test(regNumber)) {
-                index.push(line);
-            } else if (line.test(regTimecode)) {
-                timecode.push(line);
-            } else if (line.test(regNonEmpty)) {
-                content.push(line);      
-            }*/
-            console.log(line);
-        });
-        resolve(index,timecode,content);
+        fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
+            
+            if (err) reject(err);
+            console.log(data);
+            //resolve(data);
+        })
+
         
     })
 }
