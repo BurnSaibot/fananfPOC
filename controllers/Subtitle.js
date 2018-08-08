@@ -20,7 +20,6 @@ var extract = exports.extract = function(sub) {
             var timecode = [];
             var subs = [];
             for(var i=0; i<content.length ; i++) {
-                console.log(i);
                 if (regNumber.test(content[i])) {
                     console.log("number ok " + content[i]);
                     index.push(content[i]);
@@ -30,6 +29,8 @@ var extract = exports.extract = function(sub) {
                 } else if ( regNonEmpty.test(content[i])) {
                     console.log("Content ok " + content[i])
                     subs.push(content[i]);
+                } else {
+                    console.log("Not found" + content[i]);
                 }
             }
             
