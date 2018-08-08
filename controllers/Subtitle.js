@@ -29,6 +29,9 @@ var extract = exports.extract = function(sub) {
                     subs.push(content[i]);
                 }
             }
+            console.log(index);
+            console.log(timecode);
+            console.log(subs);
             resolve(index,timecode,subs);
         });   
     });
