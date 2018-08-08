@@ -43,7 +43,7 @@ exports.test = function(req,res,next) {
     .then(function(index,timecode,content){
         console.log(index);
         console.log(timecode);
-        console.log(subs);
+        console.log(content);
         res.redirect('/home');
     }).catch(function(err){
         _.response.sendError(res,err,500);
