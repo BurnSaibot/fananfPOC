@@ -11,7 +11,7 @@ var extract = exports.extract = function(sub) {
 
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
-            const regNumber = new RegExp("^\d{1,}$");
+            const regNumber = new RegExp("^\d{1,}");
             const regTimecode = new RegExp("((\d{2}:){2}\d{2},\d{3})");
             const regNonEmpty = new RegExp("^\w");
             //on séparer chaque ligne du fichier de sous-titres
