@@ -19,7 +19,9 @@ var extract = exports.extract = function(sub) {
 
 exports.test = function(req,res,next) {
     mSubtitle.findById(req.params.id)
-    .then(extract(result))
+    .then(function(result){
+        return extract(result);
+    })
     .then(function(data){
         console.log(data);
         res.redirect('/home');
