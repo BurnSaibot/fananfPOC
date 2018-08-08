@@ -11,22 +11,21 @@ var extract = exports.extract = function(sub) {
 
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
-            const regNumber = "^\d{1,}$";
-            const regTimecode = "((\d{2}:){2}\d{2},\d{3})";
-            const regNonEmpty = "^\w";
+            const regNumber = new RegExp("^\d{1,}$");
+            const regTimecode = new RegExp("((\d{2}:){2}\d{2},\d{3})");
+            const regNonEmpty = new RegExp("^\w");
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
-            console.log(content);
             var index = [];
             var timecode = [];
             var subs = [];
             for(var i=0; i<content.length ; i++) {
                 console.log(i);
-                if (content[i].test(regNumber)) {
+                if (regNumber.test(content[i])) {
                     index.push(content[i]);
-                } else if ( content[i].test(regTimecode)){
+                } else if ( regTimecode.test(content[i])){
                     timecode.push(content[i]);
-                } else if ( content[i].test(regNonEmpty)) {
+                } else if ( regNonEmpty.test(content[i])) {
                     subs.push(content[i]);
                 }
             }
