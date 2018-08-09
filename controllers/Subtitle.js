@@ -20,6 +20,7 @@ var extract = exports.extract = function(sub) {
             var timecode = [];
             var subs = [];
             console.log(content)
+            console.log("123 .test("+regNumber+") : " + "123".test(regNumber));
             for(var i=0; i<content.length ; i++) {
                 if (regNumber.test(content[i])) {
                     console.log("number ok " + content[i]);
@@ -34,7 +35,6 @@ var extract = exports.extract = function(sub) {
                     console.log("Not found : " + content[i]);
                 }
             }
-            
             resolve(index);
         });   
     });
