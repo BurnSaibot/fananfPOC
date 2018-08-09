@@ -19,6 +19,7 @@ var extract = exports.extract = function(sub) {
             var index = [];
             var timecode = [];
             var subs = [];
+            var exportSub = [];
             console.log(content)
             for(var i=0; i<content.length ; i++) {
                 if (regNumber.test(content[i])) {
@@ -34,6 +35,12 @@ var extract = exports.extract = function(sub) {
                     //console.log("Not found : " + content[i]);
                 }
             }
+            for (var i = 0; i<index.length;i++){
+                var subC = subs[2*i] + "\n" + subs[2*i + 1];
+                var subPush = {subIndex: index[i],subTimeCode: timecode[i],subContent: subC};
+                console.log(subPush);
+                exportSub.push(subPush);
+            }
             resolve(index);
         });   
     });
@@ -46,7 +53,7 @@ exports.test = function(req,res,next) {
     })
     .then(function(index){
         console.log(index);
-        res.redirect('/home');
+       _.response.sendSucces(req,res,'/home',"succesfully read the sub file (WIP)");
     }).catch(function(err){
         _.response.sendError(res,err,500);
     })
