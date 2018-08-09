@@ -13,7 +13,7 @@ var extract = exports.extract = function(sub) {
             if (err) reject(err);
             const regNumber = new RegExp("^[0-9]{1,}$");
             const regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
-            const regEmpty = new RegExp("");
+            const regEmpty = new RegExp("[a-zA-Z-0-9]");
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
             var index = [];
@@ -27,7 +27,7 @@ var extract = exports.extract = function(sub) {
                 } else if ( regTimecode.test(content[i])){
                     console.log("Timecode ok " + content[i])
                     timecode.push(content[i]);
-                } else if ( !regEmpty.test(content[i])) {
+                } else if ( regEmpty.test(content[i])) {
                     console.log("Content ok " + content[i])
                     subs.push(content[i]);
                 } else {
