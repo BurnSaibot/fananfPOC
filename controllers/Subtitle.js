@@ -36,12 +36,18 @@ var extract = exports.extract = function(sub) {
                 }
             }
             for (var i = 0; i<index.length;i++){
-                var subC = subs[2*i] + "\n" + subs[2*i + 1];
-                var subPush = {subIndex: index[i],subTimeCode: timecode[i],subContent: subC};
-                console.log(subPush);
+                if (i==0) {
+                    var subC = subs[2*i];
+                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],subContent: subC};
+
+                } else {
+                    var subC = subs[2*i -1] + "\n" + subs[2*i ];
+                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],subContent: subC};
+                }
+                
                 exportSub.push(subPush);
             }
-            resolve(index);
+            resolve(exportSub);
         });   
     });
 }
@@ -51,8 +57,8 @@ exports.test = function(req,res,next) {
     .then(function(result){
         return extract(result);
     })
-    .then(function(index){
-        console.log(index);
+    .then(function(exportedSub){
+        console.log(exportedSub);
        _.response.sendSucces(req,res,'/home',"succesfully read the sub file (WIP)");
     }).catch(function(err){
         _.response.sendError(res,err,500);
