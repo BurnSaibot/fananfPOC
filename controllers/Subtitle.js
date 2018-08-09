@@ -13,6 +13,7 @@ var extract = exports.extract = function(sub) {
             if (err) reject(err);
             const regNumber = new RegExp("^\d{1,}$");
             const regNumber2 = new RegExp("^\d{1,}");
+            const regNumber3 = new RegExp("d{1,}");
             const regTimecode = new RegExp("((\d{2}:){2}\d{2},\d{3}) --> ((\d{2}:){2}\d{2},\d{3})");
             const regEmpty = new RegExp("");
             //on séparer chaque ligne du fichier de sous-titres
@@ -34,7 +35,7 @@ var extract = exports.extract = function(sub) {
                     console.log("Content ok " + content[i])
                     subs.push(content[i]);
                 } else {
-                    console.log("Not found : " + content[i]);
+                    //console.log("Not found : " + content[i]);
                 }
             }
             resolve(index);
