@@ -59,7 +59,7 @@ exports.test = function(req,res,next) {
     })
     .then(function(exportedSub){
         console.log(exportedSub);
-       _.response.sendSucces(req,res,'/home',"succesfully read the sub file (WIP)");
+        res.render('subtitles.ejs',{subtitles: exportedSub})
     }).catch(function(err){
         _.response.sendError(res,err,500);
     })
