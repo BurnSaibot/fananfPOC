@@ -20,7 +20,7 @@ var extract = exports.extract = function(sub) {
             var timecode = [];
             var subs = [];
             console.log(content)
-            console.log("123 .test("+regNumber+") : " + "123".test(regNumber));
+            console.log(regNumber + " .test(\"123\") : " + regNumber.test("123"));
             for(var i=0; i<content.length ; i++) {
                 if (regNumber.test(content[i])) {
                     console.log("number ok " + content[i]);
