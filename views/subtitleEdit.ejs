@@ -1,6 +1,6 @@
 <!DOCTYPE hyml>
 <html>
-    <script src="https://code.jquery.com/jquery.min.js"></script>
+    
     <head>
         <meta charset="utf-8" />
         <title> fananf - read a subtitles file  </title>
@@ -8,9 +8,15 @@
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
     <body>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
         <%- include('partials/headerConnected') %>
         <main>
-            <h1>Edition d'un fichier de sous-vtitres : </h1>
+                <div class="blockPres">
+                        <h1>Edition d'un fichier de sous-titres : </h1>
+                        <form method="GET" action="/subtitle/export/:id">
+                            <input type="button" value="Exporter">
+                        </form>
+                </div>
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
                     <div class="subtitle">

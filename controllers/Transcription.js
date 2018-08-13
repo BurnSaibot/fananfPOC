@@ -3,7 +3,6 @@ var fs = require('fs');
 var path = require('path');
 const shell = require('shelljs');
 
-
 var _ = require('./Utils.js');
 var Transcription = require('../models/Transcription');
 var user = require('./User');

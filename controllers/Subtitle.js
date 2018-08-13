@@ -52,16 +52,22 @@ var extract = exports.extract = function(sub) {
     });
 }
 
-exports.test = function(req,res,next) {
+exports.edit = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
         return extract(result);
     })
     .then(function(exportedSub){
-        console.log(exportedSub);
-        res.render('subtitles.ejs',{subtitles: exportedSub})
+        mSubtitle.findById(req.params.id,function(err,sub){
+            if (err) _.response.sendError(res,err,500);
+            res.render('subtitles.ejs',{sub: sub,subtitles: exportedSub})
+        })    
     }).catch(function(err){
         _.response.sendError(res,err,500);
     })
     
+}
+
+exports.export = function(req,res,next) {
+    _.response.sendSucces(req,res,'/home',"Export : currently in progress");
 }

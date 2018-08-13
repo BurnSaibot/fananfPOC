@@ -7,9 +7,16 @@
 		<link rel="stylesheet" href="/style/menu.css">	
     </head>
     <body>
+        <script src="https://code.jquery.com/jquery.min.js"></script>
         <%- include('partials/headerConnected') %>
         <main>
-            <h1>Consultation d'un fichier de sous-titres : </h1>
+            
+            <div class="blockPres">
+                    <h1>Consultation d'un fichier de sous-titres : </h1>
+                    <form method="GET" action="/subtitle/export/:id">
+                        <input type="button" value="Exporter">
+                    </form>
+            </div>
             <% subtitles.forEach(function(sub,index){%>
                 <div class="subtitle">
                     <p class="index"><%= sub.subIndex%></p> 
@@ -17,6 +24,11 @@
                     <p class="content"><%= sub.subContent%></p> 
                 </div> </br>
            <% }) %>
+           <script>
+                function colorYellow(){
+                    $("div.subtitle").css('backgroun','yellow');
+                }
+            </script>
         </main>
     </body>
     <%- include('partials/footer') %>
