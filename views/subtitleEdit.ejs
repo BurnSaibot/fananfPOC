@@ -1,0 +1,35 @@
+<!DOCTYPE hyml>
+<html>
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <head>
+        <meta charset="utf-8" />
+        <title> fananf - read a subtitles file  </title>
+        <link rel="stylesheet" href="/style/general.css">
+		<link rel="stylesheet" href="/style/menu.css">	
+    </head>
+    <body>
+        <%- include('partials/headerConnected') %>
+        <main>
+            <h1>Edition d'un fichier de sous-vtitres : </h1>
+            <form method="POST" action="/subtitle/editing"></form>
+                <% subtitles.forEach(function(sub,index){%>
+                    <div class="subtitle">
+                        
+                            <input type="text" class="timecode" value="<%= sub.subTimeCode%>"/>
+                            <input type="text" class="content" value="<%= sub.subContent%>"/>
+                        
+                    </div> </br>
+                <% }) %>
+                <input type="submit" value="Valider les changements"/>
+        
+            </form>
+            <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="colorYellow()">test jquery</button>
+            <script>
+                function colorYellow(){
+                    $("div.subtitle").css('backgroun','yellow');
+                }
+            </script>
+        </main>
+    </body>
+    <%- include('partials/footer') %>
+</html>
