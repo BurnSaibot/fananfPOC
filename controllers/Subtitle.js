@@ -18,32 +18,34 @@ var extract = exports.extract = function(sub) {
             var content = data.split("\n");
             var index = [];
             var timecode = [];
-            var subs = [];
+            var sub1 = [];
+            var sub2 = [];
+            var sub1Filled = false;
             var exportSub = [];
             console.log(content)
             for(var i=0; i<content.length ; i++) {
-                if (regNumber.test(content[i])) {
+                if (content[i].includes("webVTT")){
+                    continue
+                }                
+                else if (regNumber.test(content[i])) {
                     console.log("number ok " + content[i]);
                     index.push(content[i]);
                 } else if ( regTimecode.test(content[i])){
                     console.log("Timecode ok " + content[i])
                     timecode.push(content[i]);
                 } else if ( regEmpty.test(content[i])) {
-                    console.log("Content ok " + content[i])
-                    subs.push(content[i]);
+                    if (sub1Filled) {
+                        sub2.push(content[i]);
+                    } else {
+                        sub1.push(content[i]);
+                    }
+                    sub1Filled = !sub1Filled;
                 } else {
                     //console.log("Not found : " + content[i]);
                 }
             }
             for (var i = 0; i<index.length;i++){
-                if (i==0) {
-                    var subC = subs[2*i];
-                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],subContent: subC};
-
-                } else {
-                    var subC = subs[2*i -1] + "\n" + subs[2*i ];
-                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],subContent: subC};
-                }
+                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1,sub2: sub2};
                 
                 exportSub.push(subPush);
             }

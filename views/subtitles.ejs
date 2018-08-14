@@ -21,24 +21,10 @@
                 <div class="subtitle">
                     <p class="index"><%= sub.subIndex%></p> 
                     <p class="timecode"><%= sub.subTimeCode%></p> 
-                    <textarea class="content" rows="2" cols="80" class="content"><%= sub.subContent%></textarea> 
+                    <p class="content1"><%= sub.sub1%></p>
+                    <p class="content2"><%= sub.sub2%></p>
                 </div> </br>
            <% }) %>
-           <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="test()">test jquery</button>
-           <script>
-                function test(){
-                    $("div.subtitle").css('background','yellow');
-                    $("p.index").css('background','yellow');
-                    $("p.timecode").css('background','red');
-                    $(".content").css('background','gray');
-                    var subContent = $(".content")
-                    console.log("longueur : " + subContent.length);
-			console.log("val : " + subContent.val());
-                    subContent.each(function(){
-			alert(jQuery(this).val() + "\n");
-                    })
-                }
-            </script>
         </main>
     </body>
     <%- include('partials/footer') %>
