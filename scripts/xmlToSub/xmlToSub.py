@@ -6,6 +6,23 @@ from classBlock import Block
 import sys
 from lxml import etree
 
+def addWord(subtile,word,start,end,duration,timeStampP,wordP1,wordP2):
+    if word.text != wordP1 and word.text != wordP2 :
+        if "'" in word.text[len(subtile)-1:len(subtile)]:
+            duration += word.timestamp - timeStampP
+            timeStampP = word.timestamp
+            subtile += word.text
+            wordP2 = wordP1
+            wordP1 = word.text
+        else:
+            if word.text == "," or word.text == ".":
+                subtile = subtile[0:len(subtile)-1]
+            duration += word.timestamp - timeStampP
+            timeStampP = word.timestamp
+            subtile1 += word.text + " "
+            wordP2 = wordP1
+            wordP1 = word.text
+            
 if (len(sys.argv) != 3 ):
     print "usage : " , sys.argv[0] ," [format] ", "filePath"
     print "Available format : "
@@ -98,19 +115,3 @@ for block in blocks:
     print("")
     cpt +=1
     
-def addWord(subtile,word,start,end,duration,timeStampP,wordP1,wordP2):
-    if word.text != wordP1 and word.text != wordP2 :
-        if "'" in word.text[len(subtile)-1:len(subtile)]:
-            duration += word.timestamp - timeStampP
-            timeStampP = word.timestamp
-            subtile += word.text
-            wordP2 = wordP1
-            wordP1 = word.text
-        else:
-            if word.text == "," or word.text == ".":
-                subtile = subtile[0:len(subtile)-1]
-            duration += word.timestamp - timeStampP
-            timeStampP = word.timestamp
-            subtile1 += word.text + " "
-            wordP2 = wordP1
-            wordP1 = word.text
