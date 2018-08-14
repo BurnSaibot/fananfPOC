@@ -81,8 +81,8 @@ for word in words:
         start = end
         end =  0.0
         duration =  0.0
-        subtile2 = ""
-        subtile1 = word.text + " "
+        subtile2 = word.text + " "
+        subtile1 = ""
         sub1Full = 0
     
 
