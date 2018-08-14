@@ -6,23 +6,6 @@ from classBlock import Block
 import sys
 from lxml import etree
 
-def addWord(subtile,word,start,end,duration,timeStampP,wordP1,wordP2):
-    if word.text != wordP1 and word.text != wordP2 :
-        if "'" in word.text[len(subtile)-1:len(subtile)]:
-            duration += word.timestamp - timeStampP
-            timeStampP = word.timestamp
-            subtile += word.text
-            wordP2 = wordP1
-            wordP1 = word.text
-        else:
-            if word.text == "," or word.text == ".":
-                subtile = subtile[0:len(subtile)-1]
-            duration += word.timestamp - timeStampP
-            timeStampP = word.timestamp
-            subtile += word.text + " "
-            wordP2 = wordP1
-            wordP1 = word.text
-
 if (len(sys.argv) != 3 ):
     print "usage : " , sys.argv[0] ," [format] ", "filePath"
     print "Available format : "
@@ -57,9 +40,37 @@ blocks = []
 for word in words:
 #    print(word.text +  "\t" +  str(word.timestamp) +  "\t" + str( word.duration))
     if  (len(subtile1) + len(word.text) <= 37) : 
-        addWord(subtile1,word,start,end,duration,timeStampP,wordP1,wordP2)
+        if word.text != wordP1 and word.text != wordP2 :
+            if "'" in word.text[len(subtile1)-1:len(1)]:
+                duration += word.timestamp - timeStampP
+                timeStampP = word.timestamp
+                subtile1 += word.text
+                wordP2 = wordP1
+                wordP1 = word.text
+            else:
+                if word.text == "," or word.text == ".":
+                    subtile1 = subtile1[0:len(subtile1)-1]
+                duration += word.timestamp - timeStampP
+                timeStampP = word.timestamp
+                subtile1 += word.text + " "
+                wordP2 = wordP1
+                wordP1 = word.text
     elif (len(subtile2) + len(word.text) <= 37) :
-        addWord(subtile2,word,start,end,duration,timeStampP,wordP1,wordP2)
+        if word.text != wordP1 and word.text != wordP2 :
+            if "'" in word.text[len(subtile2)-1:len(1)]:
+                duration += word.timestamp - timeStampP
+                timeStampP = word.timestamp
+                subtile2 += word.text
+                wordP2 = wordP1
+                wordP1 = word.text
+            else:
+                if word.text == "," or word.text == ".":
+                    subtile2 = subtile2[0:len(subtile2)-1]
+                duration += word.timestamp - timeStampP
+                timeStampP = word.timestamp
+                subtile2 += word.text + " "
+                wordP2 = wordP1
+                wordP1 = word.text
     else  :
         end = start + duration
         block = Block(subtile1,subtile2,start,end)
