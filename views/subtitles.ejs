@@ -24,11 +24,18 @@
                     <p class="content"><%= sub.subContent%></p> 
                 </div> </br>
            <% }) %>
-           <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="colorYellow()">test jquery</button>
+           <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="test()">test jquery</button>
            <script>
-                function colorYellow(){
-                    console.log("in colorYellow");
+                function test(){
                     $("div.subtitle").css('background','yellow');
+                    $("div.index").css('background','yellow');
+                    $("div.timecode").css('background','red');
+                    $("div.content").css('background','gray');
+                    var subContent = $("div.content")
+                    console.log("longueur : " + subContent.length);
+                    for(var i = 0;i<subContent.length;i++){
+                        console.log("ligne" + i + " lue : " + subContent[i]);
+                    }
                 }
             </script>
         </main>
