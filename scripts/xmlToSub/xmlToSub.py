@@ -41,22 +41,6 @@ for word in words:
 #    print(word.text +  "\t" +  str(word.timestamp) +  "\t" + str( word.duration))
     if  (len(subtile2) + len(word.text) <= 37) : 
         if word.text != wordP1 and word.text != wordP2 :
-            if "'" in word.text[len(subtile1)-1:len(subtile2)]:
-                duration += word.timestamp - timeStampP
-                timeStampP = word.timestamp
-                subtile1 += word.text
-                wordP2 = wordP1
-                wordP1 = word.text
-            else:
-                if word.text == "," or word.text == ".":
-                    subtile1 = subtile1[0:len(subtile1)-1]
-                duration += word.timestamp - timeStampP
-                timeStampP = word.timestamp
-                subtile1 += word.text + " "
-                wordP2 = wordP1
-                wordP1 = word.text
-    elif (len(subtile1) + len(word.text) <= 37) :
-        if word.text != wordP1 and word.text != wordP2 :
             if "'" in word.text[len(subtile2)-1:len(subtile2)]:
                 duration += word.timestamp - timeStampP
                 timeStampP = word.timestamp
@@ -69,6 +53,22 @@ for word in words:
                 duration += word.timestamp - timeStampP
                 timeStampP = word.timestamp
                 subtile2 += word.text + " "
+                wordP2 = wordP1
+                wordP1 = word.text
+    elif (len(subtile1) + len(word.text) <= 37) :
+        if word.text != wordP1 and word.text != wordP2 :
+            if "'" in word.text[len(subtile1)-1:len(subtile1)]:
+                duration += word.timestamp - timeStampP
+                timeStampP = word.timestamp
+                subtile1 += word.text
+                wordP2 = wordP1
+                wordP1 = word.text
+            else:
+                if word.text == "," or word.text == ".":
+                    subtile1 = subtile1[0:len(subtile1)-1]
+                duration += word.timestamp - timeStampP
+                timeStampP = word.timestamp
+                subtile1 += word.text + " "
                 wordP2 = wordP1
                 wordP1 = word.text
     else  :
