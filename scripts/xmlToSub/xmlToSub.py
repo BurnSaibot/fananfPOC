@@ -29,7 +29,6 @@ for word in xmlFile.xpath("/AudioDoc/SegmentList/SpeechSegment/Word"):
     words.append(content)
 subtile1 = ""
 subtile2 = ""
-sub1notFull = true
 start = 0.0
 end = 0.0
 duration = 0.0
