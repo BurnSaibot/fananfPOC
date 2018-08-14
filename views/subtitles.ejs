@@ -21,7 +21,7 @@
                 <div class="subtitle">
                     <p class="index"><%= sub.subIndex%></p> 
                     <p class="timecode"><%= sub.subTimeCode%></p> 
-                    <p class="content"><%= sub.subContent%></p> 
+                    <textarea class="content" rows="2" cols="80" class="content"><%= sub.subContent%></textarea> 
                 </div> </br>
            <% }) %>
            <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="test()">test jquery</button>
@@ -30,13 +30,13 @@
                     $("div.subtitle").css('background','yellow');
                     $("p.index").css('background','yellow');
                     $("p.timecode").css('background','red');
-                    $("p.content").css('background','gray');
-                    var subContent = $("p.content")
+                    $(".content").css('background','gray');
+                    var subContent = $(".content")
                     console.log("longueur : " + subContent.length);
-                    /*for(var i = 0;i<subContent.length;i++){
-                        console.log("ligne" + i + " lue : " + subContent);
-                    }*/
-                    alert(subContent.text());
+			console.log("val : " + subContent.val());
+                    subContent.each(function(){
+			alert(jQuery(this).val() + "\n");
+                    })
                 }
             </script>
         </main>
