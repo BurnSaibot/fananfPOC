@@ -100,7 +100,7 @@ for block in blocks:
     cpt +=1
     
 def addWord(subtile,word,start,end,duration,timeStampP,wordP1,wordP2):
-    if !(word.text == wordP1 or word.text == wordP2) :
+    if word.text != wordP1 and word.text != wordP2 :
         if "'" in word.text[len(subtile)-1:len(subtile)]:
             duration += word.timestamp - timeStampP
             timeStampP = word.timestamp
