@@ -19,10 +19,10 @@ def addWord(subtile,word,start,end,duration,timeStampP,wordP1,wordP2):
                 subtile = subtile[0:len(subtile)-1]
             duration += word.timestamp - timeStampP
             timeStampP = word.timestamp
-            subtile1 += word.text + " "
+            subtile += word.text + " "
             wordP2 = wordP1
             wordP1 = word.text
-            
+
 if (len(sys.argv) != 3 ):
     print "usage : " , sys.argv[0] ," [format] ", "filePath"
     print "Available format : "
