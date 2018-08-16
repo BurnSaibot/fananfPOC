@@ -40,6 +40,7 @@ var extract = exports.extract = function(sub) {
                         sub1.push(content[i]);
                     }
                     sub1Filled = !sub1Filled;
+                    sub
                     console.log("SubFilled : " + sub1Filled);
                 } else {
                     //console.log("Not found : " + content[i]);
@@ -47,9 +48,11 @@ var extract = exports.extract = function(sub) {
             }
             for (var i = 0; i<index.length;i++){
                     var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1,sub2: sub2};
+                    console.log(subPush)
                 
                 exportSub.push(subPush);
             }
+            console.log(exportSub)
             resolve(exportSub);
         });   
     });
