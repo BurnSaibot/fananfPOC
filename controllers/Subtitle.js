@@ -47,7 +47,7 @@ var extract = exports.extract = function(sub) {
                 }
             }
             for (var i = 0; i<index.length;i++){
-                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1,sub2: sub2};
+                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};
                     console.log(subPush)
                 
                 exportSub.push(subPush);
