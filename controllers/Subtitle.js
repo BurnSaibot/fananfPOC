@@ -40,7 +40,7 @@ var extract = exports.extract = function(sub) {
                         sub1.push(content[i]);
                     }
                     sub1Filled = !sub1Filled;
-                    console.log("SubFilled");
+                    console.log("SubFilled : " + sub1Filled);
                 } else {
                     //console.log("Not found : " + content[i]);
                 }
