@@ -74,7 +74,7 @@ exports.edit = function(req,res,next) {
     .then(function(exportedSub){
         mSubtitle.findById(req.params.id,function(err,sub){
             if (err) _.response.sendError(res,err,500);
-            res.render('subtitlesEdit.ejs',{sub: sub,subtitles: exportedSub})
+            res.render('subtitleEdit.ejs',{sub: sub,subtitles: exportedSub})
         })    
     }).catch(function(err){
         _.response.sendError(res,err,500);
