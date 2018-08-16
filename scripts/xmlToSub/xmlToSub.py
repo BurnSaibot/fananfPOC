@@ -42,7 +42,7 @@ blocks = []
 for word in words:
     #filling the first line if it's not full
     if  (len(subtitle1) + len(word.text) <= 37) and (sub1Full == 0):
-	print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtitle1)) + "\n \t -sub2 :" + str(len(subtitle2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1Full) + " sub1Full == 0 ? " + str(sub1Full == 0)
+	    #print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtitle1)) + "\n \t -sub2 :" + str(len(subtitle2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1Full) + " sub1Full == 0 ? " + str(sub1Full == 0)
         if word.text != wordP1 and word.text != wordP2 :
             if "'" in word.text[len(subtitle1)-1:len(subtitle1)]:
                 duration += word.timestamp - timeStampP
@@ -61,7 +61,7 @@ for word in words:
     #else, filling the second one
     elif (len(subtitle2) + len(word.text) <= 37) :
         sub1Full = 1
-	print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtitle1)) + "\n \t -sub2 :" + str(len(subtitle2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1Full) + " sub1Full == 0 ? " + str(sub1Full == 0)
+	    #print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtitle1)) + "\n \t -sub2 :" + str(len(subtitle2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1Full) + " sub1Full == 0 ? " + str(sub1Full == 0)
         if word.text != wordP1 and word.text != wordP2 :
             if "'" in word.text[len(subtitle2)-1:len(subtitle2)]:
                 duration += word.timestamp - timeStampP
