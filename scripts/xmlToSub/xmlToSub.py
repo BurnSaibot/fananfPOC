@@ -59,7 +59,7 @@ for word in words:
                 wordP1 = word.text
     #else, filling the second one
     elif (len(subtile2) + len(word.text) <= 37) :
-        sub1Full = 0
+        sub1Full = 1
         if word.text != wordP1 and word.text != wordP2 :
             if "'" in word.text[len(subtile2)-1:len(subtile2)]:
                 duration += word.timestamp - timeStampP
@@ -85,7 +85,7 @@ for word in words:
         duration =  0.0
         subtile2 = ""
         subtile1 = word.text + " "
-        sub1Full = 1
+        sub1Full = 0
     
 
 
