@@ -29,8 +29,8 @@ for word in xmlFile.xpath("/AudioDoc/SegmentList/SpeechSegment/Word"):
     words.append(content)
 
 sub1Full=0
-subtile1 = ""
-subtile2 = ""
+subtitle1 = ""
+subtitle2 = ""
 start = 0.0
 end = 0.0
 duration = 0.0
@@ -40,53 +40,53 @@ wordP2 = ""
 blocks = []
 
 for word in words:
-    #print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtile1)) + "\n \t -sub2 :" + str(len(subtile2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1full)
-
     #filling the first line if it's not full
-    if  (len(subtile1) + len(word.text) <= 37) and (sub1Full == 0): 
+    if  (len(subtitle1) + len(word.text) <= 37) and (sub1Full == 0):
+	print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtitle1)) + "\n \t -sub2 :" + str(len(subtitle2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1Full) + " sub1Full == 0 ? " + str(sub1Full == 0)
         if word.text != wordP1 and word.text != wordP2 :
-            if "'" in word.text[len(subtile1)-1:len(subtile1)]:
+            if "'" in word.text[len(subtitle1)-1:len(subtitle1)]:
                 duration += word.timestamp - timeStampP
                 timeStampP = word.timestamp
-                subtile1 += word.text
+                subtitle1 += word.text
                 wordP2 = wordP1
                 wordP1 = word.text
             else:
                 if word.text == "," or word.text == ".":
-                    subtile1 = subtile1[0:len(subtile1)-1]
+                    subtitle1 = subtitle1[0:len(subtitle1)-1]
                 duration += word.timestamp - timeStampP
                 timeStampP = word.timestamp
-                subtile1 += word.text + " "
+                subtitle1 += word.text + " "
                 wordP2 = wordP1
                 wordP1 = word.text
     #else, filling the second one
-    elif (len(subtile2) + len(word.text) <= 37) :
+    elif (len(subtitle2) + len(word.text) <= 37) :
         sub1Full = 1
+	print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtitle1)) + "\n \t -sub2 :" + str(len(subtitle2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1Full) + " sub1Full == 0 ? " + str(sub1Full == 0)
         if word.text != wordP1 and word.text != wordP2 :
-            if "'" in word.text[len(subtile2)-1:len(subtile2)]:
+            if "'" in word.text[len(subtitle2)-1:len(subtitle2)]:
                 duration += word.timestamp - timeStampP
                 timeStampP = word.timestamp
-                subtile2 += word.text
+                subtitle2 += word.text
                 wordP2 = wordP1
                 wordP1 = word.text
             else:
                 if word.text == "," or word.text == ".":
-                    subtile2 = subtile2[0:len(subtile2)-1]
+                    subtitle2 = subtitle2[0:len(subtitle2)-1]
                 duration += word.timestamp - timeStampP
                 timeStampP = word.timestamp
-                subtile2 += word.text + " "
+                subtitle2 += word.text + " "
                 wordP2 = wordP1
                 wordP1 = word.text
     #when both are full, creating the block.
     else  :
         end = start + duration
-        block = Block(subtile1,subtile2,start,end)
+        block = Block(subtitle1,subtitle2,start,end)
         blocks.append(block)
         start = end
         end =  0.0
         duration =  0.0
-        subtile2 = ""
-        subtile1 = word.text + " "
+        subtitle2 = ""
+        subtitle1 = word.text + " "
         sub1Full = 0
     
 
