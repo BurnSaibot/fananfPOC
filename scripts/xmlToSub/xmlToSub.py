@@ -28,7 +28,7 @@ for word in xmlFile.xpath("/AudioDoc/SegmentList/SpeechSegment/Word"):
     content = Word(word.get('stime'),word.get('dur'),word.text.replace(" ","").lower())
     words.append(content)
 
-sub1full=0
+sub1Full=0
 subtile1 = ""
 subtile2 = ""
 start = 0.0
@@ -40,8 +40,10 @@ wordP2 = ""
 blocks = []
 
 for word in words:
+    #print "mot : " + word.text + "\n longueur des sub : \n \t -sub1 : " + str(len(subtile1)) + "\n \t -sub2 :" + str(len(subtile2)) + "\n longueur du mot : " + str(len(word.text)) + "\n sub1full ? : " + str(sub1full)
+
     #filling the first line if it's not full
-    if  (len(subtile1) + len(word.text) <= 37) and (sub1full == 0): 
+    if  (len(subtile1) + len(word.text) <= 37) and (sub1Full == 0): 
         if word.text != wordP1 and word.text != wordP2 :
             if "'" in word.text[len(subtile1)-1:len(subtile1)]:
                 duration += word.timestamp - timeStampP
