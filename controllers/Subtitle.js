@@ -22,16 +22,13 @@ var extract = exports.extract = function(sub) {
             var sub2 = [];
             var sub1Filled = false;
             var exportSub = [];
-            console.log(content)
             for(var i=0; i<content.length ; i++) {
                 if (content[i].includes("webVTT")){
                     continue
                 }                
                 else if (regNumber.test(content[i])) {
-                    console.log("number ok " + content[i]);
                     index.push(content[i]);
                 } else if ( regTimecode.test(content[i])){
-                    console.log("Timecode ok " + content[i])
                     timecode.push(content[i]);
                 } else if ( regEmpty.test(content[i])) {
                     if (sub1Filled) {
@@ -40,19 +37,14 @@ var extract = exports.extract = function(sub) {
                         sub1.push(content[i]);
                     }
                     sub1Filled = !sub1Filled;
-                    sub
-                    console.log("SubFilled : " + sub1Filled);
                 } else {
                     //console.log("Not found : " + content[i]);
                 }
             }
             for (var i = 0; i<index.length;i++){
-                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};
-                    console.log(subPush)
-                
+                var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                 exportSub.push(subPush);
             }
-            console.log(exportSub)
             resolve(exportSub);
         });   
     });
