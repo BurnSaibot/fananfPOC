@@ -28,6 +28,7 @@ app.get('/', function(req,res,next) {
 .get('/transcriptions',authentication.middleware.isLoggedIn,transcription.viewsTranscriptions)
 .get('/transcription/:id',authentication.middleware.isLoggedIn,transcription.viewsOneTranscription)
 .get('/transcription/:id/edit',authentication.middleware.isLoggedIn,transcription.viewsEditOneTranscription)
+.get('/subtitle/:id',authentication.middleware.isLoggedIn,subtitle.read)
 .get('/subtitle/:id',authentication.middleware.isLoggedIn,subtitle.edit)
 .get('/subtitle/export/:id',authentication.middleware.isLoggedIn,subtitle.export)
 .post('/transcription/:id/updt',authentication.middleware.isLoggedIn,transcription.updt)

@@ -50,7 +50,7 @@ var extract = exports.extract = function(sub) {
     });
 }
 
-exports.edit = function(req,res,next) {
+exports.read = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
         return extract(result);
@@ -59,6 +59,22 @@ exports.edit = function(req,res,next) {
         mSubtitle.findById(req.params.id,function(err,sub){
             if (err) _.response.sendError(res,err,500);
             res.render('subtitles.ejs',{sub: sub,subtitles: exportedSub})
+        })    
+    }).catch(function(err){
+        _.response.sendError(res,err,500);
+    })
+    
+}
+
+exports.edit = function(req,res,next) {
+    mSubtitle.findById(req.params.id)
+    .then(function(result){
+        return extract(result);
+    })
+    .then(function(exportedSub){
+        mSubtitle.findById(req.params.id,function(err,sub){
+            if (err) _.response.sendError(res,err,500);
+            res.render('subtitlesEdit.ejs',{sub: sub,subtitles: exportedSub})
         })    
     }).catch(function(err){
         _.response.sendError(res,err,500);
