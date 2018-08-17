@@ -38,15 +38,13 @@
                     $(".timecode").css('background','red');
                     $(".content").css('background','gray');
                     var subContent = $(".subtitle > .content");
-                    console.log("longueur : " + subContent.length);
-                    console.log("val : " + subContent.val());
-                    var subString = ""
+                    var subString = "";
                     if ( $('.format').val() == "webvtt"){
                         subString += "WEBVTT \n\n";
                     }
-                    subContent.each(){
+                    subContent.each(function(index,elem){
                         subString += jQuerry(this).val + "\n";
-                    }
+                    })
                     console.log(subString);
                 }
             </script>
