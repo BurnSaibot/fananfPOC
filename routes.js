@@ -31,12 +31,13 @@ app.get('/', function(req,res,next) {
 .get('/subtitle/:id',authentication.middleware.isLoggedIn,subtitle.read)
 .get('/subtitle/edit/:id',authentication.middleware.isLoggedIn,subtitle.edit)
 .get('/subtitle/export/:id',authentication.middleware.isLoggedIn,subtitle.export)
+
 .post('/transcription/:id/updt',authentication.middleware.isLoggedIn,transcription.updt)
 .post('/transcription/videoupload',authentication.middleware.isLoggedIn,transcription.register)
+.post('/subtitle/edit/save/:id',authentication.middleware.isLoggedIn,subtitle.save)
+
 .post('/register',authentication.register)
-
 .post('/login-in',authentication.login)
-
 .get('/logout',authentication.middleware.isLoggedIn,authentication.logout)
 
 };

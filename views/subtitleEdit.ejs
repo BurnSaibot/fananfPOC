@@ -21,7 +21,7 @@
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
                     <div class="subtitle">
-                        <textarea class="content" rows="1"><%= sub.subIndex%></textarea>
+                        <p class="content" ><%= sub.subIndex%></p>
                         <textarea class="content" rows="1"><%= sub.subTimeCode%></textarea> 
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub1%></textarea>
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub2%></textarea>
@@ -30,13 +30,9 @@
                 <input type="submit" value="Valider les changements"/>
         
             </form>
-            <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="test()">test jquery</button>
+            <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="sendContent()">Envoyer les données au serveur</button>
            <script>
-                function test(){
-                    $("div.subtitle").css('background','yellow');
-                    $(".index").css('background','yellow');
-                    $(".timecode").css('background','red');
-                    $(".content").css('background','gray');
+                function sendContent(){
                     var subContent = $(".subtitle > .content");
                     var subString = [];
                     var subFormat = $('.format').val();
@@ -52,7 +48,20 @@
                             subString.push("");
                         }
                     })
-                    console.log(subString);
+                    $.ajax({
+                        type: 'POST',
+                        url: "vmfananf:3000/subtitle/edit/save/:id",
+                        data: {subContent: subString},
+                        //dataType: 'jsonp' - removed
+                        //jsonpCallback: 'callback' - removed
+                        success: function (data) {
+                            var ret = jQuery.parseJSON(data);
+                            console.log(ret.message)
+                        },
+                        error: function (xhr, status, error) {
+                            console.log('Error: ' + error.message);
+                        }
+                        });
                 }
             </script>
         </main>

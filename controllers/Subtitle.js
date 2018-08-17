@@ -82,6 +82,11 @@ exports.edit = function(req,res,next) {
     
 }
 
+exports.save = function(req,res,next) {
+    console.log(req.body.subContent);
+    res.redirect('/home');
+}
+
 exports.export = function(req,res,next) {
     _.response.sendSucces(req,res,'/home',"Export : currently in progress");
 }
