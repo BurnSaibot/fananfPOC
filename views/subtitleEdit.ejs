@@ -20,9 +20,10 @@
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
                     <div class="subtitle">
-                        <p class="timecode"><%= sub.subTimeCode%></p> 
-                        <textarea class="content1" rows="1" cols="37" ><%= sub.sub1%></textarea>
-                        <textarea class="content2" rows="1" cols="37" ><%= sub.sub2%></textarea>
+                        <textarea class="content"><%= sub.subIndex%></textarea>
+                        <textarea class="content"><%= sub.subTimeCode%></textarea> 
+                        <textarea class="content" rows="1" cols="37" ><%= sub.sub1%></textarea>
+                        <textarea class="content" rows="1" cols="37" ><%= sub.sub2%></textarea>
                     </div> </br>
                 <% }) %>
                 <input type="submit" value="Valider les changements"/>
@@ -35,12 +36,17 @@
                     $("p.index").css('background','yellow');
                     $("p.timecode").css('background','red');
                     $(".content").css('background','gray');
-                    var subContent = $(".content")
+                    var subContent = $(".subtile > .content");
                     console.log("longueur : " + subContent.length);
-			        console.log("val : " + subContent.val());
-                        subContent.each(function(){
-			        alert(jQuery(this).val() + "\n");
-                    })
+                    console.log("val : " + subContent.val());
+                    var subString = "";
+                    if (<%=sub.format%> == "webvtt"){
+                        subString += "WEBVTT \n\n";
+                    }
+                    subContent.each(){
+                        subString += jQuerry(this).val + "\n"
+                    }
+                    console.log(subString);
                 }
             </script>
         </main>
