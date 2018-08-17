@@ -33,24 +33,23 @@
             <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="test()">test jquery</button>
            <script>
                 function test(){
-                    var sub = require('../controllers/Subtitle.js');
                     $("div.subtitle").css('background','yellow');
                     $(".index").css('background','yellow');
                     $(".timecode").css('background','red');
                     $(".content").css('background','gray');
                     var subContent = $(".subtitle > .content");
-                    var subString = "";
+                    var subString = [];
                     var subFormat = $('.format').val();
                     console.log(subFormat)
                     subContent.css("background","blue");
                     if ( subFormat == "vtt"){
                         subString += "WEBVTT \n\n";
                     }
+
                     subContent.each(function(index,elem){
-                        //subString += jQuery(this).val + "\n";
-                        console.log(jQuery(this).val())
+                        subString.push(jQuery(this).val())
                         if (index%4 == 3){
-                            console.log("");
+                            subString.push("");
                         }
                     })
                     console.log(subString);
