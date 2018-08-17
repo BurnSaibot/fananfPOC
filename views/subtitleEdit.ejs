@@ -17,6 +17,7 @@
                             <input type="button" value="Exporter">
                         </form>
                         <p class="format"><%=sub.format%></p>
+                        <p class="id"><%=sub._id</p>
                 </div>
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
@@ -50,7 +51,7 @@
                     })
                     $.ajax({
                         type: 'POST',
-                        url: "vmfananf:3000/subtitle/edit/save/:id",
+                        url: "vmfananf:3000/subtitle/edit/save/" + $(p.id).val(),
                         data: {subContent: subString},
                         //dataType: 'jsonp' - removed
                         //jsonpCallback: 'callback' - removed
@@ -61,7 +62,7 @@
                         error: function (xhr, status, error) {
                             console.log('Error: ' + error.message);
                         }
-                        });
+                    });
                 }
             </script>
         </main>

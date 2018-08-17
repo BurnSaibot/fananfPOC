@@ -84,7 +84,7 @@ exports.edit = function(req,res,next) {
 
 exports.save = function(req,res,next) {
     console.log(req.body.subContent);
-    res.redirect('/home');
+    res.send({status: ok})
 }
 
 exports.export = function(req,res,next) {
