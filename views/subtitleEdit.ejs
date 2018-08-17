@@ -33,6 +33,7 @@
             <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="test()">test jquery</button>
            <script>
                 function test(){
+                    var sub = require('../controllers/Subtitle.js');
                     $("div.subtitle").css('background','yellow');
                     $(".index").css('background','yellow');
                     $(".timecode").css('background','red');
@@ -47,7 +48,7 @@
                     }
                     subContent.each(function(index,elem){
                         //subString += jQuery(this).val + "\n";
-                        console.log("Index + " + index + " value :" + jQuery(this).val())
+                        console.log(jQuery(this).val())
                         if (index%4 == 3){
                             console.log("");
                         }
