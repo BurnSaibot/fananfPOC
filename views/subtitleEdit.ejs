@@ -16,10 +16,10 @@
                         <form method="GET" action="/subtitle/export/:id">
                             <input type="button" value="Exporter">
                         </form>
+                        <p class="format"><%=sub.format%></p>
                 </div>
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
-                    <p class="format"><%=sub.format%></p>
                     <div class="subtitle">
                         <textarea class="content" rows="1"><%= sub.subIndex%></textarea>
                         <textarea class="content" rows="1"><%= sub.subTimeCode%></textarea> 
@@ -39,7 +39,9 @@
                     $(".content").css('background','gray');
                     var subContent = $(".subtitle > .content");
                     var subString = "";
-                    if ( $('.format').val() == "webvtt"){
+                    var subFormat = $('.format').val();
+                    console.log(subFormat)
+                    if (  == "webvtt"){
                         subString += "WEBVTT \n\n";
                     }
                     subContent.each(function(index,elem){
