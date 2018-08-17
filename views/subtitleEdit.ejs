@@ -19,9 +19,10 @@
                 </div>
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
+                    <p class="format"><%=sub.format%></p>
                     <div class="subtitle">
-                        <textarea class="content"><%= sub.subIndex%></textarea>
-                        <textarea class="content"><%= sub.subTimeCode%></textarea> 
+                        <textarea class="content" rows="1"><%= sub.subIndex%></textarea>
+                        <textarea class="content" rows="1"><%= sub.subTimeCode%></textarea> 
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub1%></textarea>
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub2%></textarea>
                     </div> </br>
@@ -33,18 +34,18 @@
            <script>
                 function test(){
                     $("div.subtitle").css('background','yellow');
-                    $("p.index").css('background','yellow');
-                    $("p.timecode").css('background','red');
+                    $(".index").css('background','yellow');
+                    $(".timecode").css('background','red');
                     $(".content").css('background','gray');
-                    var subContent = $(".subtile > .content");
+                    var subContent = $(".subtitle > .content");
                     console.log("longueur : " + subContent.length);
                     console.log("val : " + subContent.val());
-                    var subString = "";
-                    if (<%=sub.format%> == "webvtt"){
+                    var subString = ""
+                    if ( $('.format').val() == "webvtt"){
                         subString += "WEBVTT \n\n";
                     }
                     subContent.each(){
-                        subString += jQuerry(this).val + "\n"
+                        subString += jQuerry(this).val + "\n";
                     }
                     console.log(subString);
                 }
