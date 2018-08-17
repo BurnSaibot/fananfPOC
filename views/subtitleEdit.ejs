@@ -41,7 +41,8 @@
                     var subString = "";
                     var subFormat = $('.format').val();
                     console.log(subFormat)
-                    if (  == "webvtt"){
+                    subContent.css("background","blue");
+                    if ( subFormat == "vtt"){
                         subString += "WEBVTT \n\n";
                     }
                     subContent.each(function(index,elem){
