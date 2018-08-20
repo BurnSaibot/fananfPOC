@@ -10,10 +10,14 @@
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <%- include('partials/headerConnected') %>
         <main>
-            
             <div class="blockPres">
-                    <h1>Consultation d'un fichier de sous-titres : </h1>
-                    <button id="btnSave" onclick="exportFile()">Export</button>
+                <h1>Consultation d'un fichier de sous-titres : </h1>
+                <button id="btnSave" onclick="exportFile()">Export</button>
+            </div>
+            <div class="videoContainer">
+                <video controls="controls" src="sub.urlSousTitres">
+                    Vidéo à afficher pour la lecture de sous titres
+                </video>
             </div>
             <% subtitles.forEach(function(sub,index){%>
                 <div class="subtitle">
