@@ -45,13 +45,13 @@ var extract = exports.extract = function(sub) {
                 }
             }
             if (sub.format == "vtt") {
-                for (var i = 0; i<timeCode.length;i++){
+                for (var i = 0; i<timecode.length;i++){
                     var subPush = {timeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                     exportSub.push(subPush);
                     console.log("Pushed : " + subPush);
                 }
             } else if (sub.format == "srt") {
-                for (var i = 0; i<timeCode.length;i++){
+                for (var i = 0; i<timecode.length;i++){
                     var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                     exportSub.push(subPush);
                     console.log("Pushed : " + subPush);
