@@ -25,6 +25,7 @@ var extract = exports.extract = function(sub) {
             var sub1Filled = false;
             var exportSub = [];
             for(var i=0; i<content.length ; i++) {
+                console.log ("Reading line : " + content[i])
                 if (content[i].includes("webVTT")){
                     continue
                 }                
