@@ -47,9 +47,16 @@
 
                     subContent.each(function(index,elem){
                         subString.push(jQuery(this).val())
-                        if (index%4 == 3){
-                            subString.push("");
+                        if (subFormat == "srt") {
+                            if (index%4 == 3){
+                                subString.push("");
+                            }
+                        } else if (subFormat == "vtt") {
+                            if (index%3 == 2){
+                                subString.push("");
+                            }
                         }
+                        
                     })
 
                     $.ajax({
