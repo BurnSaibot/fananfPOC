@@ -83,7 +83,24 @@ exports.edit = function(req,res,next) {
 }
 
 exports.save = function(req,res,next) {
-    console.log(req.body);
+    console.log(req.body.subContent);
+    mSubtitle.findById(req.params.id)
+    .then(function(subtitle){
+        return new Promise (function(resolve,reject){
+            var subFile = fs.createWriteStream(subtitle.urlSousTitres);
+            subFile.on('error',function(err){
+                reject(err);
+            })
+            var subContent = req.body.subContent;
+            subContent.forEach(line => {
+                subFile.write(line + "\n");
+            });
+            subFile.end();
+        })
+    })
+    .catch(function(err){
+        _.response.sendError(res,err,500);
+    })
     res.send(JSON.stringify({status: "ok"}));
 }
 
