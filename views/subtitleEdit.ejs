@@ -13,13 +13,10 @@
         <main>
                 <div class="blockPres">
                         <h1>Edition d'un fichier de sous-titres : </h1>
-                        <form method="GET" action="/subtitle/export/:id">
-                            <input type="button" value="Exporter">
-                        </form>
-                        <p>Format : </p>
-                        <p class="format"><%=sub.format%></p>
+                        <p>Format : </p><p class="format"><%=sub.format%></p>
+                        <button id="btnExport"  onclick="exportFile()"> Exporter </button>   
                 </div>
-            <form method="POST" action="/subtitle/editing"></form>
+            <form>
                 <% subtitles.forEach(function(subR,index){%>
                     <div class="subtitle">
                         <% if (sub.format != "vtt") { %>
@@ -30,13 +27,13 @@
                         <textarea class="content" rows="1" cols="37" ><%= subR.sub2%></textarea>
                     </div> </br>
                 <% }) %>
-                <input type="submit" value="Valider les changements"/>
             </form>
 
-            <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="sendContent()">Envoyer les données au serveur</button>
+            <button id="btnSave" onclick="sendContent()">Sauvegarder les changements</button>
            <script>
                 function sendContent(){
-			console.log(document.location.href);
+
+                    // getting content
                     var subContent = $(".subtitle > .content");
                     var subString = [];
                     var subFormat = $(".format").text();
@@ -45,6 +42,7 @@
                         subString.push("");
                     }
 
+                    //formating subtitle before send it to server
                     subContent.each(function(index,elem){
                         subString.push(jQuery(this).val())
                         if (subFormat == "srt") {
@@ -58,9 +56,10 @@
                         }
                         
                     })
-
+                    //sending subtitles to server
                     $.ajax({
                         type: 'POST',
+                        //last part is the subtitle id
                         url: "http://vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1),
                         data: {subContent: subString},
                         //dataType: 'jsonp' - removed
@@ -78,6 +77,11 @@
                             console.log("error: " + err);
                         }
                     });
+                }
+
+                function exportFile(){
+                    var url = "hrrp://vmfanf:3000/subtitle/export/" + document.location.href.substr(document.location.href.lastIndexOf('/') + 1);
+                    window.open(url,'_blank');
                 }
             </script>
         </main>

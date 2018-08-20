@@ -97,12 +97,10 @@ exports.viewsTranscriptions = function(req,res) {
 }
 
 exports.viewsOneTranscription = function(req,res) {
-    console.log("Id de la transcription à trouver : " + req.params.id);
     Transcription.findById({_id: req.params.id }, function(err,tr) {
         if (err) _.response.sendError(res,err,500);
         mSubtitle.find({transcription: req.params.id }, function(err2,subtitlesFound) {
             if (err2) _.response.sendError(res,err2,500);
-            console.log(tr);
             console.log(subtitlesFound);
             res.render('transcription.ejs',{transcription: tr,subtitles: subtitlesFound});
         })

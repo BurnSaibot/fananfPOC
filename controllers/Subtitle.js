@@ -15,7 +15,6 @@ var extract = exports.extract = function(sub) {
             var regTimecodeSrt = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
             var regTimecodeVtt = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
             const regEmpty = new RegExp("[a-zA-Z-0-9]");
-            console.log("Format : " + sub.format)
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
             var index = [];
@@ -25,14 +24,12 @@ var extract = exports.extract = function(sub) {
             var sub1Filled = false;
             var exportSub = [];
             for(var i=0; i<content.length ; i++) {
-                console.log ("Reading line : " + content[i])
                 if (content[i].includes("WEBVTT")){
                     continue
                 }                
                 else if (regNumber.test(content[i])) {
                     index.push(content[i]);
                 } else if ( regTimecodeVtt.test(content[i]) || regTimecodeSrt.test(content[i])){
-                    console.log("timecode Ok " + content[i]);
                     timecode.push(content[i]);
                 } else if ( regEmpty.test(content[i])) {
                     if (sub1Filled) {
@@ -45,7 +42,6 @@ var extract = exports.extract = function(sub) {
                     //console.log("Not found : " + content[i]);
                 }
             }
-            console.log(timecode);
             if (sub.format == "vtt") {
                 for (var i = 0; i<timecode.length;i++){
                     var subPush = {subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
@@ -96,7 +92,6 @@ exports.edit = function(req,res,next) {
 }
 
 exports.save = function(req,res,next) {
-    console.log(req.body.subContent);
     mSubtitle.findById(req.params.id)
     .then(function(subtitle){
         return new Promise (function(resolve,reject){
@@ -118,5 +113,12 @@ exports.save = function(req,res,next) {
 }
 
 exports.export = function(req,res,next) {
-    _.response.sendSucces(req,res,'/home',"Export : currently in progress");
+        mSubtitle.findById(req.params.id)
+        .then(function(subtitle){
+            res.download(subtitle.urlSousTitres);
+        })
+        .catch(function(err){
+            _.response.sendError(res,err,500);
+        })
+         // Set disposition and send it.
 }
