@@ -12,11 +12,11 @@ var extract = exports.extract = function(sub) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
             const regNumber = new RegExp("^[0-9]{1,}$");
-            
+            var regTimecode 
             if (sub.format == "vtt") {
-                const regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
+                regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
             } else if (sub.format == "srt") {
-                const regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
+                regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
             } else {
                 reject("Bad formart, unreadable")
             }
