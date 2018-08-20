@@ -17,28 +17,28 @@
                             <input type="button" value="Exporter">
                         </form>
                         <p class="format"><%=sub.format%></p>
-                        <p class="id"><%=sub._id%></p>
                 </div>
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
                     <div class="subtitle">
-                        <p class="content" ><%= sub.subIndex%></p>
-                        <textarea class="content" rows="1"><%= sub.subTimeCode%></textarea> 
+                        <input type="text" class="content" required ><%= sub.subIndex%></p>
+                        <textarea class="content" rows="1" cols="40"><%= sub.subTimeCode%></textarea> 
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub1%></textarea>
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub2%></textarea>
                     </div> </br>
                 <% }) %>
                 <input type="submit" value="Valider les changements"/>
-        
             </form>
+
             <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="sendContent()">Envoyer les données au serveur</button>
            <script>
                 function sendContent(){
 			console.log(document.location.href);
                     var subContent = $(".subtitle > .content");
                     var subString = [];
-                    var subFormat = $('.format').val();
+                    var subFormat = $(".format").text();
                     console.log("Format : " + subFormat)
+                    subContent.css('background','red');
                     if ( subFormat == "vtt"){
                         subString += "WEBVTT \n\n";
                     }
@@ -49,6 +49,7 @@
                             subString.push("");
                         }
                     })
+
                     $.ajax({
                         type: 'POST',
                         url: "http://vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1),
