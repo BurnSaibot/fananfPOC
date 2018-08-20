@@ -34,11 +34,11 @@
             <button id="btnTest" class="boutonDeTest" name="testBoutonRouge" onclick="sendContent()">Envoyer les données au serveur</button>
            <script>
                 function sendContent(){
+			console.log(document.location.href);
                     var subContent = $(".subtitle > .content");
                     var subString = [];
                     var subFormat = $('.format').val();
                     console.log(subFormat)
-                    subContent.css("background","blue");
                     if ( subFormat == "vtt"){
                         subString += "WEBVTT \n\n";
                     }
@@ -49,7 +49,7 @@
                             subString.push("");
                         }
                     })
-                    console.log("vmfananf:3000/subtitle/edit/save/" + $('p.id').val());
+                    console.log("vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1));
                     $.ajax({
                         type: 'POST',
                         url: "vmfananf:3000/subtitle/edit/save/" + $('p.id').val(),
