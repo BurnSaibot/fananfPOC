@@ -30,7 +30,7 @@ app.get('/', function(req,res,next) {
 .get('/transcription/:id/edit',authentication.middleware.isLoggedIn,transcription.viewsEditOneTranscription)
 .get('/subtitle/:id',authentication.middleware.isLoggedIn,subtitle.read)
 .get('/subtitle/edit/:id',authentication.middleware.isLoggedIn,subtitle.edit)
-.get('/subtitle/export/:id/:format',authentication.middleware.isLoggedIn,subtitle.export)
+.get('/subtitle/export/:id/',authentication.middleware.isLoggedIn,subtitle.export)
 .post('/transcription/:id/updt',authentication.middleware.isLoggedIn,transcription.updt)
 .post('/transcription/videoupload',authentication.middleware.isLoggedIn,transcription.register)
 .post('/subtitle/edit/save/:id',authentication.middleware.isLoggedIn,subtitle.save)
