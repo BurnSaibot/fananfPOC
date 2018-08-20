@@ -51,7 +51,7 @@
                     })
                     $.ajax({
                         type: 'POST',
-                        url: "vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1),
+                        url: "http://vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1),
                         data: {subContent: subString},
                         //dataType: 'jsonp' - removed
                         //jsonpCallback: 'callback' - removed
