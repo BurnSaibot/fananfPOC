@@ -12,7 +12,14 @@ var extract = exports.extract = function(sub) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
             const regNumber = new RegExp("^[0-9]{1,}$");
-            const regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
+            
+            if (sub.format == "vtt") {
+                const regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
+            } else if (sub.format == "srt") {
+                const regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
+            } else {
+                reject("Bad formart, unreadable")
+            }
             const regEmpty = new RegExp("[a-zA-Z-0-9]");
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
@@ -41,10 +48,18 @@ var extract = exports.extract = function(sub) {
                     //console.log("Not found : " + content[i]);
                 }
             }
-            for (var i = 0; i<index.length;i++){
-                var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
-                exportSub.push(subPush);
+            if (sub.format == "vtt") {
+                for (var i = 0; i<index.length;i++){
+                    var subPush = {subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
+                    exportSub.push(subPush);
+                }
+            } else if (sub.format == "srt") {
+                for (var i = 0; i<index.length;i++){
+                    var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
+                    exportSub.push(subPush);
+                }
             }
+            
             resolve(exportSub);
         });   
     });

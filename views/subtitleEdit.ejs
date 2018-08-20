@@ -16,15 +16,18 @@
                         <form method="GET" action="/subtitle/export/:id">
                             <input type="button" value="Exporter">
                         </form>
+                        <p>Format : </p>
                         <p class="format"><%=sub.format%></p>
                 </div>
             <form method="POST" action="/subtitle/editing"></form>
-                <% subtitles.forEach(function(sub,index){%>
+                <% subtitles.forEach(function(subR,index){%>
                     <div class="subtitle">
-                        <input type="text" class="content" required value="<%= sub.subIndex%>"/>
-                        <textarea class="content" rows="1" cols="40"><%= sub.subTimeCode%></textarea> 
-                        <textarea class="content" rows="1" cols="37" ><%= sub.sub1%></textarea>
-                        <textarea class="content" rows="1" cols="37" ><%= sub.sub2%></textarea>
+                        <% if (sub.format != "vtt") { %>
+                            <input type="text" class="content" required value="<%= subR.subIndex%>"/>
+                        <% } %>
+                        <textarea class="content" rows="1" cols="40"><%= subR.subTimeCode%></textarea> 
+                        <textarea class="content" rows="1" cols="37" ><%= subR.sub1%></textarea>
+                        <textarea class="content" rows="1" cols="37" ><%= subR.sub2%></textarea>
                     </div> </br>
                 <% }) %>
                 <input type="submit" value="Valider les changements"/>
@@ -37,10 +40,9 @@
                     var subContent = $(".subtitle > .content");
                     var subString = [];
                     var subFormat = $(".format").text();
-                    console.log("Format : " + subFormat)
-                    subContent.css('background','red');
                     if ( subFormat == "vtt"){
-                        subString += "WEBVTT \n\n";
+                        subString.push("WEBVTT");
+                        subString.push("");
                     }
 
                     subContent.each(function(index,elem){

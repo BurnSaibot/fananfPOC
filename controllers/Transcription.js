@@ -153,7 +153,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
         } else if (format == "vtt") {
             console.log("Format : vtt only");
             var subtitle1 = new mSubtitle ({
-                urlSousTitres: path.join(pathOut,propperName) + ".srt",
+                urlSousTitres: path.join(pathOut,propperName) + ".vtt",
                 format: format,
                 transcription: tr._id
             })
