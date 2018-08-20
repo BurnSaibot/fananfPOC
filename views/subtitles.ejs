@@ -13,9 +13,7 @@
             
             <div class="blockPres">
                     <h1>Consultation d'un fichier de sous-titres : </h1>
-                    <form method="GET" action="/subtitle/export/:id">
-                        <input type="submit" value="Exporter">
-                    </form>
+                    <button id="btnSave" onclick="exportFile()">Export</button>
             </div>
             <% subtitles.forEach(function(sub,index){%>
                 <div class="subtitle">
@@ -26,6 +24,12 @@
                 </div> </br>
            <% }) %>
         </main>
+        <script>
+            function exportFile(){
+                    var url = "http://vmfananf:3000/subtitle/export/" + document.location.href.substr(document.location.href.lastIndexOf('/') + 1);
+                    window.open(url,'_blank');
+                }
+        </script>
     </body>
     <%- include('partials/footer') %>
 </html>
