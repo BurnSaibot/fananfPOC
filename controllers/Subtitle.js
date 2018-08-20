@@ -84,7 +84,7 @@ exports.edit = function(req,res,next) {
 
 exports.save = function(req,res,next) {
     console.log(req.body);
-    res.send({status: ok})
+    res.send({status: "ok"})
 }
 
 exports.export = function(req,res,next) {
