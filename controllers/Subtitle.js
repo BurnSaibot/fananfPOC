@@ -15,7 +15,7 @@ var extract = exports.extract = function(sub) {
             var regTimecodeSrt = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
             var regTimecodeVtt = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
             const regEmpty = new RegExp("[a-zA-Z-0-9]");
-            console.log(regTimecode);
+            console.log(regTimecodeSrt);
             console.log(regNumber);
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
