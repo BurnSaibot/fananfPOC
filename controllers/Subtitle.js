@@ -45,6 +45,7 @@ var extract = exports.extract = function(sub) {
                     //console.log("Not found : " + content[i]);
                 }
             }
+            console.log(timecode);
             if (sub.format == "vtt") {
                 for (var i = 0; i<timecode.length;i++){
                     var subPush = {timeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
