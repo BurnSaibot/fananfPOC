@@ -26,7 +26,7 @@ var extract = exports.extract = function(sub) {
             var exportSub = [];
             for(var i=0; i<content.length ; i++) {
                 console.log ("Reading line : " + content[i])
-                if (content[i].includes("webVTT")){
+                if (content[i].includes("WEBVTT")){
                     continue
                 }                
                 else if (regNumber.test(content[i])) {
