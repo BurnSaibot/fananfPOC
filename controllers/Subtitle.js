@@ -12,15 +12,11 @@ var extract = exports.extract = function(sub) {
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
             const regNumber = new RegExp("^[0-9]{1,}$");
-            var regTimecode 
-            if (sub.format == "vtt") {
-                regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
-            } else if (sub.format == "srt") {
-                regTimecode = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
-            } else {
-                reject("Bad formart, unreadable")
-            }
+            var regTimecodeSrt = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
+            var regTimecodeVtt = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
             const regEmpty = new RegExp("[a-zA-Z-0-9]");
+            console.log(regTimecode);
+            console.log(regNumber);
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
             var index = [];
@@ -35,7 +31,7 @@ var extract = exports.extract = function(sub) {
                 }                
                 else if (regNumber.test(content[i])) {
                     index.push(content[i]);
-                } else if ( regTimecode.test(content[i])){
+                } else if ( regTimecodeVtt.test(content[i]) || regTimecodeSrt.test(content[i])){
                     timecode.push(content[i]);
                 } else if ( regEmpty.test(content[i])) {
                     if (sub1Filled) {
