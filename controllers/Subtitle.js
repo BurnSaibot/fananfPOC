@@ -15,8 +15,6 @@ var extract = exports.extract = function(sub) {
             var regTimecodeSrt = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
             var regTimecodeVtt = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
             const regEmpty = new RegExp("[a-zA-Z-0-9]");
-            console.log(regTimecodeSrt);
-            console.log(regNumber);
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
             var index = [];
@@ -48,11 +46,13 @@ var extract = exports.extract = function(sub) {
                 for (var i = 0; i<index.length;i++){
                     var subPush = {subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                     exportSub.push(subPush);
+                    console.log(subPush);
                 }
             } else if (sub.format == "srt") {
                 for (var i = 0; i<index.length;i++){
                     var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                     exportSub.push(subPush);
+                    console.log(subPush);
                 }
             }
             
