@@ -32,6 +32,7 @@ var extract = exports.extract = function(sub) {
                 else if (regNumber.test(content[i])) {
                     index.push(content[i]);
                 } else if ( regTimecodeVtt.test(content[i]) || regTimecodeSrt.test(content[i])){
+                    console.log("timecode Ok " + content[i]);
                     timecode.push(content[i]);
                 } else if ( regEmpty.test(content[i])) {
                     if (sub1Filled) {
@@ -48,13 +49,11 @@ var extract = exports.extract = function(sub) {
                 for (var i = 0; i<timecode.length;i++){
                     var subPush = {timeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                     exportSub.push(subPush);
-                    console.log("Pushed : " + subPush);
                 }
             } else if (sub.format == "srt") {
                 for (var i = 0; i<timecode.length;i++){
                     var subPush = {subIndex: index[i],subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
                     exportSub.push(subPush);
-                    console.log("Pushed : " + subPush);
                 }
             }
             
