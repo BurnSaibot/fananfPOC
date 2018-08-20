@@ -59,8 +59,13 @@
                             var ret = jQuery.parseJSON(data);
                             console.log(ret.message)
                         },
-                        error: function (xhr, status, error) {
-                            console.log('Error: ' + error.message);
+                        error: function(xhr,textStatus,err)
+                        {
+                            console.log("readyState: " + xhr.readyState);
+                            console.log("responseText: "+ xhr.responseText);
+                            console.log("status: " + xhr.status);
+                            console.log("text status: " + textStatus);
+                            console.log("error: " + err);
                         }
                     });
                 }
