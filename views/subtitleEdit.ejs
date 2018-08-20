@@ -38,7 +38,7 @@
                     var subContent = $(".subtitle > .content");
                     var subString = [];
                     var subFormat = $('.format').val();
-                    console.log(subFormat)
+                    console.log("Format : " + subFormat)
                     if ( subFormat == "vtt"){
                         subString += "WEBVTT \n\n";
                     }
@@ -51,7 +51,7 @@
                     })
                     $.ajax({
                         type: 'POST',
-                        url: "vmfananf:3000/subtitle/edit/save/" + "vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1),
+                        url: "vmfananf:3000/subtitle/edit/save/"+ document.location.href.substr(document.location.href.lastIndexOf('/') + 1),
                         data: {subContent: subString},
                         //dataType: 'jsonp' - removed
                         //jsonpCallback: 'callback' - removed
