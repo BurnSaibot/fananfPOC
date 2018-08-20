@@ -21,7 +21,7 @@
             <form method="POST" action="/subtitle/editing"></form>
                 <% subtitles.forEach(function(sub,index){%>
                     <div class="subtitle">
-                        <input type="text" class="content" required ><%= sub.subIndex%></p>
+                        <input type="text" class="content" required value="<%= sub.subIndex%>"/>
                         <textarea class="content" rows="1" cols="40"><%= sub.subTimeCode%></textarea> 
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub1%></textarea>
                         <textarea class="content" rows="1" cols="37" ><%= sub.sub2%></textarea>
