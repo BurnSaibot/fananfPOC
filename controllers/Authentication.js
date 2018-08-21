@@ -48,7 +48,6 @@ var getHash = function (password, salt, callback) {
   //Routes
 
   exports.register = function(req,res,next) {
-    console.log("on commence l'enregistrement");
     var failed = "Votre enregistrement à échouer, vérifiez que tous les champs ont bien été remplis"
 
     if (req.body.username === undefined || req.body.password === undefined 

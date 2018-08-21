@@ -11,10 +11,12 @@ var extract = exports.extract = function(sub) {
 
         fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
+            //creating regexp to test each lines of the data
             const regNumber = new RegExp("^[0-9]{1,}$");
-            var regTimecodeSrt = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
-            var regTimecodeVtt = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
+            const regTimecodeSrt = new RegExp("(([0-9]{2}:){2}[0-9]{2},[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2},[0-9]{3})");
+            const regTimecodeVtt = new RegExp("(([0-9]{2}:){2}[0-9]{2}.[0-9]{3}) --> (([0-9]{2}:){2}[0-9]{2}.[0-9]{3})");
             const regEmpty = new RegExp("[a-zA-Z-0-9]");
+
             //on séparer chaque ligne du fichier de sous-titres
             var content = data.split("\n");
             var index = [];
@@ -42,6 +44,7 @@ var extract = exports.extract = function(sub) {
                     //console.log("Not found : " + content[i]);
                 }
             }
+
             if (sub.format == "vtt") {
                 for (var i = 0; i<timecode.length;i++){
                     var subPush = {subTimeCode: timecode[i],sub1: sub1[i],sub2: sub2[i]};               
@@ -58,7 +61,7 @@ var extract = exports.extract = function(sub) {
         });   
     });
 }
-
+//permet d'afficher le contenu d'un sous titre
 exports.read = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
@@ -75,6 +78,7 @@ exports.read = function(req,res,next) {
     
 }
 
+// permet d'afficher le contenu d'un sous titre et de l'éditer
 exports.edit = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
@@ -91,6 +95,7 @@ exports.edit = function(req,res,next) {
     
 }
 
+//permet de sauvegarder les changements effectués sur une page et d'envoyer un message en fonction de l'echec/du succès de l'opération
 exports.save = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(subtitle){
@@ -112,6 +117,7 @@ exports.save = function(req,res,next) {
     res.send(JSON.stringify({status: "200",message: "La vidéo a correctement été sauvegardée"}));
 }
 
+//permet à l'utilisateur de télécharger un fichier 
 exports.export = function(req,res,next) {
         mSubtitle.findById(req.params.id)
         .then(function(subtitle){

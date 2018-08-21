@@ -5,8 +5,6 @@ var _ = require('./Utils.js');
 var mongoose = require('mongoose');
 
 var create = exports.create = function (req,res,msg) {
-    console.log(req.session);
-    console.log(req.session.user);
     var groupName = req.session.user.nom.toUpperCase() + " " + req.session.user.prenom;
     var description = '';
 
@@ -35,13 +33,6 @@ var create = exports.create = function (req,res,msg) {
         _.response.sendSucces(req,res,'/home',msg)
     })
 
-}
-
-exports.getMembers = function(req,res,callback) {
-    //callback (users)
-
-    var users = [];
-    
 }
 
 exports.viewsMembers = function(req,res) {

@@ -101,7 +101,6 @@ exports.viewsOneTranscription = function(req,res) {
         if (err) _.response.sendError(res,err,500);
         mSubtitle.find({transcription: req.params.id }, function(err2,subtitlesFound) {
             if (err2) _.response.sendError(res,err2,500);
-            console.log(subtitlesFound);
             res.render('transcription.ejs',{transcription: tr,subtitles: subtitlesFound});
         })
     })
@@ -122,7 +121,7 @@ exports.updt = function(req,res) {
         if(err){
              _.response.sendError(res,err,500);
         } else {
-            console.log("transcription updated redirecting to " + '/trancription/' +tr._id);
+            console.log("transcription updated redirecting to " + '/trancription/');
             res.redirect('/trancriptions');
         }
     })
@@ -130,6 +129,7 @@ exports.updt = function(req,res) {
 
 var saveSubtitles = function(pathOut,propperName,format,tr) {
     return new Promise(function(resolve,reject) {
+        //en fonction du format des sous titres, on doit créer différentes entrées dans la bdd
         if (format == "srt") {
             console.log(" Format : srt only");
             var subtitle1 = new mSubtitle ({
