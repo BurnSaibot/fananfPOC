@@ -109,7 +109,7 @@ exports.save = function(req,res,next) {
     .catch(function(err){
         _.response.sendError(res,err,500);
     })
-    res.send(JSON.stringify({status: "ok"}));
+    res.send(JSON.stringify({status: "200",message: "La vidéo a correctement été sauvegardée"}));
 }
 
 exports.export = function(req,res,next) {
