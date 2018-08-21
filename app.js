@@ -58,5 +58,5 @@ routes.initialize(app);
 
 app.listen(port,function(err){
     if (err) console.log(err);
-    else console.log("Server launched & listenning on port " + port);
+    else console.log("Server launched & listening on port " + port);
 })
