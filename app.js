@@ -18,7 +18,7 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static(__dirname));
 app.use(cookieParser());
 app.use(session({secret: 'fananftopsecretsessioncookie',saveUninitialized: false, resave: true, cookie: { secure: false }}));
 //granting acces to config everywhere in the app
