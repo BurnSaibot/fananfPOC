@@ -1,7 +1,8 @@
 .videoContainer{
     position: fixed;
+    float: left;
     width: 20%;
-    left: 0;
+    
 }
 
 .body{
