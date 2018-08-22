@@ -4,8 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <title> fananf - read a subtitles file  </title>
-        <link rel="stylesheet" href="/style/general.css">
-		<link rel="stylesheet" href="/style/menu.css">	
+        <%- include('partials/css.ejs) %>
     </head>
     <body>
         <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -15,7 +14,8 @@
                 <h1>Edition d'un fichier de sous-titres : </h1>
                 <p>Format : </p><p class="format"><%=sub.format%></p>
                 <p>Les changement sont sauvegardés de manière automatique toutes les 5 minutes.</p>
-                <button id="btnExport"  onclick="exportFile()"> Exporter </button>   
+                <button id="btnExport"  onclick="exportFile()"> Exporter </button>
+                <button id="btnSave" onclick="sendContent()">Sauvegarder les changements</button>   
             </div>
             <div class="videoContainer">
                 <video controls="controls" >

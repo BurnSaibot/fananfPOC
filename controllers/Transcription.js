@@ -62,11 +62,11 @@ exports.register = function(req,res) {
                         //console.log("Id de la transcription" + tr_id);
                         return Transcription.findByIdAndUpdate(tr_id, {status: 'Done'});
                     })
-                    .catch(function(err) {
-                        Transcription.findByIdAndUpdate(subtitle.transcription, {status: 'Failed'}, function(error2,updtTranscription){
+                    .catch(function(tr_id) {
+                        Transcription.findByIdAndUpdate(tr_id, {status: 'Failed'}, function(error2,updtTranscription){
                             if (error2) throw error2;
                         })
-                        throw err;
+                        throw "Erreur lors de l'upload de la video pour la transcription: " + tr_id;
                     });
                     //even if the transcription isn't over, we redirect the user to home as the transcription could take a great amount of time.
                     _.response.sendSucces(req,res,'/home',"Succesfuly send the video to the server, waiting to get the transcription to generate subtitles.");
@@ -192,9 +192,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
                         
         } else {
             console.log("Script failed, updating the transcription to \"failed\"");
-            Transcription.findByIdAndUpdate(tr._id, {status: 'Failed'}, function(error,updtTranscription){
-                if (error) throw error;
-            });
+            reject(tr_id);
         }
     })
 }
@@ -209,7 +207,7 @@ var execScript = function(script,mode,tr_id) {
                     console.log("Updating the transcription on \"Done\"");
                     resolve(tr_id);
                 } else {
-                    reject("Erreur lors du script de transcription : " + code);
+                    reject(tr_id);
                 }
             }
         )
