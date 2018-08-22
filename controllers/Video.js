@@ -52,5 +52,8 @@ exports.stream = function(req,res){
             fs.createReadStream(path).pipe(res)
         } 
     })
+    .catch(function(err){
+        _.response(res,err + "\n xd y'a une erreur",500)
+    })
         
 }
