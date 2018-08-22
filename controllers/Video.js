@@ -8,6 +8,8 @@ exports.stream = function(req,res){
 
     Subtitle.getVideoURL(req.params.id)
     .then(function(sub_url){
+        console.log(req.params.id)
+       Subtitle.getVideoURL(req.params.id).then(function(sub_url){ console.log("Url trouvé xd : sub_url")},function(err){console.log("Y'a une erreur : " + err)})
         const path = sub_url
         const stat = fs.statSync(path)
         const fileSize = stat.size
@@ -30,8 +32,10 @@ exports.stream = function(req,res){
             }
             res.writeHead(206,head);
             file.on("open",function() {
+                console.log("xd")
                 file.pipe(res);
             }).on("error",function(){
+                console.log("xd2")
                 _.response.sendError(res,err,500);
             })
         } else {
