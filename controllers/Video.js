@@ -5,18 +5,12 @@ const fs = require('fs');
 
 exports.stream = function(req,res){
     // from https://medium.com/@daspinola/video-stream-with-node-js-and-html5-320b3191a6b6
-    const sub_id = req.params.id
-    console.log(req.params.id)
-    console.log(Subtitle.getVideoURL(sub_id))
-    
-    mSubtitle.findById(sub_id)
-    .then(function(sub){
-        console.log("Avant qu'on trouve la video (C/Sub)")
-        return mTranscription.findById(sub.transcription);
-    })
-    .then(function(transcription){
-        console.log("Dans get Video Url devrais retourner l'url : " + transcription.urlVideo)
-        const path = transcription.urlVideo
+
+    Subtitle.getVideoURL(req.params.id)
+    .then(function(sub_url){
+        console.log(req.params.id)
+       Subtitle.getVideoURL(req.params.id).then(function(sub_url){ console.log("Url trouvé xd : sub_url")},function(err){console.log("Y'a une erreur : " + err)})
+        const path = sub_url
         const stat = fs.statSync(path)
         const fileSize = stat.size
         const range = req.headers.range
@@ -38,8 +32,10 @@ exports.stream = function(req,res){
             }
             res.writeHead(206,head);
             file.on("open",function() {
+                console.log("xd")
                 file.pipe(res);
             }).on("error",function(){
+                console.log("xd2")
                 _.response.sendError(res,err,500);
             })
         } else {
@@ -56,4 +52,5 @@ exports.stream = function(req,res){
         _.response(res,err + "\n xd y'a une erreur",500)
     })
         
+
 }
