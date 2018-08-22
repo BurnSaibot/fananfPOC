@@ -30,6 +30,7 @@ app.use(function(req,res,next) {
         //console.log(req.session.user)
     }
     req.session.config = config;
+    console.log(req.url)
     next();
 });
 //parser to get infos with expres while posting data
