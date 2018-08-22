@@ -144,7 +144,7 @@ exports.getVideoURL = function(sub_id){
         })
         .catch(function(err){
             console.log("Il y a une erreur dans C/Sub")
-            reject(err)
+            reject(err + "xd")
         })
     })
 }
