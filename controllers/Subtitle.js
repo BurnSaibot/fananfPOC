@@ -135,16 +135,14 @@ exports.getVideoURL = function(sub_id){
     return new Promise (function(resolve,reject){
         mSubtitle.findById(sub_id)
         .then(function(sub){
-            console.log("Avant qu'on trouve la video (C/Sub)")
             return mTranscription.findById(sub.transcription);
         })
         .then(function(transcription){
-            console.log("Dans get Video Url devrais retourner l'url : " + transcription.urlVideo)
             resolve(transcription.urlVideo) 
         })
         .catch(function(err){
             console.log("Il y a une erreur dans C/Sub")
-            reject(err + "xd")
+            reject(err)
         })
     })
 }
