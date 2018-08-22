@@ -18,7 +18,8 @@
                 <button id="btnExport"  onclick="exportFile()"> Exporter </button>   
             </div>
             <div class="videoContainer">
-                <video controls="controls" src="htttp://vmfananf:3000/video/<%=sub._id%>">
+                <video controls="controls" >
+                    <source src="htttp://vmfananf:3000/video/<%=sub._id%>" type="video/mp4">
                     Vidéo à afficher pour la lecture de sous titres
                 </video>
             </div>
