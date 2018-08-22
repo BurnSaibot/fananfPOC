@@ -8,7 +8,7 @@
 }
 
 .menu {
-	position : relative;
+	position : fixed;
 	display : inline-block;
 	list-style-type : none;
 }
