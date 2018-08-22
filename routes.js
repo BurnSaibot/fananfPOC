@@ -3,7 +3,7 @@ var user = require('./controllers/User.js');
 var group = require('./controllers/Group.js');
 var transcription = require('./controllers/Transcription.js');
 var subtitle = require ('./controllers/Subtitle.js')
-var video = reuqire ('./controllers/Video.js')
+var video = require ('./controllers/Video.js')
 //
 exports.initialize = function (app) {
     
