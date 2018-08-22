@@ -7,11 +7,9 @@ exports.stream = function(req,res,next){
     // from https://medium.com/@daspinola/video-stream-with-node-js-and-html5-320b3191a6b6
     const sub_id = req.params.id
     console.log(req.params.id)
-    Subtitle.getVideoURL(sub_id)
-    .then(function(video_url){
-        console.log("Dans le then de C/V")
-        console.log(video_url)
-        const path = video_url
+    console.log(Subtitle.getVideoURL(sub_id))
+    
+        const path = Subtitle.getVideoURL(sub_id)
         const stat = fs.statSync(path)
         const fileSize = stat.size
         const range = req.headers.range
@@ -46,9 +44,4 @@ exports.stream = function(req,res,next){
             res.writeHead(200,head)
             fs.createReadStream(path).pipe(res)
         }
-    })
-    .catch(function(err){
-        console.log("Dans le catch de C/V")
-        _.response.sendError(res,"Erreur dans le controleur video",500);
-    })
 }

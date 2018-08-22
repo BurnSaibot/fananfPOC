@@ -59,11 +59,7 @@ exports.register = function(req,res) {
                     })
                     .then(function(tr_id) {
                         console.log("Everything should be good, so we are chaging status to \"Done\"");
-                        console.log("Id de la transcription" + tr_id);
-                        Transcription.findById(tr_id,function(err,result) {
-                            if (err) throw err;
-                            console.log("Transcription trouvée : " + result);
-                        })
+                        //console.log("Id de la transcription" + tr_id);
                         return Transcription.findByIdAndUpdate(tr_id, {status: 'Done'});
                     })
                     .catch(function(err) {
