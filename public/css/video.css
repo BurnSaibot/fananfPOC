@@ -2,8 +2,8 @@
     position: fixed;
     float: left;
     left: 0;
-    size: 20% 20%;
-    
+    height: 50;
+    width: 10%;  
 }
 
 .body{
