@@ -18,7 +18,10 @@ exports.stream = function(req,res,next){
             const start = parseInt(parts[0],10)
             const end = parts[1] ? parseInt(parts[0],10) : fileSize-1
             const chunksize = (end-start)+1
-            const file = fs.createReadStream(path,{start,end});
+            console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunksize);
+
+            
+            const file = fs.createReadStream(path,{start: start,end: end});
             const head = {
                 'Content-Range': `bytes ${start}-${end}/${fileSize}`,
                 'Accept-Ranges': 'bytes',
@@ -29,8 +32,9 @@ exports.stream = function(req,res,next){
             file.pipe(res);
         } else {
             const head = {
+                "Accept-Ranges": "bytes",
                 'Content-Length': fileSize,
-                'Content-Type': 'video/mp4',
+                'Content-Type': 'video/mp4'
             }
             res.writeHead(200,head)
             fs.createReadStream(path).pipe(res)
