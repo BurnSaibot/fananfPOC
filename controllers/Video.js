@@ -1,4 +1,5 @@
 const Subtitle = require('./Subtitle');
+const mSubtitle = require('../models/Subtitle')
 const _ = require('./Utils');
 const fs = require('fs');
 
@@ -9,7 +10,6 @@ exports.stream = function(req,res){
     .then(function(sub_url){
         console.log(req.params.id)
        Subtitle.getVideoURL(req.params.id).then(function(sub_url){ console.log("Url trouvé xd : sub_url")},function(err){console.log("Y'a une erreur : " + err)})
-    
         const path = sub_url
         const stat = fs.statSync(path)
         const fileSize = stat.size
@@ -28,7 +28,7 @@ exports.stream = function(req,res){
                 'Content-Range': "bytes " + start + "-" + end + "/" + fileSize,
                 'Accept-Ranges': 'bytes',
                 'Content-Length': chunkSize,
-                'Content-Type': 'video/mp4',
+                'Content-Type': 'video/mp4'
             }
             res.writeHead(206,head);
             file.on("open",function() {
@@ -46,8 +46,11 @@ exports.stream = function(req,res){
             }
             res.writeHead(200,head)
             fs.createReadStream(path).pipe(res)
-        }
+        } 
     })
-    
-    
+    .catch(function(err){
+        _.response(res,err + "\n xd y'a une erreur",500)
+    })
+        
+
 }
