@@ -143,6 +143,7 @@ exports.getVideoURL = function(sub_id){
             resolve(transcription.urlVideo) 
         })
         .catch(function(err){
+            console.log("Il y a une erreur dans C/Sub")
             reject(err)
         })
     })
