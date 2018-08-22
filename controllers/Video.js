@@ -17,22 +17,26 @@ exports.stream = function(req,res,next){
             const parts = range.replace(/bytes=/,"").split("-");
             const start = parseInt(parts[0],10)
             const end = parts[1] ? parseInt(parts[0],10) : fileSize-1
-            const chunksize = (end-start)+1
-            console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunksize);
+            const chunkSize = (end-start)+1
+            console.log('RANGE: ' + start + ' - ' + end + ' = ' + chunkSize);
 
-            
+
             const file = fs.createReadStream(path,{start: start,end: end});
             const head = {
-                'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+                'Content-Range': "bytes " + start + "-" + end + "/" + fileSize,
                 'Accept-Ranges': 'bytes',
-                'Content-Length': chunksize,
+                'Content-Length': chunkSize,
                 'Content-Type': 'video/mp4',
             }
             res.writeHead(206,head);
-            file.pipe(res);
+            file.on("open",function() {
+                file.pipe(res);
+            }).on("error",function(){
+                _.response.sendError(res,err,500);
+            })
         } else {
+            console.log('ALL: ' + fileSize);
             const head = {
-                "Accept-Ranges": "bytes",
                 'Content-Length': fileSize,
                 'Content-Type': 'video/mp4'
             }
