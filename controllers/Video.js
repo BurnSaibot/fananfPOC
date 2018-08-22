@@ -5,8 +5,8 @@ const fs = require('fs');
 
 exports.stream = function(req,res,next){
     // from https://medium.com/@daspinola/video-stream-with-node-js-and-html5-320b3191a6b6
-    const sub_id = req.param.id
-    console.log(req.param.id)
+    const sub_id = req.params.id
+    console.log(req.params.id)
     Subtitle.getVideoURL(sub_id)
     .then(function(video_url){
         console.log(video_url)
