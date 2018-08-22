@@ -1,5 +1,4 @@
 const Subtitle = require('./Subtitle');
-const Transcription = require('./Subtitle');
 const _ = require('./Utils');
 const fs = require('fs');
 
