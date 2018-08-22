@@ -47,6 +47,6 @@ exports.stream = function(req,res,next){
         }
     })
     .catch(function(err){
-        _.response.sendError(res,err,500);
+        _.response.sendError(res,"Erreur dans le controleur video",500);
     })
 }
