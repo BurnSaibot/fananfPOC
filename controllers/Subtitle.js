@@ -10,7 +10,7 @@ var extract = exports.extract = function(sub) {
     
     return new Promise(function(resolve,reject) {
 
-        fs.readFile(sub.urlSubTitles,'utf-8',function(err,data){
+        fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
             if (err) reject(err);
             //creating regexp to test each lines of the data
             const regNumber = new RegExp("^[0-9]{1,}$");
@@ -66,10 +66,12 @@ var extract = exports.extract = function(sub) {
 exports.read = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
+        console.log("avant l'extraction des données");
         return extract(result);
     })
     .then(function(exportedSub){
         mSubtitle.findById(req.params.id,function(err,sub){
+            console.log("juste avant le rendu, le sous titre trouvé dans la bdd : " + sub);
             if (err) _.response.sendError(res,err,500);
             res.render('subtitles.ejs',{sub: sub,subtitles: exportedSub})
         })    
@@ -83,11 +85,13 @@ exports.read = function(req,res,next) {
 exports.edit = function(req,res,next) {
     mSubtitle.findById(req.params.id)
     .then(function(result){
+        console.log("avant l'extraction des données");
         return extract(result);
     })
     .then(function(exportedSub){
         mSubtitle.findById(req.params.id,function(err,sub){
             if (err) _.response.sendError(res,err,500);
+            console.log("juste avant le rendu, le sous titre trouvé dans la bdd : " + sub);
             res.render('subtitleEdit.ejs',{sub: sub,subtitles: exportedSub})
         })    
     }).catch(function(err){
@@ -122,7 +126,7 @@ exports.save = function(req,res,next) {
 exports.export = function(req,res,next) {
         mSubtitle.findById(req.params.id)
         .then(function(subtitle){
-            res.download(subtitle.urlSubTitles);
+            res.download(subtitle.urlSousTitres);
         })
         .catch(function(err){
             _.response.sendError(res,err,500);
