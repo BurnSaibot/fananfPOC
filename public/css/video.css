@@ -1,10 +1,12 @@
 .videoContainer{
+    position: fixed;
     float: left;
-    width: 20%;
-
+    left: 0;
+    size: 20% 20%;
     
 }
 
 .body{
-    float: left;
+    float: right;
+    size: 80% 100%;
 }
