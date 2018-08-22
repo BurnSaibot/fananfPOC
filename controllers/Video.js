@@ -2,13 +2,20 @@ const Subtitle = require('./Subtitle');
 const _ = require('./Utils');
 const fs = require('fs');
 
-exports.stream = function(req,res,next){
+exports.stream = function(req,res){
     // from https://medium.com/@daspinola/video-stream-with-node-js-and-html5-320b3191a6b6
     const sub_id = req.params.id
     console.log(req.params.id)
     console.log(Subtitle.getVideoURL(sub_id))
     
-        const path = Subtitle.getVideoURL(sub_id)
+    mSubtitle.findById(sub_id)
+    .then(function(sub){
+        console.log("Avant qu'on trouve la video (C/Sub)")
+        return mTranscription.findById(sub.transcription);
+    })
+    .then(function(transcription){
+        console.log("Dans get Video Url devrais retourner l'url : " + transcription.urlVideo)
+        const path = transcription.urlVideo
         const stat = fs.statSync(path)
         const fileSize = stat.size
         const range = req.headers.range
@@ -26,7 +33,7 @@ exports.stream = function(req,res,next){
                 'Content-Range': "bytes " + start + "-" + end + "/" + fileSize,
                 'Accept-Ranges': 'bytes',
                 'Content-Length': chunkSize,
-                'Content-Type': 'video/mp4',
+                'Content-Type': 'video/mp4'
             }
             res.writeHead(206,head);
             file.on("open",function() {
@@ -42,5 +49,7 @@ exports.stream = function(req,res,next){
             }
             res.writeHead(200,head)
             fs.createReadStream(path).pipe(res)
-        }
+        } 
+    })
+        
 }
