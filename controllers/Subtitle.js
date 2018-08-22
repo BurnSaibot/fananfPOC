@@ -135,6 +135,7 @@ exports.getVideoURL = function(sub_id){
     return new Promise (function(resolve,reject){
         mSubtitle.findById(sub_id)
         .then(function(sub){
+            console.log("Avant qu'on trouve la video (C/Sub)")
             return mTranscription.findById(sub.transcription);
         })
         .then(function(transcription){

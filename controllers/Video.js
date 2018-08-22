@@ -9,6 +9,7 @@ exports.stream = function(req,res,next){
     console.log(req.params.id)
     Subtitle.getVideoURL(sub_id)
     .then(function(video_url){
+        console.log("Dans le then de C/V")
         console.log(video_url)
         const path = video_url
         const stat = fs.statSync(path)
@@ -47,6 +48,7 @@ exports.stream = function(req,res,next){
         }
     })
     .catch(function(err){
+        console.log("Dans le catch de C/V")
         _.response.sendError(res,"Erreur dans le controleur video",500);
     })
 }
