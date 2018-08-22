@@ -1,5 +1,5 @@
 .videoContainer{
-    position: fixed;
+    position: relative;
     float: left;
     left: 0;
     size: 20% 20%;
