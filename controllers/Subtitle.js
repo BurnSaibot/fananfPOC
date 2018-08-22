@@ -4,6 +4,7 @@ const fs = require('fs');
 var path = require('path');
 
 var mSubtitle = require('../models/Subtitle');
+var mTranscription = require('../models/Transcription')
 
 var extract = exports.extract = function(sub) {
     
@@ -127,4 +128,20 @@ exports.export = function(req,res,next) {
             _.response.sendError(res,err,500);
         })
          // Set disposition and send it.
+}
+
+//allow us to to get url of the video for a subtitle
+exports.getVideoURL = function(sub_id){
+    return new Promise (function(resolve,reject){
+        mSubtitle.findById(sub_id)
+        .then(function(sub){
+            return mTranscription.findById(sub.transcription);
+        })
+        .then(function(transcription){
+            resolve(transcription.urlVideo) 
+        })
+        .catch(function(err){
+            reject(err)
+        })
+    })
 }

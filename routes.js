@@ -3,6 +3,7 @@ var user = require('./controllers/User.js');
 var group = require('./controllers/Group.js');
 var transcription = require('./controllers/Transcription.js');
 var subtitle = require ('./controllers/Subtitle.js')
+var video = reuqire ('./controllers/Video.js')
 //
 exports.initialize = function (app) {
     
@@ -29,6 +30,8 @@ app.get('/', function(req,res,next) {
 .get('/subtitle/:id',authentication.middleware.isLoggedIn,subtitle.read)
 .get('/subtitle/edit/:id',authentication.middleware.isLoggedIn,subtitle.edit)
 .get('/subtitle/export/:id/',authentication.middleware.isLoggedIn,subtitle.export)
+
+.get('/video/:id',authentication.middleware.isLoggedIn,video.stream)
 
 .post('/transcription/:id/updt',authentication.middleware.isLoggedIn,transcription.updt)
 .post('/transcription/videoupload',authentication.middleware.isLoggedIn,transcription.register)
