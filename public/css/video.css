@@ -2,3 +2,7 @@
     position: fixed;
     left: 0;
 }
+
+.body{
+    float: right;
+}
