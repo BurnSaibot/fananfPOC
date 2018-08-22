@@ -139,7 +139,7 @@ exports.getVideoURL = function(sub_id){
             return mTranscription.findById(sub.transcription);
         })
         .then(function(transcription){
-            console.log("Dans get Video Url devrais retourner l'url :)")
+            console.log("Dans get Video Url devrais retourner l'url :transcription.urlVideo")
             resolve(transcription.urlVideo) 
         })
         .catch(function(err){
