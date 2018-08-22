@@ -2,13 +2,15 @@ const Subtitle = require('./Subtitle');
 const _ = require('./Utils');
 const fs = require('fs');
 
-exports.stream = function(req,res,next){
+exports.stream = function(req,res){
     // from https://medium.com/@daspinola/video-stream-with-node-js-and-html5-320b3191a6b6
-    const sub_id = req.params.id
-    console.log(req.params.id)
-    console.log(Subtitle.getVideoURL(sub_id))
+
+    Subtitle.getVideoURL(req.params.id)
+    .then(function(sub_url){
+        console.log(req.params.id)
+        console.log(Subtitle.getVideoURL(sub_id))
     
-        const path = Subtitle.getVideoURL(sub_id)
+        const path = sub_url
         const stat = fs.statSync(path)
         const fileSize = stat.size
         const range = req.headers.range
@@ -43,4 +45,7 @@ exports.stream = function(req,res,next){
             res.writeHead(200,head)
             fs.createReadStream(path).pipe(res)
         }
+    })
+    
+    
 }
