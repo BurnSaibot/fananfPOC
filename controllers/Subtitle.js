@@ -10,7 +10,7 @@ var extract = exports.extract = function(sub) {
     
     return new Promise(function(resolve,reject) {
 
-        fs.readFile(sub.urlSousTitres,'utf-8',function(err,data){
+        fs.readFile(sub.urlSubTitles,'utf-8',function(err,data){
             if (err) reject(err);
             //creating regexp to test each lines of the data
             const regNumber = new RegExp("^[0-9]{1,}$");
@@ -122,7 +122,7 @@ exports.save = function(req,res,next) {
 exports.export = function(req,res,next) {
         mSubtitle.findById(req.params.id)
         .then(function(subtitle){
-            res.download(subtitle.urlSousTitres);
+            res.download(subtitle.urlSubTitles);
         })
         .catch(function(err){
             _.response.sendError(res,err,500);
