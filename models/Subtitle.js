@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var sousTitresSchema = new Schema({
-    urlSousTitres: {
+    urlSubTitles: {
         type: String,
         required: true,
         unique: true
@@ -18,4 +18,4 @@ var sousTitresSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('sousTitres', sousTitresSchema);
+module.exports = mongoose.model('subtitles', sousTitresSchema);

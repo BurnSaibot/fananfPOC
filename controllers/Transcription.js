@@ -129,7 +129,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
         if (format == "srt") {
             console.log(" Format : srt only");
             var subtitle1 = new mSubtitle ({
-                urlSousTitres: path.join(pathOut,propperName) + ".srt",
+                urlSubTitles: path.join(pathOut,propperName) + ".srt",
                 format: format,
                 transcription: tr._id
             })
@@ -147,7 +147,7 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
         } else if (format == "vtt") {
             console.log("Format : vtt only");
             var subtitle1 = new mSubtitle ({
-                urlSousTitres: path.join(pathOut,propperName) + ".vtt",
+                urlSubTitles: path.join(pathOut,propperName) + ".vtt",
                 format: format,
                 transcription: tr._id
             })
@@ -166,13 +166,13 @@ var saveSubtitles = function(pathOut,propperName,format,tr) {
         } else if (format == "all") {
             console.log("Format : All");
             var subtitle1 = new mSubtitle ({
-                urlSousTitres: path.join(pathOut,propperName) + ".srt",
+                urlSubTitles: path.join(pathOut,propperName) + ".srt",
                 format: "srt",
                 transcription: tr._id
             })
 
             var subtitle2 = new mSubtitle ({
-                urlSousTitres: path.join(pathOut,propperName) + ".vtt",
+                urlSubTitles: path.join(pathOut,propperName) + ".vtt",
                 format: "vtt",
                 transcription: tr._id
             })
