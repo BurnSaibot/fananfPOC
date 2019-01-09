@@ -31,7 +31,7 @@ function extractingAudio() {
 
 function xmlFromVocapia() {
     echo "Getting transcription from vocapia"
-    echo `curl -ksS -u cerveau:w4SAuEVL https://rest1.vocapia.com:8093/voxsigma -F method=vrbs_trans -F model=fre -F audiofile=@/tmp/$filename.mp3 > /tmp/$filename.xml`
+    echo `curl -ksS -u id:pwd https://rest1.vocapia.com:8093/voxsigma -F method=vrbs_trans -F model=fre -F audiofile=@/tmp/$filename.mp3 > /tmp/$filename.xml`
     #echo `cat /tmp/$filename.xml`
 }
 
